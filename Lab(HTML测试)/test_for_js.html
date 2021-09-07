@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<style type="text/css">
+	.line{
+	border:1px solid orange;
+	height:1px;
+	border-top:1px;
+	background-repeat: repeat-x;
+	overflow: hidden;
+	}
+	</style>
+
+	<script type="text/javascript">
+	var div = document.createElement('div'); 
+	var txt = document.createTextNode("???");
+
+	document.body.appendChild(div);
+	div.appendChild(txt);
+	
+
+	var window_height = function(){
+		var height = window.outerHeight;
+		document.getElementById("height").innerHTML=height;
+	}
+	
+	var window_width = function(){
+		var width = window.outerWidth;
+		document.getElementById("width").innerHTML=width;
+	}
+
+	var window_DPR = function(){
+		var DPR = window.devicePixelRatio;
+		document.getElementById("DPR").innerHTML=DPR;
+	}
+	</script>
+	等效于 <xmp><div>???</div></xmp>
+	<div id="width" onclick="window_width()">当前窗口宽度：</div>
+	<div id="height" onclick="window_height()">当前窗口高度：</div>
+	<div id="DPR" onclick="window_DPR()">当前窗口DPR：</div>
+	<div id="gap"
+    style="
+    border:1px solid black;
+	height:1px;
+	border-top:1px;"
+    ></div>
+</body>
+</html>

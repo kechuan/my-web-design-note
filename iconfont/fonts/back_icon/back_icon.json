@@ -1,0 +1,16 @@
+{
+  "id": "2583867",
+  "name": "icon_banner",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "12294979",
+      "name": "back",
+      "font_class": "back",
+      "unicode": "e648",
+      "unicode_decimal": 58952
+    }
+  ]
+}

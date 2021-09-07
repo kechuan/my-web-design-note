@@ -1,0 +1,41 @@
+@font-face {
+  font-family: "home_icon"; 
+          /* Home id 2583867 */
+  src: url('../fonts/home_icon/home_icon.woff2?t=1622521704866') format('woff2'),
+       url('../fonts/home_icon/home_icon.woff?t=1622521704866') format('woff'),
+       url('../fonts/home_icon/home_icon.ttf?t=1622521704866') format('truetype')
+       /* Back id 2583867 */
+       url('../fonts/back_icon/back_icon.woff2?t=1622794897098') format('woff2'),
+       url('../fonts/back_icon/back_icon.woff?t=1622794897098') format('woff'),
+       url('../fonts/back_icon/back_icon.ttf?t=1622794897098') format('truetype');
+
+
+}
+
+.home_icon {
+  font-family: "home_icon" !important;
+  font-size: 16px;
+  height: 2em;
+  width: 2em;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-home:before {
+  content: "\e89c";
+}
+
+.back_icon {
+  font-family: "back_icon" !important;
+  font-size: 16px;
+  font-style: normal;
+  height: 2em;
+  width: 2em;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-back:before {
+  content: "\e648";
+}

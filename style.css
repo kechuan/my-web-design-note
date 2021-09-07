@@ -1,0 +1,642 @@
+ul li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+
+
+body{
+	background:url(images/BG.jpg)fixed top center;
+	background-repeat: no-repeat;
+	background-size:cover;
+	}
+
+::selection{
+	color: #FFA;
+	
+}
+	
+#logo{
+	position: relative;
+	top:18%;
+	text-align: center;
+	font-size:24px;
+	width: 250px;
+	height: 50px;
+	color: rgb(155,217,53,0.9); 
+	
+  }
+
+#logo:hover{
+	transition:all 2s linear;
+	color:rgb(181,255,181,0.85);
+}
+
+
+#clock{
+	height: 20px;
+	width: 120px;
+	position: relative;
+	left: 93%;
+}
+
+	#Time{
+		position: relative;
+		height:20px;
+		width:60px;
+		right:0%;
+	}
+
+h3{
+	text-shadow: 2px 2px 5px #fff
+}
+
+#container{
+	margin:0 auto;
+	width:90%;
+	height:1850px;
+	background-color:rgb(180,213,248,0.18);
+	overflow: no-repeat;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+	
+
+#header_split{
+	height:10px;
+	background-color: rgb(109,109,109,0.5);  /*上下头部分割线*/
+}
+
+
+
+#side_header{
+	height:55px;
+	border: 3px #345;
+	border-style: solid none;
+	background-image: 
+	linear-gradient(to right,
+		rgb(204,142,201,0.65), 
+		rgb(255,255,255,0.08));
+	
+}
+
+
+#header_picture_decorate{
+	position: absolute;
+	left: 35%;
+	top: 2%;
+	background:url(images/header.png);
+	background-position:-53px -28px;
+	background-repeat: no-repeat;
+	width: 650px;
+	height: 55px;
+	opacity: 0.2;
+}
+
+
+
+#profile{
+	
+	position: absolute;
+	right: 8%;
+	top:2%;
+	width:200px;
+    font-size: 18px;
+    color:pink;
+}
+
+	#avatar img{
+	width:55px;
+	height:55px;
+	background-size:cover;
+	border-radius:25px;
+}
+
+	#greeting
+	{	
+		position: relative;
+		left:62px;
+		top:-40px;
+	}
+
+	#greeting a{
+		color:orange;
+	}
+
+/*
+#occur_text{
+	position: absolute;
+	text-align: right;
+	width:400px;
+	margin-top: 5px;
+	margin-bottom:5px;
+	right:100px;
+	color:rgb(211,24,21);
+	top:26px;
+	font-size:17px;
+	animation: disappear 3s ease-in infinite alternate;
+}
+
+@keyframes disappear
+{
+	from {}
+	to   {color:rgb(0,0,0,0);}
+}
+
+#hide_text{
+	position: absolute;
+	top:31px;
+	right:88px;
+	font-size: 17px;
+	animation: appear 3s ease-in infinite alternate;
+}
+
+@keyframes appear
+{
+	from {color:rgb(0,0,0,0);}
+	to   {color:rgb(155,217,53,0.7);}
+}
+*/
+
+#nav_bar ul#menu{
+	position: relative;
+	width:100%;
+	height:55px;
+	background-color: rgb(11,11,11,0.1);
+	margin:0;
+	padding:0;
+	
+}
+	ul li.nav-link-item{border: 1px solid black;}
+	ul li.nav-link-item:hover{
+		background-color: black;
+		transition: 0.5s;
+	}
+
+div#nav_bar ul#menu li{
+	margin:0;
+	padding:0;
+	list-style:none;
+	position:absolute;
+	top:0;
+
+	}
+
+ul#menu li, ul#menu a{
+		display:block;
+		height: 55px;
+		}
+
+ ul#menu li a{
+		overflow:hidden;
+		text-decoration: none;
+		padding-top:12px;
+		padding-left:20px; 
+		}
+
+ul li#nav-link-item1{width: 12%; left: 0%;}
+ul li#nav-link-item2{width: 15%; left: 12%;}
+ul li#nav-link-item3{width: 15%; left: 27%;}
+ul li#nav-link-itemf{width: 12%; right: 0%;}
+ /*所以说,关于描述距离的问题不要用px啊*/
+
+/*
+div[属性名~="包含"]
+^=开头
+$=结尾
+*/
+
+p{
+	font-size: 18px;
+	color: red;
+	font-weight: bold;
+	text-decoration:line-through;
+	text-align: center;
+}
+
+
+#framework{
+position: fixed;
+width:200px;
+height:500px;
+top:100px;
+right: 0px;
+z-index: 1;
+}
+
+	#sidebar{
+	position: absolute;
+	right: -300px; /*调试默认0px 结束后为-300px*/
+	height:500px;
+	width: 300px;
+	top:0px;
+	overflow: hidden;
+	transition: 0.5s;
+	background-color: rgb(255,255,255,0.3);
+	}
+
+	#sidebar a{
+		text-decoration: none;
+		color:black;
+	}
+
+		#options{
+		position: relative;
+		left:-20px;
+	    padding: 8px 8px 8px 8px;
+	    font-size: 18px;
+	    transition: 0.3s;
+		}
+
+		#sidebar_swt{
+		position: relative;
+		right:-168px;
+		width: 30px;
+		height: 80px;
+		top:0px;
+		border: solid 1px white;
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+		background-color:rgb(255,255,255,0.3);
+		text-shadow:2px;
+		transition: 0.5s;
+		}
+
+			#openNotepad, #closeNotepad, #h1{
+				cursor: pointer;
+			}
+
+
+		#notepad{
+
+		}
+
+			#notepad_input{
+			position: relative;
+			top: 370px;
+			}
+
+		
+
+.href
+{
+	text-decoration: none;
+}
+
+	.href:hover , #options:hover
+	{
+		color:orange;
+		border-bottom: white;
+	}
+
+.text
+{
+	font-size: 20px;
+	text-align: center;	
+	text-decoration:underline;
+	line-height: 50px;
+	color:white;
+}
+
+.content
+{
+	font-size: 20px;
+	text-align: center;
+	color: #66ccff;
+	margin: 0 auto;
+}
+
+#video_control
+{
+	position: relative;
+	/*transform:rotate(30deg);*/
+}
+
+#tp{
+	text-decoration: none;
+	position: fixed;
+	right:0px;
+	bottom: 20px;
+}
+
+#ending{
+	position: relative;
+	bottom: -57px;
+	left: 12px;
+}
+
+.data
+{
+	text-align: center;
+	text-decoration: none;
+}
+
+.line
+{
+	border:1px solid orange;
+	height:1px;
+	width:1px;
+	border-top:1px;
+	background-repeat: repeat-x;
+	overflow: hidden;
+}
+
+
+
+
+CSS伪类选择器
+a标签
+:link(默认/:hover(悬浮/active(点击时/visited/
+
+:focus获得焦点(激活时)
+
+:first-child/last-child/nth-child("number");
+固定作用于第一 最后 自定义元素(感觉没什么意义)
+
+
+box:
+#border框体
+solid ——
+dotted ..
+dashed ---
+double ==
+none 
+
+	#padding(inside)/margin(outside)
+	#border -top/right/bottom/left:what? 可选transparent来占用位置但不显示
+	#margin box垂直方向上的合并 会选用两个box里值更高的margin为两box的间隔
+
+	(如果不想要让他们合并，需要手动给某一个套一个wrapper并附加overflow:hidden，
+		让其成为一个独立容器使间隔正常显示，一个BFC/一个非BFC)
+
+	margin:0 auto(left/right);
+	#如果是一次性输入多给值，则根据顺时针开始渲染值 并由top部开始
+
+	#width/height
+
+	-溢出box的处理方式
+	overflow:hidden/scroll/auto(如有超出部分，自动显示滚动条)
+
+	圆角边框border-radius
+	-border-(top/bottom)-(left/right)-radius:水平/垂直
+
+	边框图像border-image
+	border-image: url() 顺时针顺序px
+	-实际占用大小还是受限于定义的border大小
+	如果image值大于border的大小，图像会被拉伸失真 最大不能大于图像的px(方向/2)，会直接等于transparent
+
+
+	#box-shadow
+	-x(h-shadow) -y(v-shadow)
+	-inset/outset(默认) 
+	-color (spread)?px(发光厚度,可负值) (blur)px(模糊距离,越大越不规则模糊)
+
+	box-orient(强制横向排列)
+	需搭配h3c前缀使用
+	但我还是建议你用ul li.jpg
+	horizontal(水平)/vertical(垂直)
+
+	弹性盒子
+	display:flex
+	当你设置了flex属性之后,脱离文档流的相关属性会直接失效(float等)
+	采用Flex布局的元素，称为Flex容器（flex container），
+	简称”容器”。它的所有子元素自动成为容器成员，称为Flex项目（flex item），简称”项目”。
+
+	-flex-direction 排列方向(和box-orient有何区别?)
+	一个是强行横向排列 而这位提供了四个选项
+
+	但我还是建议你使用ul li.jpg
+
+	flex-direction: row(纵向向上) | row-reverse(纵向向下) | column(横向向右) | column-reverse(横向向左)
+
+	-flex-warp
+	-flex-flow
+	-justify-content
+	justify-content: flex-start | flex-end | center | space-between | space-around;
+	-align-items
+	-align-content
+您还是看这个吧 https://www.runoob.com/w3cnote/flex-grammar.html
+color
+word
+#rgb(%,%,%)
+#rgb(0-255,?,?)
+#rgb[a(reo)](?,?,?,0-1(透明))
+#HEX码支持 #000000-FFFFFF 重复省略支持
+透明色可选:transparent
+
+也可以分着用-color -width -style
+但肯定直接一行搞定最吼啊
+
+text
+#letter-spacing间距(px)
+#line-height行高(px,em,?%)
+#text-aligin位置调整(L R center justify)
+#text-decoration(none,overline,underline,line-through(s))
+#text-indent(首行TAB ?px) 也可以表现为+-无限来隐藏文字
+#text-shadow:-x -y (大小) #ccc
+word-warp(文本强制换行)
+-normal/break-word(控制在设定里的border大小里面)
+
+@font-face 使用额外字体 CSS时 字体只能让客户端安装或者图片来呈现
+CSS3里可以在服务端里放置fonts文件夹 .TTF一类
+usage:
+导入
+@font-face{
+	font-family: 定义这个字体的名字;
+	src:url("绝对路径/相对路径");
+}
+拉取
+p{
+font-family:?;
+即可生效
+}
+
+
+#动画
+
+过渡 transition 将元素的某个属性从一个值过渡到另一个值
+-property 属性 .name/all
+-duration 过渡时间 s/ms
+-timing-function linear(均匀) ease—— - —— ease-in ease-out infinite alternate(loop)
+or 一步到位
+transition:.name/时间/方式
+
+渐变
+*-gradient([(?deg),(transparent ?%),(to left/right(top/bottom))右到左/左到右] 
+	#color/rgb()(position%), -repeat it)
+linear(线性)/radial()
+	linear-gradient(to right,
+		);
+
+至少要有两个颜色变量 支持角度变化，百分比,透明度
+
+运用百分比等写法时，一定要注意手动引导头与尾部，否则不会正常加载
+，其中在非开头表示0时，则默认为上一部分的结尾处开启
+以及以及，完结语句不能加  ","
+/*background: repeating-linear-gradient(
+    black 0,
+    black .25em,
+    #0092b7 0,
+    #0092b7 .75em
+    );
+*/
+这一段就代表0-0.25 且 设立#0092b7的头部接入0.25并设立0.75em尾部
+真 动画 animation
+step1:编写
+@keyframe 自己定义的属性名(顺带@符号一般意味着规则制定)
+{
+	0% {想要写的变化}
+	?% {...}
+	?% {...}
+	...
+	100% {...}
+}
+
+step2:引用
+?{
+	animation: (设定的属性名) 过渡时间 过渡方式 (持续多少次?);
+}
+
+--play-state 播放状态 running/paused
+思路:通过鼠标悬停/点击可触发/暂停动画播放
+
+--css3规范
+内核支持前缀
+Chrome/Sarari -webkit-
+Firefox 	  -moz-
+Opera		  -o-
+IE 			  -ms- 希望IE出事
+
+#div相关
+display
+inline/block/inline-block/flex(请移至box查看)(可水平排列的block的元素，也可设置高宽)
+你应熟练转换文字与块属性来避免冲突问题(如margin 0 auto与text-align:center)
+inline自带一丢丢间隙
+
+float与clear属性
+float允许给原本div等block属性让其他元素与div等共存一行，当然这不能让其他
+元素超过装载它们的容量大小本身(而且因为其脱离文档流的特性，使得BFC渲染元素不会作用于它身上
+	相当于z-index里的0-1)
+
+在某个div上给予clear属性之后，即让该div块不会再出现与它left/right的float块，从而实现
+div换行的目的
+{
+	[ div1.sth.huge eurpied		div2.sth div3→(enough place)]
+
+	.when div3{
+		clear:both;
+	}
+	div1 div2
+	div3
+}
+
+层定位 
+像PS图层一样允许相互覆盖排列，类似PPT动画那样覆盖
+-position属性 relative与absolute与fixed与static
+*当使用定位属性的时候,会自动转化为block属性
+
+absolute 根据附近定位好的元素来定位自己(除static以外的父元素定位，效果类似如下)
+-当它选择好后，会在那个父元素(0,0)基础上调整位置
+它会实际上的脱离文档流 会因为会占据原本它的位置而产生变化
+--当找不到除static任何父元素时，会直接使用body来定位
+
+relative 基于“直接”父元素定位调整
+(比如container里面的nav_bar，不会受更大一层的div区块影响)
+如果以此作为位置调整,视觉上会脱离原本的位置，但是实际block的占用位置没有变化
+
+fixed 相对于浏览器窗口调整 
+feature:类似excel里开了sroll lock一样)
+举例 烦人的广告和 cookies请求使用
+默认设置后方向为浏览器的左上角 为(0,0)
+通过top/left/right/bottom来设置，而且意思是远离这些边框的多少值
+
+default:static
+
+-z-index 哪个值大哪个在上面 可设置为负数作为背景底层 
+	失效情况
+	1、父标签 position属性为relative(脱离了文档流)；
+
+	2、指定标签无position属性（不包括static）；
+
+	3、指定标签含有浮动(float)属性(因为float本身也是属于一种0-1之间的z-index)。
+
+实际运用 比整个div分区更便携的拆分(外部分为relative，内部为absolute)
+
+transform属性 让div块进行变换
+默认2D
+-rotate(旋转?deg)
+-scale(x,y)水平，垂直 0-1,(百分比)>1(放大)
+-skew(X,Y)
+skewX
+3D
+transform-style:preserve-3d
+-rotateX/Y/Z(?deg)
+透视 
+让对象附有立体感(近大远小)
+perspective:?px(眼睛到"舞台"的距离,越大越不明显(这很河里))
+-background
+显示
+默认可-url(本地/网络)--fixed top center一类
+repeat/size
+no-repeat/repeat-(x/y)
+size 
+images/color
+
+
+
+
+*开发经验:
+20.12.19
+在因为分辨率变化而使用了absolute定位而偏移的div时
+可以试着使用相对定位+绝对定位来避免这种情况
+12.22
+没想到先填充区块内容再规定大小或者反过来居然是有差异的!
+先规定宽高属性就不会使内容缩放
+先规定填充内容才会生效
+1.21
+background-postion:
+让你想显示的图片调整好显示位置 
+类似投影仪与投影布的关系
+正为右/下
+
+21.2.1
+BFC
+存在float，position不为relative,static(即脱离文档流时),display不为none与block
+overflow不为visible元素等
+即可触发
+意义在于决定块盒子的布局及浮动相互影响 范围  的一个区域
+范围 是什么概念?
+
+当你相邻两个div设立同为一个BFC时,对类似背景的这种影响会覆盖到整个BFC区域 当然其他div(如果有)属性设置的背景优先度会更高是了
+
+一句话，BFC用来管父子关系的，兄弟关系(BFC与BFC之间)是不会管的
+
+可用于解决高度坍塌、margin垂直折叠、浮动重叠等问题
+当子容器生成BFC且float，而父容器没有BFC，且除开此子容器没有任何其他容器来撑开高度
+即会出现高度坍塌，而如果让父容器BFC
+(例如安排一个overflow:hidden/display:table)之类,大内容时最好使用伪元素.clearfix(使其不影响后续结构)
+
+根据BFC会计算浮动元素高度的特性，此时父容器也会受浮动元素影响而正常撑开高度
+也可利用BFC不会与float box重叠的特性，让浮动元素不会重叠文档流内容
+
+2.3
+IFC
+存在对行内修饰元素等
+如font-size/line-height/height/vertical-align之类
+规则 是从左至右排列 容纳不下时，会自动换行
+和BFC一样不会与float元素重叠
+容器高度是靠 
+line-height(size,font,等等)
+vertical-align(这个调整会影响到两个line-height的距离从而高度变化)
+
+4.11兄啊，记住如果能用%等的关系描述宽度位置，就不要用px啊。除非你自己去写代码检测屏幕宽度
+再去使用px的这种绝对大小 建议多使用em与%
+
+7.19
+expression 简单来说就是CSS里调用JS代码实现自适应
+用法只有
+/* expression{JScode_here} */
+但是执行性能极其差 非精简文件大小 并不推荐用这个方式

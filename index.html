@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+	<!--charset编码方式-->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>this is my first webpage</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<link rel="stylesheet" href="iconfont/icons.css">
+	<script src="./iconfont/fonts/home_icon/home_icon.js"></script>
+	<script src="./iconfont/fonts/back_icon/back_icon.js"></script>
+
+	<link rel="shortcut Icon" href="./images/Icon.ico" type="image/x-icon">
+	<script src="js/javascript.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<!--边框线？(字体样式？)、长宽高颜色/*这个也是一个注释符-->
+
+<body><a id="top">
+<!--div还能代表整个板块，如果只是在h1区域实施center操作是没什么用处的(width过小-->
+	<div id="framework">
+		<div id ="sidebar_swt">
+			<div id="openNotepad" onclick="openNotepad()" style="display:block;"><br>&nbsp;打<br>&nbsp;开</div>
+			<div id="closeNotepad" onclick="closeNotepad()" style="display:none;"><br>&nbsp;关<br>&nbsp;闭</div>
+		</div>
+
+		<div id = "sidebar">
+
+			<div id = "options">
+				<ul>
+					<li><a href="./sidebar/search.html" target="display">Search</a></li>
+					<li><a href="./sidebar/notepad.html" target="display">Notepad</a></li>
+					<li><a href="./sidebar/about.html" target="display">About</a></li>
+				</ul>
+			</div>
+
+		<iframe src="./sidebar/search.html" frameborder="4px" name="display" width="300" height="500"></iframe>
+		<iframe src="./sidebar/notepad.html" frameborder="4px" name="display" width="300" height="500"></iframe>
+		<iframe src="./sidebar/about.html" frameborder="4px" name="display" width="300" height="500"></iframe>
+			
+		</div>
+	</div>	
+	
+<!--input/输入
+text时,有,value/placeholder,disable(整个边框变灰,不可激活)/readonly(可激活，不能将指针变为pointer)minlength/maxlength,name/
+pattern(正则匹配) [0-9a-zA-z(规定范围)] {4,6(位数)}
+但是，但是最好用js来实现,要不然你后面你会看着正常js代码思考到底问题出哪里
+/required(必须输入)
+
+radio单选钮时，属性就是选择项 且必须要有name属性，要并一组需要把name写为相同以达到互相排斥作用
+check类似于value，其中同组多checked时只会给最后一项checked标记
+value在此更多作用是给js取值
+
+复选框checkbox,可以任意选择选项，除此与radio性质相同，因为复选可行性，checked多选生效
+image,与sublime一样会提交东西，只是会变为图片显示，除了src属性，用来引入图片
+reset,还原输入内容为默认内容
+sublime,会把内容提交到指定的页面
+select, 效果就是限定选择 通过option标签来规定选择分支,size可以让选择框长度更大
+
+表格单form
+input属性<input type="">
+(color/email/tel/url/number(方向键选择大小)/range(进度条)/search/date/datetime/datetime-local/year/month/time)
+子属性
+action=# link
+
+method=get/post 明文/暗文 get回退是载入缓存，post会再次请求网页
+get只接受ASCII,长度受url总限制2kbytes post以字符单位为传输,且不受url长度限制(2M)
+
+-->
+<!--其中，method方法里面有多种，get为显性，post则为隐性-->
+
+<!--textarea,只要用来输入大批内容-->
+<div id="container">
+	<!--<iframe src="iframe特效/rain.htm" height="100%" width="100%"></iframe>-->
+	<div id="header">
+		<div id="header_split"></div>
+	<!---->
+		<div id="side_header">
+			<div id="logo"><a href="index.html">welcome to <s>osu!</s></a></div>
+			<div id="header_picture_decorate"></div>
+			<!--
+				<div id="occur_text">Day 3</div>
+				<div id="hide_text">What do you want? What are you doing? What are you be?</div>
+			-->
+			<div id="profile">
+				<div id="avatar"><a href="https://osu.ppy.sh/users/8507595" target="_blank" alt="404 not found" title="kechuan's avatar"><img src="https://a.ppy.sh/8507595?1466940043.png"></a>
+				</div>
+
+				<div id="greeting">
+					Greeting,
+					<a href="https://osu.ppy.sh/users/8507595" target="_blank">kechuan</a>
+				</div>
+			</div>
+		</div>
+		<!---->
+		<div id="header_split"></div>
+	</div>
+
+	<h3>Index</h3>
+	
+		<span style="color: white;">
+			<div id="Time"></div>
+			<!--<div id="clock">
+				
+			</div>-->
+		</span>
+
+	<div id="nav_bar">
+		<ul id="menu">
+			<li id="nav-link-item1" class="nav-link-item">
+				<a href="musicPlayer.asp" target="_blank">
+			<span style="color:rgb(215,214,210);">Music Player</span>	
+				</a>
+			</li>
+		
+			<li id="nav-link-item2" class="nav-link-item">
+				<a href="emmet_tutorial.html" target="_blank">
+			<span style="color:rgb(215,214,210);">kechuan's profile</span>
+				</a>
+			</li>
+
+		
+			<li id="nav-link-item3" class="nav-link-item">
+				<a href="emmet_tutorial.html">
+			<span style="color:rgb(215,214,210);">forget something?</span>
+				</a>
+			</li>
+
+			<li id="nav-link-itemf" class="nav-link-item">
+				<a href="javascript:void(0)">
+			<span style="color:rgb(215,214,210);">Time is ?</span>
+				</a>
+
+		</ul>
+	</div>
+
+	<div id="middle_bar"></div>
+
+		<div class="text" align="center" valign="middle">
+<!--除了水平align还有垂直valign-->
+				this tutoral.
+		<br>i will show you the html basic&nbsp;usage
+		</div>
+
+	<div class="content">
+		
+	</div>
+
+待做内容<要求:javascript>点击按钮切换图片显示	
+	<h3>
+		<div class="text">
+		以及图片导入<br>
+		<img src="images\U&I (TV Size).png" title="我老婆(确信">
+		</div>
+	</h3>
+
+		<div class="data">生成table表格
+	<table border="1px" width="400px" height="100px" cellpadding="文本与边框距离" cellspacing="边框线与边框线距离" align="center">
+		<tr> <th>Games</th> <th>achievement</th> </tr>
+		<tr> <td>arcaea</td> <td>10.83</td> </tr>
+		<tr> <td>lanota</td> <td><s>希腊奶</s></td> </tr>
+	</table>
+		</div>
+<!--可选 width,height,rowspan(合并行)/colspan(合并列)等属性
+顺带 tr td子属性也是可以被css修饰的-->
+
+	</a>
+		<div class="text">
+		甚至去调用浏览器的播放器控件(等待放入实现网易云的页脚触碰功能)
+		<div class="line"></div>
+
+		<div id="video_control">
+			<video controls width="500px" height="50px" poster="."> 
+			<source src="E:\osu!\Songs\2nd Dan\4K 2nd Dan.mp3">
+				菜 浏览器 菜
+			</video>
+		</div>
+
+		<h4>基础HTML就是这样了，<s>但是加入了CSS又如何呢</s>,我已经加了</h4>
+		</div>
+
+		<a href="#top"><div id="tp">
+			
+				<svg class="back_icon">
+					<use xlink:href="#back_icon"></use>
+				</svg>
+			
+		</div></a>
+		
+<!--想整页面TP，要注意还要带上#号表 切到代码内设计好的id名-->
+			</div>
+		</div>
+	
+</body>
+</html>
+
+<!--HTML5新功能
+	
+	section 意义不明？ 也许只是单纯的语义化的div
+	arctle 同上
+	aduio/video/embed 能够允许你直接调用播放器控件 其中embed能够调用主流格式
+	-width/height controll muted autoplay loop="num"……
+	canvas 可以理解为一个画布 你需要通过JavaScript来作画
+	创建了canvas本身之后，在script里定义它
+	var canvas = document.getElementsByTagName('canvas')[?];
+	然后选择2D/3D式绘图
+	var ? = canvas.getContext('2d/3d');
+	其中作画方式有
+	?.fillStyle 填充颜色/fillRect 选择填充的范围(起始X,/Y, 终止X,/Y,);
+
+属性
+contentEditable 
+<p contentEditable="true/false"></p>
+hidden html意义上的color:rgb(0,0,0,0);
+data-* 能够让你自定义一个新变量，从而便于你引用(避免id name class都被占用)
+multiple 输入内容用 允许你多选限定输入 一般用于file选择(默认单选)
+>
+
+log
+21.2.1
+你知道吗，br里面还有隐藏的<br clear="all/L/R/none"的选项>与直接调用clear
+有点相似
+
+log
+21.4.11
+想法:如何实现在2k及其更高尺寸上实现 大小屏幕宽度(移动端适配)的效果?
+
+meta元标签 viewport
+
