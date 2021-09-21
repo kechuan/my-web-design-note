@@ -1,29 +1,27 @@
+
 //记住 在JS修改CSS属性的时候，必须要去掉原本横线，改驼峰命名
+	$("body").ready(function(){
+		$("#openNotepad").on("click",function(){
+			$('#sidebar').css("right","0")
+			$('#openNotepad').css("display","none")
+			$('#closeNotepad').css("display","block")
+			$('#sidebar_swt').css("right","132px")
+			$('#sidebar_swt').css("top","420px")
+			$('#framework').css("z-index","3")	
+		})
+	})
+	
 
-
-function openNotepad(){
-	var sidebar = document.getElementById("sidebar");
-	var openNotepad = document.getElementById("openNotepad");
-	var closeNotepad = document.getElementById("closeNotepad");
-	var sidebar_swt = document.getElementById("sidebar_swt");
-	sidebar.style.right = "0";
-	openNotepad.style.display = "none";
-	closeNotepad.style.display = "block";
-	sidebar_swt.style.right = "132px";
-	sidebar_swt.style.top = "420px";
-	}
-
-function closeNotepad(){
-	var sidebar = document.getElementById("sidebar");
-	var openNotepad = document.getElementById("openNotepad");
-	var closeNotepad = document.getElementById("closeNotepad");
-	var sidebar_swt = document.getElementById("sidebar_swt");
-	sidebar.style.right = "-300px";
-	openNotepad.style.display = "block";
-	closeNotepad.style.display = "none";
-	sidebar_swt.style.right = "-168px";
-	sidebar_swt.style.top = "0px";
-	}
+	$("body").ready(function(){
+		$("#closeNotepad").on("click",function(){
+			$('#sidebar').css("right","-300px")
+			$('#openNotepad').css("display","block")
+			$('#closeNotepad').css("display","none")
+			$('#sidebar_swt').css("right","-168px")
+			$('#sidebar_swt').css("top","0px")
+			$('#framework').css("z-index","0")	
+		})
+	})
 	
 function editNotepad(){
 	document.getElementById("Notepad").innerHTML="a";
@@ -51,7 +49,7 @@ var clock = setInterval(function()
 	var Hour = myDate.getHours().toString().padStart(2,"0");
 	var Minute = myDate.getMinutes().toString().padStart(2,"0");
 	var Second = myDate.getSeconds().toString().padStart(2,"0");
-	document.getElementById("Time").innerHTML = `现在是${Hour}:${Minute}:${Second}`;
+	document.getElementById("Time").innerHTML = `${Hour}:${Minute}:${Second}`;
 },1000);
 
 	
