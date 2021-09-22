@@ -44,11 +44,13 @@ body{
 }
 
 	#Time{
+		color: rgb(0,0,0,0);
 		position: relative;
 		height:20px;
 		width:60px;
-		left:90%;
-		top: 2%;
+		left:92%;
+		top: 2.5%;
+		transition: 1.5s;
 	}
 
 h3{

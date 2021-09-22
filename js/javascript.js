@@ -9,10 +9,7 @@
 			$('#sidebar_swt').css("top","420px")
 			$('#framework').css("z-index","3")	
 		})
-	})
 	
-
-	$("body").ready(function(){
 		$("#closeNotepad").on("click",function(){
 			$('#sidebar').css("right","-300px")
 			$('#openNotepad').css("display","block")
@@ -21,6 +18,16 @@
 			$('#sidebar_swt').css("top","0px")
 			$('#framework').css("z-index","0")	
 		})
+
+		$("#nav-link-itemf").hover(function(){	//悬停中
+			$("#Time").css("color","white")
+			$("#nav-link-itemf").css("background-color","none")
+		}
+
+		,function(){	//悬停离开
+			$("#Time").css("color","rgb(0,0,0,0)")
+		})
+
 	})
 	
 function editNotepad(){
@@ -51,6 +58,8 @@ var clock = setInterval(function()
 	var Second = myDate.getSeconds().toString().padStart(2,"0");
 	document.getElementById("Time").innerHTML = `${Hour}:${Minute}:${Second}`;
 },1000);
+
+
 
 	
 
