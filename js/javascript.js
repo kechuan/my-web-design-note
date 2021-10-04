@@ -1,6 +1,5 @@
-
 //记住 在JS修改CSS属性的时候，必须要去掉原本横线，改驼峰命名
-	$("body").ready(function(){
+	$(function(){
 		$("#openNotepad").on("click",function(){
 			$('#sidebar').css("right","0")
 			$('#openNotepad').css("display","none")
@@ -22,9 +21,9 @@
 		$("#nav-link-itemf").hover(function(){	//悬停中
 			$("#Time").css("color","white")
 			$("#nav-link-itemf").css("background-color","none")
-		}
+		},
 
-		,function(){	//悬停离开
+		function(){							//悬停离开
 			$("#Time").css("color","rgb(0,0,0,0)")
 		})
 

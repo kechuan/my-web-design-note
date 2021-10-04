@@ -19,29 +19,7 @@ body{
 	
 }
 	
-#logo{
-	position: relative;
-	top:18%;
-	text-align: center;
-	font-size:24px;
-	width: 250px;
-	height: 50px;
-	color: rgb(155,217,53,0.9); 
-	
-  }
 
-#logo:hover{
-	transition:all 2s linear;
-	color:rgb(181,255,181,0.85);
-}
-
-
-#clock{
-	height: 20px;
-	width: 120px;
-	position: relative;
-	left: 93%;
-}
 
 	#Time{
 		color: rgb(0,0,0,0);
@@ -86,48 +64,68 @@ h3{
 	
 }
 
-
-#header_picture_decorate{
-	position: absolute;
-	left: 35%;
-	top: 2%;
-	background:url(images/header.png);
-	background-position:-53px -28px;
-	background-repeat: no-repeat;
-	width: 650px;
-	height: 55px;
-	opacity: 0.2;
-}
-
-
-
-#profile{
-	
-	position: absolute;
-	right: 8%;
-	top:2%;
-	width:200px;
-    font-size: 18px;
-    color:pink;
-}
-
-	#avatar img{
-	width:55px;
-	height:55px;
-	background-size:cover;
-	border-radius:25px;
-}
-
-	#greeting
-	{	
+	#logo{
 		position: relative;
-		left:62px;
-		top:-40px;
+		top:18%;
+		text-align: center;
+		font-size:24px;
+		width: 250px;
+		height: 50px;
+		color: rgb(155,217,53,0.9); 
+		
+	  }
+
+		#logo a:hover{
+			transition:all 2s linear;
+			color:rgb(181,255,181,0.85);
+		}
+
+		#logo a:visited{
+			color: rgb(155,217,53,0.9);;
+		}
+
+	#header_picture_decorate{
+		position: absolute;
+		left: 35%;
+		top: 3%;
+		background:url(images/header.png);
+		background-position:-53px -28px;
+		background-repeat: no-repeat;
+		width: 650px;
+		height: 55px;
+		opacity: 0.2;
+		overflow: hidden;
 	}
 
-	#greeting a{
-		color:orange;
+
+
+	#profile{
+		
+		position: absolute;
+		right: 8%;
+		top:3%;
+		width:200px;
+	    font-size: 18px;
+	    color:pink;
 	}
+
+		#avatar img{
+		width:55px;
+		height:55px;
+		background-size:cover;
+		border-radius:25px;
+	}
+
+		#greeting
+		{	
+			position: relative;
+			left:62px;
+			top:-40px;
+		}
+
+		#greeting a{
+			color:orange;
+		}
 
 /*
 #occur_text{

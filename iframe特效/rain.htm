@@ -7,54 +7,43 @@
 	body{
 		width: 100%;
 		height: 100%;
-		/*background:url(../images/rain.png);*/
 		background-color: black;	/*有图片选图片，或者16进制的颜色代码*/
 	}	
 </style>
-	
 </head>
-
 <body>
-
 	<script>
-		
-		setInterval(function()
-		{
-			//创建rain元素
-			var rain=document.createElement("div");
-
+		setInterval(function(){
+			var rain=document.createElement("div");	//创建rain元素
 			//初始化rain属性
 			rain.style.position="fixed";
-			rain.style.height="150px";
-			rain.style.width="2px";
+			rain.style.height="18px";
+			rain.style.width="5px";
 			rain.style.background="url(../images/rain.png)";		//有图片赋值图片路径，或者赋值16进制的颜色代码
-			rain.style.filter="blur(1px)";
+			rain.style.filter="blur(2px)";
 			rain.style.top="0px";
-			rain.style.left=Math.random()*1920+"px";					//随机化位置
-			rain.style.opacity=parseInt(Math.random()*10)/10+"";		//随机化透明度
+			rain.style.left=Math.random()*1920+"px";				//随机化位置
+			rain.style.opacity=parseInt(Math.random()*10)/10;		//随机化透明度
 
-			//向body里添加子节点rain
+			//向body里添加子节点"rain"
+			//思路：你创建好之后,你不可能为每个雨滴安排同样的计时器 那还能叫下雨吗?
+			//所以你只能为每个与众不同的雨,安排一个属于它们的计时器让它们下落,然后及时回收 然后再重新创建 不断循环
+			//负载? 现在的代码GPU是16%/CPU15%这样的浮动 还是蛮高的
+			//而天雪这个有一定组件规模加上飘雪特效才6%的占用 你还是为你的懒惰悔改罢
 			document.body.appendChild(rain);
-
-			var timer=setInterval(function()
-			{
+			var timer = setInterval(function(){
 				var height=parseInt(rain.style.top);
 				var k=1;
 				k++;
-
 				rain.style.top=height+5*Math.pow(k,2)+"px";				//模拟重力加速度
-
-
-				//当雨滴到达底部后消失并清除子节点rain
-				if(rain.style.top>="900px")
+				
+				if(rain.style.top>="98%")	//当雨滴到达底部后计时器消失并清除子节点rain
 				{
 					clearInterval(timer);
 					rain.parentNode.removeChild(rain);
 				}
-			},4)						//每隔4毫秒雨滴下落一次
-		},8)							//每隔8毫秒生成一次雨滴
-	
-		//占用率20%
+			},8)						//每隔4毫秒雨滴下落一次(计时器计算一次)
+		},24)							//每隔8毫秒生成一次雨滴
 		
 	</script>
 	

@@ -7,13 +7,10 @@
 	body{
 		width: 100%;
 		height: 100%;
-		/*background:url(../images/rain.png);*/
-		background-color: black;	/*有图片选图片，或者16进制的颜色代码*/
+		background-color: black;
 	}	
 </style>
-	
 </head>
-
 <body>
 
 	<script>
@@ -26,36 +23,34 @@
 			//初始化rain属性
 			rain.style.position="fixed";
 			rain.style.height="15px";
-			rain.style.width="2px";
+			rain.style.width="6px";
 			rain.style.background="url(../images/rain.png)";		//有图片赋值图片路径，或者赋值16进制的颜色代码
-			rain.style.filter="blur(1px)";
+			rain.style.filter="blur(2px)";
 			rain.style.top="0px";
-			rain.style.left=Math.random()*1920+"px";					//随机化位置
-			rain.style.opacity=parseInt(Math.random()*10)/10+"";		//随机化透明度
+			rain.style.left=Math.random()*2560+"px";				//随机化位置,这里对于不同屏幕 真要做适配可能还得写分支try catch if etc..
+			rain.style.opacity=parseInt(Math.random()*10)/10;		//随机化透明度
 
 			//向body里添加子节点rain
 			document.body.appendChild(rain);
-
 			var timer=setInterval(function()
 			{
 				var height=parseInt(rain.style.top);
 				var k=1;
 				k++;
 
-				rain.style.top=height+5*Math.pow(k,2)+"px";				//模拟重力加速度
+				rain.style.top=height+5*Math.pow(k,1.1)+"px";				//模拟重力加速度,至少你得让它动 而不是原地踏步甚至倒退(
 
 
 				//当雨滴到达底部后消失并清除子节点rain
-				if(rain.style.top>="900px")
+				if(rain.style.top>="98%")
 				{
 					clearInterval(timer);
 					rain.parentNode.removeChild(rain);
 				}
-			},4)						//每隔4毫秒雨滴下落一次
-		},2)							//每隔4毫秒生成一次雨滴
-	
-		//占用率20%
-		
+			},48)						//每隔48毫秒计算位置(1000/48=20.8FPS 观感勉强过得去,或许可以做个暴雪开关 然后切换到更激进的json配置之类的)
+		},300)							//每隔256毫秒生成一粒雪
+	//弊端:你计算间隔越久 当然动画就越卡
+	//除非写个更精细的算法 直接让它linear运动 然后再接着计算一段路程
 	</script>
 	
 </body>
