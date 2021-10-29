@@ -12,6 +12,7 @@ body{
 	background:url(images/BG.jpg)fixed top center;
 	background-repeat: no-repeat;
 	background-size:cover;
+	margin: 0;
 	}
 
 ::selection{
@@ -19,15 +20,118 @@ body{
 	
 }
 	
+#header_split{
+			height:10px;
+			background-color: rgb(109,109,109,0.5);  /*上下头部分割线*/
+		}
 
+		.flex{
+			display: flex;
+			justify-content: space-between;
+			gap: 3px;
+
+		}
+
+		#side_header{
+			
+			height:55px;
+			border: 3px #345;
+			border-style: solid none;
+			background-image: 
+			linear-gradient(to right,
+				rgb(204,142,201,0.65), 
+				rgb(255,255,255,0.08));
+			overflow: hidden;
+			
+		}
+
+			#logo{
+				align-items: center;
+				text-align: center;
+				font-size:24px;
+				color: rgb(155,217,53,0.9); 
+				
+			  }
+
+				#logo a:hover{
+					transition:all 2s linear;
+					color:rgb(181,255,181,0.85);
+				}
+
+				#logo a:visited{
+					color: rgb(155,217,53,0.9);;
+				}
+
+			#header_picture_decorate{
+				background:url(C:/Users/kechuan/Desktop/website/images/header.png);
+				background-position:-53px -28px;
+				background-repeat: no-repeat;
+				width: 650px;
+				height: 55px;
+				opacity: 0.2;
+				overflow: hidden;
+			}
+
+
+
+			#profile{
+			    font-size: 18px;
+			    color:pink;
+
+			}
+
+				#avatar img{
+				width:55px;
+				height:55px;
+				background-size:cover;
+				border-radius:25px;
+
+			}
+
+				#greeting
+				{	
+					align-items: center;
+				}
+
+				#greeting a{
+					color:orange;
+				}
+
+			@media(max-width: 820px) {
+				#side_header{
+					width: 100%;
+					
+				}
+
+				#header_split{
+					width: 820px;
+					
+				}
+				
+			
+			}	
+
+			@media (max-width: 1200px){
+				#header_picture_decorate{
+					display: none;
+				}
+
+				.nav_item.db{
+					display: none;
+				}
+				
+				#container{
+					overflow: hidden;
+				}
+			}
 
 	#Time{
 		color: rgb(0,0,0,0);
 		position: relative;
 		height:20px;
 		width:60px;
-		left:92%;
-		top: 2.5%;
+		/*left:88%;*/
+		top:38%;
 		transition: 1.5s;
 	}
 
@@ -51,158 +155,39 @@ h3{
 	background-color: rgb(109,109,109,0.5);  /*上下头部分割线*/
 }
 
-
-
-#side_header{
-	height:55px;
-	border: 3px #345;
-	border-style: solid none;
-	background-image: 
-	linear-gradient(to right,
-		rgb(204,142,201,0.65), 
-		rgb(255,255,255,0.08));
-	
-}
-
-	#logo{
-		position: relative;
-		top:18%;
-		text-align: center;
-		font-size:24px;
-		width: 250px;
-		height: 50px;
-		color: rgb(155,217,53,0.9); 
+#nav_bar{
+		width: 90%;
+		height: 47px;
+		display: flex;
+		flex-direction: row;
 		
-	  }
+	}
 
-		#logo a:hover{
-			transition:all 2s linear;
-			color:rgb(181,255,181,0.85);
-		}
-
-		#logo a:visited{
-			color: rgb(155,217,53,0.9);;
-		}
-
-	#header_picture_decorate{
-		position: absolute;
-		left: 35%;
-		top: 3%;
-		background:url(images/header.png);
-		background-position:-53px -28px;
-		background-repeat: no-repeat;
-		width: 650px;
-		height: 55px;
-		opacity: 0.2;
-		overflow: hidden;
+	.nav_item{
+		display: flex;
+		width: 203px;
+		height: 45px;
+		align-items: center;
+		justify-content: center;
+		border: solid black 1px;
+		color: white;
 	}
 
 
-
-	#profile{
-		
-		position: absolute;
-		right: 8%;
-		top:3%;
-		width:200px;
-	    font-size: 18px;
-	    color:pink;
-	}
-
-		#avatar img{
-		width:55px;
-		height:55px;
-		background-size:cover;
-		border-radius:25px;
-	}
-
-		#greeting
-		{	
-			position: relative;
-			left:62px;
-			top:-40px;
-		}
-
-		#greeting a{
-			color:orange;
-		}
-
-/*
-#occur_text{
-	position: absolute;
-	text-align: right;
-	width:400px;
-	margin-top: 5px;
-	margin-bottom:5px;
-	right:100px;
-	color:rgb(211,24,21);
-	top:26px;
-	font-size:17px;
-	animation: disappear 3s ease-in infinite alternate;
-}
-
-@keyframes disappear
-{
-	from {}
-	to   {color:rgb(0,0,0,0);}
-}
-
-#hide_text{
-	position: absolute;
-	top:31px;
-	right:88px;
-	font-size: 17px;
-	animation: appear 3s ease-in infinite alternate;
-}
-
-@keyframes appear
-{
-	from {color:rgb(0,0,0,0);}
-	to   {color:rgb(155,217,53,0.7);}
-}
-*/
-
-#nav_bar ul#menu{
-	position: relative;
-	width:100%;
-	height:55px;
-	background-color: rgb(11,11,11,0.1);
-	margin:0;
-	padding:0;
-	z-index: 2;
-	
-}
-	ul li.nav-link-item{border: 1px solid black;}
-	ul li.nav-link-item:hover{
+	.nav_item.h:hover{
 		background-color: black;
 		transition: 0.5s;
 	}
 
-div#nav_bar ul#menu li{
-	margin:0;
-	padding:0;
-	list-style:none;
-	position:absolute;
-	top:0;
-
+	.nav_item.empty{
+		flex: 1 0 auto;
 	}
 
-ul#menu li, ul#menu a{
-		display:block;
-		height: 55px;
-		}
+	.nav_item.db{
+		border: none;
+	}
 
- ul#menu li a{
-		overflow:hidden;
-		text-decoration: none;
-		padding-top:12px;
-		padding-left:20px; 
-		}
 
-ul li#nav-link-item1{width: 12%; left: 0%;}
-ul li#nav-link-item2{width: 15%; left: 12%;}
-ul li#nav-link-item3{width: 15%; left: 27%;}
-ul li#nav-link-itemf{width: 12%; right: 0%;}
  /*所以说,关于描述距离的问题不要用px啊*/
 
 /*
@@ -345,18 +330,6 @@ z-index: 1;
 	background-repeat: repeat-x;
 	overflow: hidden;
 }
-
-
-
-
-CSS伪类选择器
-a标签
-:link(默认/:hover(悬浮/active(点击时/visited/
-
-:focus获得焦点(激活时)
-
-:first-child/last-child/nth-child("number");
-固定作用于第一 最后 自定义元素(感觉没什么意义)
 
 
 box:

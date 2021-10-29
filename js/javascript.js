@@ -18,9 +18,9 @@
 			$('#framework').css("z-index","0")	
 		})
 
-		$("#nav-link-itemf").hover(function(){	//悬停中
+		$(".nav_item.db").hover(function(){	//悬停中
 			$("#Time").css("color","white")
-			$("#nav-link-itemf").css("background-color","none")
+			
 		},
 
 		function(){							//悬停离开

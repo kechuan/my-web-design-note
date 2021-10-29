@@ -20,7 +20,8 @@
 	</script>
 <!--边框线？(字体样式？)、长宽高颜色/*这个也是一个注释符-->
 
-<body><a id="top">
+<body>
+	<a id="top">
 <!--div还能代表整个板块，如果只是在h1区域实施center操作是没什么用处的(width过小-->
 	<div id="framework">
 		<div id ="sidebar_swt">
@@ -45,148 +46,104 @@
 		</div>
 	</div>	
 	
-<!--input/输入
-text时,有,value/placeholder,disable(整个边框变灰,不可激活)/readonly(可激活，不能将指针变为pointer)minlength/maxlength,name/
-pattern(正则匹配) [0-9a-zA-z(规定范围)] {4,6(位数)}
-但是，但是最好用js来实现,要不然你后面你会看着正常js代码思考到底问题出哪里
-/required(必须输入)
+	<div id="container">
 
-radio单选钮时，属性就是选择项 且必须要有name属性，要并一组需要把name写为相同以达到互相排斥作用
-check类似于value，其中同组多checked时只会给最后一项checked标记
-value在此更多作用是给js取值
+			<div id="header_split"></div>
 
-复选框checkbox,可以任意选择选项，除此与radio性质相同，因为复选可行性，checked多选生效
-image,与sublime一样会提交东西，只是会变为图片显示，除了src属性，用来引入图片
-reset,还原输入内容为默认内容
-sublime,会把内容提交到指定的页面
-select, 效果就是限定选择 通过option标签来规定选择分支,size可以让选择框长度更大
-password 文字被显示隐性
+			<div id="side_header" class="flex">
+				<div id="logo" class="flex"><a href="index.html">welcome to osu!</a></div>
+				<div id="header_picture_decorate" class="flex"></div>
+				
+				<div id="profile" class="flex">
+					<div id="avatar" class="flex"><a href="https://osu.ppy.sh/users/8507595" target="_blank" alt="404 not found" title="kechuan's avatar"><img src="https://a.ppy.sh/8507595?1466940043.png"></a>
+					</div>
 
-表格单form
-input属性<input type="">
-(color/email/tel/url/number(方向键选择大小)/range(进度条)/search/date/datetime/datetime-local/year/month/time)
-子属性
-action=# link
+					<div id="greeting" class="flex">
+						Greeting,
+						<a href="https://osu.ppy.sh/users/8507595" target="_blank">kechuan</a>
+					</div>
 
-method=get/post 明文/暗文 get回退是载入缓存，post会再次请求网页
-get只接受ASCII,长度受url总限制2kbytes post以字符单位为传输,且不受url长度限制(2M)
-
--->
-<!--其中，method方法里面有多种，get为显性，post则为隐性-->
-
-<!--textarea,只要用来输入大批内容-->
-<div id="container">
-	<!--<iframe src="iframe特效/rain.htm" height="100%" width="100%"></iframe>-->
-	<div id="header">
-
-		<div id="header_split"></div>
-		<div id="side_header">
-			<div id="logo"><a href="index.html">welcome to osu!</a></div>
-			<div id="header_picture_decorate"></div>
-			
-			<div id="profile">
-				<div id="avatar"><a href="https://osu.ppy.sh/users/8507595" target="_blank" alt="404 not found" title="kechuan's avatar"><img src="https://a.ppy.sh/8507595?1466940043.png"></a>
-				</div>
-
-				<div id="greeting">
-					Greeting,
-					<a href="https://osu.ppy.sh/users/8507595" target="_blank">kechuan</a>
 				</div>
 			</div>
-		</div>
-		<div id="header_split"></div>
 
-	</div>
+			<div id="header_split"></div>
 
-	<h3>Index</h3>
-	
-	<div id="Time"></div>
+		<h3>Index</h3>
 
-	<div id="nav_bar">
-		<ul id="menu">
-			<li id="nav-link-item1" class="nav-link-item">
-				<a href="musicPlayer.asp" target="_blank">
-			<span style="color:rgb(215,214,210);">Music Player</span>	
-				</a>
-			</li>
-		
-			<li id="nav-link-item2" class="nav-link-item">
-				<a href="emmet_tutorial.html" target="_blank">
-			<span style="color:rgb(215,214,210);">kechuan's profile</span>
-				</a>
-			</li>
+		<div id="nav_bar">
 
-		
-			<li id="nav-link-item3" class="nav-link-item">
-				<a href="emmet_tutorial.html">
-			<span style="color:rgb(215,214,210);">forget something?</span>
-				</a>
-			</li>
+			<a href="musicPlayer.asp" target="_blank">
+				<div class="nav_item h">Music Player</div>
+			</a>
 
-			<li id="nav-link-itemf">
-				
-			<span style="color:rgb(215,214,210);">Time is ?</span>
-				
+			<a href="emmet_tutorial.html" target="_blank">
+				<div class="nav_item h">kechuan's profile</div>
+			</a>
 
-		</ul>
-	</div>
+			<a href="emmet_tutorial.html">
+				<div class="nav_item h">forget something?</div>
+			</a>
 
-	<div id="middle_bar"></div>
-
-		<div class="text" align="center" valign="middle">
-<!--除了水平align还有垂直valign-->
-				this tutoral.
-		<br>i will show you the html basic&nbsp;usage
-		</div>
-
-	<div class="content">
-		
-	</div>
-
-待做内容<要求:javascript>点击按钮切换图片显示	
-	<h3>
-		<div class="text">
-		以及图片导入<br>
-		<img src="images\U&I (TV Size).png" title="我老婆(确信">
-		</div>
-	</h3>
-
-		<div class="data">生成table表格
-	<table border="1px" width="400px" height="100px" cellpadding="文本与边框距离" cellspacing="边框线与边框线距离" align="center">
-		<tr> <th>Games</th> <th>achievement</th> </tr>
-		<tr> <td>arcaea</td> <td>10.83</td> </tr>
-		<tr> <td>lanota</td> <td><s>希腊奶</s></td> </tr>
-	</table>
-		</div>
-<!--可选 width,height,rowspan(合并行)/colspan(合并列)等属性
-顺带 tr td子属性也是可以被css修饰的-->
-
-	</a>
-		<div class="text">
-		甚至去调用浏览器的播放器控件(等待放入实现网易云的页脚触碰功能)
-		<div class="line"></div>
-
-		<div id="video_control">
-			<video controls width="500px" height="50px" poster="."> 
-			<source src="E:\osu!\Songs\2nd Dan\4K 2nd Dan.mp3">
-				菜 浏览器 菜
-			</video>
-		</div>
-
-		<h4>基础HTML就是这样了，<s>但是加入了CSS又如何呢</s>,我已经加了</h4>
-		</div>
-
-		<a href="#top"><div id="tp">
-			
-				<svg class="back_icon">
-					<use xlink:href="#back_icon"></use>
-				</svg>
-			
-		</div></a>
-		
-<!--想整页面TP，要注意还要带上#号表 切到代码内设计好的id名-->
+			<div class="nav_item db empty"></div>	
+			<!-- 没错,遇到想留空白 又不想直接套格式之类的 就利用填充 在两个项目之间填充一个grow属性撑满两项目之间剩余的空间 -->
+			<div class="nav_item db">Time is ?
+				<div id="Time"></div>
 			</div>
+
 		</div>
+
+
+		<div id="middle_bar"></div>
+
+			<div class="text" align="center" valign="middle">
+		<!--除了水平align还有垂直valign-->
+					this tutoral.
+			<br>i will show you the html basic&nbsp;usage
+			</div>
+
+		<span style="color:white;">待做内容<要求:javascript>点击按钮切换图片显示</span>
+			<h3>
+				<div class="text">
+				以及图片导入<br>
+				<img src="images\U&I (TV Size).png" title="我老婆(确信">
+				</div>
+			</h3>
+
+			<div class="data">生成table表格
+		<table border="1px" width="400px" height="100px" cellpadding="文本与边框距离" cellspacing="边框线与边框线距离" align="center">
+			<tr> <th>Games</th> <th>achievement</th> </tr>
+			<tr> <td>arcaea</td> <td>10.83</td> </tr>
+			<tr> <td>lanota</td> <td><s>希腊奶</s></td> </tr>
+		</table>
+			</div>
+		<!--可选 width,height,rowspan(合并行)/colspan(合并列)等属性
+		顺带 tr td子属性也是可以被css修饰的-->
+
+			<div class="text">
+				甚至去调用浏览器的播放器控件(等待放入实现网易云的页脚触碰功能)
+				<div class="line"></div>
+
+				<div id="video_control">
+					<video controls width="500px" height="50px" poster="."> 
+					<source src="E:\Games\osu!\Songs\2nd Dan\4K 2nd Dan.mp3">
+						菜 浏览器 菜
+					</video>
+				</div>
+
+				<h4>基础HTML就是这样了，<s>但是加入了CSS又如何呢</s>,我已经加了</h4>
+			</div>
+
+			<a href="#top">
+				<div id="tp">
+					<svg class="back_icon">
+						<use xlink:href="#back_icon"></use>
+					</svg>
+				</div>
+			</a>
+			
+	<!--想整页面TP，要注意还要带上#号表 切到代码内设计好的id名-->
+	</div>
+		
 	
 </body>
 </html>
