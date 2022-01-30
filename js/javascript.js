@@ -52,7 +52,7 @@ var clock = setInterval(function()
 	/*创建Date的新对象*/
 	var myDate = new Date();
 	var Day = myDate.getDay();
-	var Hour = myDate.getHours().toString().padStart(2,"0");
+	var Hour = myDate.getHours().toString().padStart(2,"0");	/*ES6特性 toString与padStart*/
 	var Minute = myDate.getMinutes().toString().padStart(2,"0");
 	var Second = myDate.getSeconds().toString().padStart(2,"0");
 	document.getElementById("Time").innerHTML = `${Hour}:${Minute}:${Second}`;

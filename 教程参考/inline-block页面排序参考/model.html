@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<style type="text/css">
+body {
+    margin:0;
+    padding:0;
+    overflow-x:auto;
+    overflow-y:auto;
+}
+
+.framework {
+width: 1024px;
+height:643px;
+position:absolute;
+top:5%;
+left:3%;
+/*margin-top:-321.5px;*/
+opacity:1;
+transition:top 0.3s,opacity 0.3s,width 0.3s,height 0.3s;
+transition-timing-function:ease;
+border: 1px solid black;
+}
+
+	.main {
+		border: 1px solid black;
+		height: 100%;
+		width: 100%;
+		display: inline-block;
+
+	}
+
+		/*.modern_main {
+			height: 100%;
+			width: 100%;
+			display: inline-block;
+			border: 1px solid black;
+		}*/
+
+		.vertical_middle_main {
+		    width:100%;
+		    height:100%;
+		    display:table;
+		    
+		}
+
+			.vertical_middle_box {
+			    vertical-align:middle;
+			    display: table-cell;
+			}
+
+
+
+.modern {
+    background-color:rgba(0,0,0,0.25);  /*决定所有方块的颜色*/
+    display:inline-block;               /*如果不用inlineblock限制 一个块就会直接占一行 而且赋予行内元素的水平排列的特性*/
+    position:relative;					/*relative是给sub定位用的*/
+    box-shadow:0px 0px 0px 1px rgba(255,255,255,0.4) inset; /*模糊化*/
+    margin:0 6px 7px 0;
+    overflow:hidden;
+}
+    .modern:hover {
+        margin-top:-3px;
+        margin-right:3px;
+        margin-bottom:4px;
+        margin-left:-3px;
+        border:3px solid #000;
+    }
+    .modern:active {
+        margin-top:-4px;
+        margin-right:2px;
+        margin-bottom:3px;
+        margin-left:-4px;
+        border:4px solid #000;
+    }
+
+.modern .name {
+    position:absolute;
+    bottom:4%;
+    left:10px;
+    font-size:14px;
+    color:#fff;
+    cursor:default;
+    text-shadow:0px 0px 2px rgba(0,0,0,0.1);
+    text-overflow:ellipsis;
+    white-space:nowrap;
+    overflow:hidden;
+    width:95%;
+    text-align:left;
+}
+	
+
+		.modern.w1 {
+			width: 11%;
+		}
+
+		.modern.w2 {
+			width: 22%;
+			padding: 0 10px;
+		}
+
+		.modern.h1 {
+			height: 22%;
+		}
+
+		.modern.wa {
+			width: 97%;
+			padding: 0 10px;
+		}
+
+</style>
+
+<body>
+	<div class="framework">
+
+		<div class="main">									<!-- 继承长宽属性 -->
+			<div class="modern wa h1">						<!-- 块的背景颜色,长和高方块的大小,顺带提前规定是inline-block -->
+				<div class="name">cal</div>					<!-- (可选)定义方块左下角小字 -->
+				<div class="sub">							<!-- 定义字体属性 -->
+					<div class="vertical_middle_main">		<!-- 且对方块里的内容设立table属性 -->
+						<div class="vertical_middle_box">	<!-- table-cell属性 以及垂直水平保证文字居中 -->
+							<p>long block</p>
+						</div>
+					</div>
+				</div>
+			</div>
+										
+											
+			<div class="modern w1 h1">						
+				<div class="name">cal</div>					
+				<div class="sub">							
+					<div class="vertical_middle_main">		
+						<div class="vertical_middle_box">	
+							<p>划定界限w1 h1 属性更改table</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w2 h1">
+				<div class="name">result</div>
+				<div class="sub">
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box">
+							<p>question</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w2 h1">
+				<div class="name">result</div>
+				<div class="sub">
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box">
+							<p>question</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w2 h1">
+				<div class="name">result</div>
+				<div class="sub">
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box">
+							<p>question</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w1 h1">	<!--块的背景颜色,长和高方块的大小,顺带提前规定是inline-block-->
+				<div class="sub">			<!-- 定义字体属性 -->
+				<div class="name">cal</div>	<!-- (可选)定义方块左下角小字 -->
+					<div class="vertical_middle_main">	<!-- table属性 -->
+						<div class="vertical_middle_box">	<!-- table-cell属性 以及垂直水平 -->
+							<p>划定界限w1 h1 属性更改table</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="modern w2 h1">
+				<div class="sub">
+					<div class="name">result</div>
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box">
+							<p>question</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modern w2 h1">
+				<div class="sub">
+					<div class="name">result</div>
+					<div class="vertical_middle_main">
+						<div class="vertical_middle_box">
+							<p>question</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+				
+
+		</div>
+			
+	</div>
+		
+
+</body>
+</html>

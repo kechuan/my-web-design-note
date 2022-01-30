@@ -1,0 +1,38 @@
+/*HTML部分
+<div>
+<input id="go" onpropertychange="yimada();" oninput="yimada();" 
+placeholder="http://www.bilibili.com/video/av10086">
+    <span class="clear_go" onclick="$(&#39;#go&#39;).val(&#39;&#39;);">
+        x
+    </span>
+</div>*/
+
+#go {
+    background-color:rgba(255,255,255,0);
+    height:10%;
+    margin-top:4%;
+    width:70%;
+    font-size:1em;
+    color:#FFF;
+    min-height:20px;
+    padding:5px;
+    cursor:text;
+    border:1px rgba(255,255,255,0.5) solid;
+}
+#go::-webkit-input-placeholder {
+    color:#999;
+}
+#go::-moz-placeholder {
+    color:#999;
+}
+#go:-moz-placeholder {
+    color:#999;
+}
+#go:-ms-input-placeholder {
+    color:#999;
+}
+.clear_go {
+    margin-left:-20px;
+    color:#8B8B8B;
+    cursor:pointer;
+}

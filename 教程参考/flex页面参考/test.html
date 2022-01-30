@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+f(t)
+
+t=-4:0.01:4;
+t1=0;
+u1=stepfun(t,t1);
+t2=1;
+u2=stepfun(t,t2)
+t3=1;
+u3=stepfun(t,t3);
+t4=2;
+u4=stepfun(t,t4);
+g=2*(u1-u2)+(u3-u4);
+plot(t,g)
+axis([0,4,0,3])
+
+f(-t)
+t=-4:0.01:4;
+t1=0;
+u1=stepfun(t,t1);
+t2=1;
+u2=stepfun(t,t2)
+t3=1;
+u3=stepfun(t,t3);
+t4=2;
+u4=stepfun(t,t4);
+g=2*(u1-u2)+(u3-u4);
+plot(-t,g)
+axis([0,4,0,3])
+
+
+	
+</body>
+</html>

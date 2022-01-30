@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<div id="sample" style="height: 300px; width: 0px; background-color: black;"></div>
+	<script>
+	var x = Date.now()
+
+	const sample = document.querySelector('#sample');
+	let start_timestamp;						//定义了初始时间戳
+
+	function increase(timestamp){
+		if (start_timestamp === undefined)   start_timestamp = timestamp;
+		latency = timestamp - start_timestamp	//因为真实时间戳不断更新 延迟会越来越大
+		sample.style.width = Math.min(0.1*latency, 200) + 'px';
+
+		//如果你想控制动画的速率 因为你无法控制时间戳流速 
+		//那你就只能拉长/缩短总延时大小限制 同时在变量上也做相对应的拉长/缩短来控制动画速率
+		if(latency<2000){
+			window.requestAnimationFrame(increase);
+		}
+
+		else {window.requestAnimationFrame(console.log); console.log(Date.now()-x);}
+	}
+
+	window.requestAnimationFrame(increase);		//这个API默认只会返回当前屏幕刷新的时间戳
+
+
+	
+</script>
+</body>
+</html>

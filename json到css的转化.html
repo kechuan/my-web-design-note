@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script type="text/javascript">
+        function Json() {
+            return this.Jsonchange({    //this指向了上层 即为全局
+            "color":"red",
+            "text-decoration":"none",
+            "transition": "0.5s",
+            "font-size" : "24px"
+    
+            })
+        }
+
+
+        function Jsonchange(style){
+        var string = [];    //创建一个空集合变量
+        
+          for(let array in style){
+              string.push(`${array}:${style[array]}`);  
+              //顺序元素下标访问(元素):(顺序元素下标)的值
+              // string.push(array+':'+style[array]);
+              //注:不在push里直接添加';'是因为直接加会直接被包裹成字符串";"
+          }
+          string = string.join(';');
+          //所以需要join这个方法 能够在每个数组用;隔开,以实现在末尾添加;的效果  
+          //同时会转换成str返回给js
+         
+          return string
+      }
+
+        var change2 = function(){
+            var ul_link_item = document.getElementById("paper");
+            /*setStyle('ul_link_item', this.Json())*/
+            console.log(this.Json())
+            ul_link_item.setAttribute("style",this.Json())
+            // $("#paper").css("style",this.Json()) 这是不行的
+        }
+        $(function(){
+            $("#paper").on("click",function(){
+                
+                ($("ul")).append($("<li id='a1'>?</li>"));  //动态增加tag(比原生JS简化)
+                
+            })
+                
+        })
+        
+    </script>
+
+    <style type="text/css">
+        body{
+            background-color: orange;
+        }
+
+        #paper{
+            text-decoration: underline;
+            color: aliceblue;
+
+        }
+
+        #nav-link-item{
+            
+        }
+    </style>
+
+    <div id ="paper">it just a simple test</div>
+
+
+    <ul onclick="change2()" id="menu">
+        <li class="nav-link-item" id="nav-link-item">Silence,wench</li>
+        <li class="nav-link-item">I don't want to be horny anymore</li>
+        <li class="nav-link-item"><a href="?"></a>I just want to be happy</li>
+    </ul>
+<div id="text">如果需要做一个自由调换，可以直接以一个click事件响应text_color变动 然后再由click事件嵌套change函数 这样就达成了一键切换的目的 并不需要你去干嘛干嘛 那为什么style就是不能响应string变量呢？</div>
+</body>
+</html>

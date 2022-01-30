@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+
+	<style type="text/css">
+	#nav{
+		display:flex;
+		width:500px;
+		height: 100px;
+		flex-wrap: wrap;
+		align-content: center;
+		row-gap: 5px;
+		column-gap: 10px;
+		
+
+
+	}
+		.nav-item {
+			display:flex;
+			width: 150px;
+			height: 45px;
+			order: 0;
+			flex: 1 0 auto;
+			align-items: baseline;
+			overflow: hidden;
+			
+
+			
+			/*margin: 3px 5px 0 0;*/
+
+		}
+
+			.nav-item.b1{
+				background-color: orange;
+			}
+
+			.nav-item.b2{
+				background-color: black;
+			}
+
+			.nav-item.b3{
+				background-color: pink;
+			}
+
+			.nav-item.w1
+			{
+				width: 25%;
+			}
+
+			.nav-item.w2{
+				width: 33%;
+			}
+
+			.nav-item.h1{
+				height: 33%;
+			}
+
+			.nav-item.h2{
+				height: 66%;
+			}
+
+		.nav-item .name{
+			
+			color: white;
+			top: 3%;
+			left: 5%;
+
+		}
+	</style>
+	<div id="nav">
+		<a href="#top">
+			<div class="nav-item b1">
+				<div class="name">内容靠边测试</div>
+			</div>
+		</a>
+			<div class="nav-item b2 w2" style="text-indent: 24px; color: white;">内容调整显示测试</div>
+			<div class="nav-item b3 w2"></div>
+			<div class="nav-item b1 w1"><div class="name">测试2</div></div>
+			<div class="nav-item b3 w2 h2">
+				<div class="name">测试-大文本填充测试:**水平**的主轴（main axis）主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end;</div>
+			</div>
+			非弹性插入测试
+	</div>
+	内容追加测试
+<br>
+	align-content:center
+</body>
+</html>
