@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Vue测试</title>
+</head>
+<script src="C:\Users\Lenovo\Desktop\website\js\jquery-3.6.0.js"></script>
+<script src="C:\Users\Lenovo\Desktop\website\js\vue.global.js"></script>
+<style>
+	body{
+		background-color: orange;
+	}
+</style>
+
+<script type="text/javascript">
+	$("body").ready(function(){
+		const Counter = {
+        	data(){					//数据存储体
+          		return {counter: 0}	//已将counter绑定到vue上 所以不需要重新定义counter
+        	},
+
+        	mount(){				//挂载体(执行体?)
+        		setInterval(() => {
+        			this.counter++
+        		}, 1000)
+
+        	}
+
+      };
+
+       //创建一个应用，将配置的对象counter的内容渲染到选择器
+      let app = Vue.createApp(Counter).mount("#counter");
+
+	})
+
+</script>
+
+<body>
+	<div id="counter">Counter: {{counter}} </div>
+</body>
+
+</html>

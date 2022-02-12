@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
+    <script src="https://unpkg.com/vue@3.2.29/dist/vue.global.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
@@ -46,8 +47,10 @@
         $(function(){
             $("#paper").on("click",function(){
                 
-                ($("ul")).append($("<li id='a1'>?</li>"));  //动态增加tag(比原生JS简化)
-                
+                $("ul").append($("<li id='a1'>?</li>"));
+                $("body").append($("<p>?</p>"));  //动态增加tag(比原生JS简化)
+                $("p").text("哼哼 啊啊啊");        //所以在下一步这个也会生效
+                $("p").css("color","red");
             })
                 
         })
@@ -74,9 +77,9 @@
 
 
     <ul onclick="change2()" id="menu">
-        <li class="nav-link-item" id="nav-link-item">Silence,wench</li>
-        <li class="nav-link-item">I don't want to be horny anymore</li>
-        <li class="nav-link-item"><a href="?"></a>I just want to be happy</li>
+        <li class="nav-link-item" id="item1">Silence,wench</li>
+        <li class="nav-link-item" id="item2">I don't want to be horny anymore</li>
+        <li class="nav-link-item" id="item3">I just want to be happy</li>
     </ul>
 <div id="text">如果需要做一个自由调换，可以直接以一个click事件响应text_color变动 然后再由click事件嵌套change函数 这样就达成了一键切换的目的 并不需要你去干嘛干嘛 那为什么style就是不能响应string变量呢？</div>
 </body>
