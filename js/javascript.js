@@ -18,19 +18,15 @@
 			$('#framework').css("z-index","0")	
 		})
 
-		$(".nav_item.db").hover(function(){	//悬停中
-			$("#Time").css("color","white")
-			
-		},
 
-		function(){							//悬停离开
-			$("#Time").css("color","rgb(0,0,0,0)")
-		})
+		$(".nav_item.db").hover(
+			() => $("#Time").css("color","white"),			//悬停中
+			() => $("#Time").css("color","rgb(0,0,0,0)")	//悬停离开
+		)
 
 	})
 	
 function editNotepad(){
-	document.getElementById("Notepad").innerHTML="a";
 }
 
 /*定义clock,创立一个计划任务(function里的{显示时间}),每1s执行
@@ -47,7 +43,7 @@ function editNotepad(){
 想想网上写的吃小苹果比赛，30s硬是卡成3min时长
 setInterval是计划任务般的存在,受到卡顿的影响比这玩意小，当然也不是没有负面
 */
-var clock = setInterval(function()
+const clock = setInterval(function()
 {
 	/*创建Date的新对象*/
 	var myDate = new Date();

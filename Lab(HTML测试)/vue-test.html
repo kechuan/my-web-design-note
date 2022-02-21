@@ -5,39 +5,83 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Vue测试</title>
 </head>
-<script src="C:\Users\Lenovo\Desktop\website\js\jquery-3.6.0.js"></script>
-<script src="C:\Users\Lenovo\Desktop\website\js\vue.global.js"></script>
+<script src="..\js\jquery-3.6.0.js"></script>
+<script src="..\js\vue.global.prod.js"></script>
 <style>
 	body{
 		background-color: orange;
 	}
 </style>
 
-<script type="text/javascript">
-	$("body").ready(function(){
-		const Counter = {
-        	data(){					//数据存储体
-          		return {counter: 0}	//已将counter绑定到vue上 所以不需要重新定义counter
-        	},
-
-        	mount(){				//挂载体(执行体?)
-        		setInterval(() => {
-        			this.counter++
-        		}, 1000)
-
-        	}
-
-      };
-
-       //创建一个应用，将配置的对象counter的内容渲染到选择器
-      let app = Vue.createApp(Counter).mount("#counter");
-
-	})
-
-</script>
-
 <body>
-	<div id="counter">Counter: {{counter}} </div>
+	
+	<div id="counter">Counter: 你已经在这个页面停留了{{ counter }}秒力 </div>  
+			<!-- {{ }} 用于输出对象属性和函数返回值。=return? !-->
+	<ul>
+		<li><button @click="reset(0)">{{ qingling }}</button></li>
+		<li style="display: inline-block;"><input v-model="number" id="input" placeholder="Input number"></li>
+		<div id="add" style="display: inline-block;"><li><button @click="add">{{ button3 }}</button></li></div>
+
+		
+
+	</ul>
+
+
+
 </body>
+<style>
+	ul li{
+		list-style: none;
+	}
+</style>
+
+<script type="text/javascript">
+	const display = Vue.createApp({
+	  	data() {
+		    return {
+		      	counter: 0,
+		      	
+	    	}
+		}
+	}).mount('#counter')		//您必须一次性完成创建与挂载的操作 否则return出来的数据是不会再与vue挂钩
+
+    setInterval(() => {
+  display.counter++
+}, 1000)
+
+
+
+const reset = {
+  data() {
+    return {
+    	qingling: '清零'	//注意 标注的字符 不能与method的函数名字一致! 否则会报堆栈溢出错误
+    }
+  },
+
+  methods: {
+    reset(n) {
+      display.counter = n
+    }	
+  }
+}
+
+
+const add = {
+	data(){
+		return{
+			button3:"并入"
+		}
+	},
+
+	methods:{
+		add(){
+			display.counter += parseInt($("#input")[0].value);
+		}
+	}
+}
+
+Vue.createApp(reset).mount('ul li')	//挂载的点不允许一致 也不允许兄弟关系的挂载 否则methods会失效 而且这样只能指向ul li的第一个
+Vue.createApp(add).mount("#add")		//一个节点只 允许 挂载一个 APP
+</script>
 
 </html>
