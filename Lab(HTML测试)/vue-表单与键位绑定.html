@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+<script src="..\js\vue.global.prod.js"></script>
+	<style>
+   .gap{
+    border:1px solid black;
+    height:1px;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+   }
+
+  </style>
+<body>
+	<div id="list-rendering">	<!-- 这个for文字就可以做到整个标签内都是作用域 -->
+  <ol>
+    <li v-for="todo in todos">	<!-- 经典for循环 从todos列表里寻找 但是调用起来时却又是todo的子属性 -->              
+      {{ todo.description }}    <!-- 也允许在同一个标签内写上两个同父属性的标签 -->
+    </li>
+  </ol>
+
+  <div class="app1">
+    <head1></head1>     <!-- 这样你就可以在一个节点内多次调用该app的组件 -->
+  </div>
+
+</div>
+
+<div id="post">
+  <form action="post">
+    <input type="radio" v-model="picked" id="number" value="1234">1234</input>
+    <input type="radio" v-model="picked" id="number2" value="5678">5678</input>
+    <div id="status">{{ picked }}</div>
+
+    <div class="gap"></div>
+
+  
+    <input @keyup.enter.prevent="choice3" placeholder="input也可以触发app函数"></input>
+    <input @keyup.enter.prevent="submit" placeholder="input即可以被触发为post"></input>    
+    <!-- 一旦挂载且尝试调用非原生函数 原本的标签行为也会丢失 巨离谱-->
+    
+  </form>
+</div>
+
+</body>
+<script type="text/javascript">
+		const ListRendering = {
+  data() {
+    return {
+      todos: [
+        { description:"比单独文字标签不知道高到哪里去了"}
+      ]
+      
+    }
+  },
+
+}
+
+Vue.createApp(ListRendering).mount('#list-rendering')
+
+ 
+const app2 = Vue.createApp({
+data(){
+  return {
+    picked:"",
+  }
+},
+
+methods:{
+  choice3(){
+    app2.picked="9999";
+  }
+}
+  
+}).mount("#post")
+
+
+	</script>
+
+  
+
+</html>

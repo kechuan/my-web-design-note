@@ -1,4 +1,4 @@
-//记住 在JS修改CSS属性的时候，必须要去掉原本横线，改驼峰命名
+//在JS修改CSS属性的时候，必须要去掉原本横线，改驼峰命名
 	$(function(){
 		$("#openNotepad").on("click",function(){
 			$('#sidebar').css("right","0")

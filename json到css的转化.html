@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script>
-    <script src="https://unpkg.com/vue@3.2.29/dist/vue.global.js"></script>
+    <!-- <script src="https://unpkg.com/vue@3.2.29/dist/vue.global.js"></script> -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
 <body>
     
-    <script type="text/javascript">
+    <script type="module">
+        import "./js/pink.js"
+
         function Json() {
             return this.Jsonchange({    //this指向了上层 即为全局
             "color":"red",
