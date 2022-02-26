@@ -8,9 +8,12 @@
     <title>Document</title>
 </head>
 <body>
-    
     <script type="module">
         import "./js/pink.js"
+    </script>
+    
+    <script type="text/javascript">
+        
 
         function Json() {
             return this.Jsonchange({    //this指向了上层 即为全局
@@ -46,6 +49,7 @@
             ul_link_item.setAttribute("style",this.Json())
             // $("#paper").css("style",this.Json()) 这是不行的
         }
+
         $(function(){
             $("#paper").on("click",function(){
                 
@@ -69,10 +73,6 @@
             color: aliceblue;
 
         }
-
-        #nav-link-item{
-            
-        }
     </style>
 
     <div id ="paper">it just a simple test</div>
@@ -83,6 +83,7 @@
         <li class="nav-link-item" id="item2">I don't want to be horny anymore</li>
         <li class="nav-link-item" id="item3">I just want to be happy</li>
     </ul>
+
 <div id="text">如果需要做一个自由调换，可以直接以一个click事件响应text_color变动 然后再由click事件嵌套change函数 这样就达成了一键切换的目的 并不需要你去干嘛干嘛 那为什么style就是不能响应string变量呢？</div>
 </body>
 </html>
