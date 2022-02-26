@@ -1,4 +1,4 @@
-function JSON(){
+function pink_Json(){
 	return{
 	"color":"pink",
     "text-decoration":"none",

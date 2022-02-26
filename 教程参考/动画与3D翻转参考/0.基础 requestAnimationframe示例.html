@@ -22,7 +22,8 @@
 		//如果你想控制动画的速率 因为你无法控制时间戳流速 
 		//那你就只能拉长/缩短总延时大小限制 同时在变量上也做相对应的拉长/缩短来控制动画速率
 		if(latency<2000){
-			window.requestAnimationFrame(increase);
+			window.requestAnimationFrame(increase);	//未达到条件时 重复带着当前时间戳执行increase函数
+			//本体是callback函数 所以调用的方式是这样的
 		}
 
 		else {window.requestAnimationFrame(console.log); console.log(Date.now()-x);}
