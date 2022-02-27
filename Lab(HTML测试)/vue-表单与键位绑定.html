@@ -5,6 +5,7 @@
 <title>Vue测试-表单输入响应</title>
 </head>
 <script src="..\js\vue.global.prod.js"></script>
+<script src="..\js\jquery-3.6.0.js"></script>
 	<style>
   body{
     background-color: orange;
@@ -42,20 +43,22 @@
     <div class="gap"></div>
 
   
-    <input @keyup.enter.prevent="choice3" placeholder="input也可以触发app函数"></input>
+    <input @keyup.enter.prevent="choice3" placeholder="input也可以触发app函数" class="mod_num"></input>
     <input @keyup.enter.prevent="submit" placeholder="input即可以被触发为post"></input>    
-    <!-- 一旦挂载且尝试调用非原生函数 原本的标签行为也会丢失 巨离谱-->
-    
   </form>
+
 </div>
 
 </body>
+
 <script type="text/javascript">
 		const ListRendering = {
   data() {
     return {
       todos: [
-        { description:"比单独文字标签不知道高到哪里去了"}
+        { description:"比单独文字标签不知道高到哪里去了"},
+        { description:"你说为什么不能直接绑定在div标签上呢?"},
+        { description:"一旦对标签进行挂载 原有的原生函数又会失效"},
       ]
       
     }
@@ -75,7 +78,11 @@ data(){
 
 methods:{
   choice3(){
-    app2.picked="9999";
+    app2.picked=parseInt($(".mod_num")[0].value)
+  },
+
+  post(){
+    $("#post").post
   }
 }
   
