@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Vue测试</title>
+	<title>Vue测试-监听与响应</title>
 </head>
 <script src="..\js\jquery-3.6.0.js"></script>
 <script src="..\js\vue.global.prod.js"></script>
@@ -11,29 +11,49 @@
 	body{
 		background-color: orange;
 	}
+
+	ul{
+		list-style: none;
+		display: flex;
+		flex-direction:row;
+		flex-wrap: nowrap;
+		gap: 3px;
+	}
+
+	ul #add{
+		display: flex;
+		flex-direction: row;
+		gap: 3px;
+	}
+
 </style>
 
 <body>
 	
 	<div id="counter">Counter: 你已经在这个页面停留了{{ counter }}秒力 </div>  
 			<!-- {{ }} 用于输出对象属性和函数返回值。=return? !-->
-	<ul>
-		<li><button @click="reset(0)">{{ qingling }}</button></li>
-		<li style="display: inline-block;"><input v-model="number" id="input" placeholder="Input number"></li>
-		<div id="add" style="display: inline-block;"><li><button @click="add">{{ button3 }}</button></li></div>
 
+			
+	<ul>
 		
 
+		<div id="add">
+
+			<li>
+				<input @keyup.enter="add2" id="input" placeholder="Input number enter *2">
+			</li>
+
+				<button @click="add">{{ button3 }}</button>
+			</li>
+
+		</div>
+
+		<li id="reset"><button @click="reset(0)">{{ qingling }}</button></li>
 	</ul>
 
 
-
 </body>
-<style>
-	ul li{
-		list-style: none;
-	}
-</style>
+
 
 <script type="text/javascript">
 	const display = Vue.createApp({
@@ -43,7 +63,7 @@
 		      	
 	    	}
 		}
-	}).mount('#counter')		//您必须一次性完成创建与挂载的操作 否则return出来的数据是不会再与vue挂钩
+	}).mount('#counter')
 
     setInterval(() => {
   display.counter++
@@ -54,7 +74,7 @@
 const reset = {
   data() {
     return {
-    	qingling: '清零'	//注意 标注的字符 不能与method的函数名字一致! 否则会报堆栈溢出错误
+    	qingling: '清零'	//注意 文字标注的字符 不能与method的函数名字一致! 否则会报堆栈溢出错误
     }
   },
 
@@ -65,6 +85,7 @@ const reset = {
   }
 }
 
+Vue.createApp(reset).mount('ul li#reset')	//不建议只采用 ul li简略描写 因为这样只会默认挂载第一个li元素 不如直接加id/class定位
 
 const add = {
 	data(){
@@ -76,12 +97,19 @@ const add = {
 	methods:{
 		add(){
 			display.counter += parseInt($("#input")[0].value);
+		},
+
+		add2(){
+			display.counter += parseInt($("#input")[0].value)*2;
 		}
 	}
 }
 
-Vue.createApp(reset).mount('ul li')	//挂载的点不允许一致 也不允许兄弟关系的挂载 否则methods会失效 而且这样只能指向ul li的第一个
+
 Vue.createApp(add).mount("#add")		//一个节点只 允许 挂载一个 APP
+//但是允许一个节点内挂载多个监听事件 调用不同的函数
+
+
 </script>
 
 </html>
