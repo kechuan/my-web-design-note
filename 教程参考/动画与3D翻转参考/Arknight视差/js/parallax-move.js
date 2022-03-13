@@ -2,7 +2,7 @@ const mouse = { x: 0, y: 0 } // 遊標位置
 const pos = { x: 0, y: 0 } // 跟蹤到達位置
 
 document
-  .querySelector('body')  //怎么还能这么写两个?
+  .querySelector('body')
   .addEventListener('mousemove', ({ x, y }) => {
     mouse.x = x
     mouse.y = y

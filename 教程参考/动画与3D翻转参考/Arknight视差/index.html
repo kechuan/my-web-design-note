@@ -126,9 +126,28 @@
         </svg>
       </div>
     </section>
-    <!-- <script src="js/parallax-move.js"></script> -->
+    <script src="js/parallax-move.js"></script>
     <script src="js/carousel.js"></script>
     <script src="js/particles.min.js"></script>
     <script src="js/particles-effect.js"></script>
+    
+<script>
+  (function() {
+    var observer = document.createElement('script');  //动态引入DOM
+    observer.onload = function() {
+        var stats = new Stats();
+        document.body.appendChild(stats.dom);
+        requestAnimationFrame(function loop() {
+            stats.update();
+            requestAnimationFrame(loop)
+        });
+    };
+    observer.src = 'js/stats.min.js';
+    document.head.appendChild(observer);
+})()
+</script>
+
+</style>
+
   </body>
 </html>

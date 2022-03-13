@@ -1,4 +1,9 @@
-const color_Json = function(){
+const color_Json = function(color){
+	switch(color){
+		case "yellow": return color_Json().yellow(); break;	//二层嵌套转一层字符串
+		case "red": return color_Json().red(); break;
+	}
+
 	return{
 		red:function(){
 	        return this.change({
@@ -21,7 +26,6 @@ const color_Json = function(){
 			      }
 	      	string = string.join(';');
 	        
-		     
 		    return string
 		}
 

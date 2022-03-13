@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<script type="text/javascript">
+	class cal{
+		constructor(num1){
+			this.num1 = num1+3;
+			this.num2 = 5;
+			this.num3 = 0;
+		}
+
+		get result(){
+			return this.num1+this.num2;
+		}
+	}
+
+
+	class num extends cal{
+		constructor(num1){
+			super(num1);	//绑定父类提供的属性
+
+		}
+		
+		
+	}
+
+</script>
+	
+<body>
+
+
+
+</body>
+</html>
+

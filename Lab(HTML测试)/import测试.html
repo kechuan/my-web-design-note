@@ -8,10 +8,12 @@
 <body>
 
 	<script src="../js/jquery-3.6.0.js"></script>
+	
 	<script type="module">
-	import {color_Json} from "../js/json2css.js"
-	document.getElementsByTagName("body")[0].setAttribute("style",color_Json().yellow())
-	console.log(color_Json().yellow())
+	import {color_Json} from "../js/colorModule.js"
+	document.getElementsByTagName("body")[0].setAttribute("style",color_Json("yellow"))
 	</script>
+
+
 </body>
 </html>

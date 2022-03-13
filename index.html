@@ -5,15 +5,17 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>this is my first webpage</title>
-	<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.js"></script> 
-	<!-- jquery start -->
-	<script src="js\vue.global.js"></script>
+	<script src="js/jquery-3.6.0.js"></script> 
+	<script src="js/vue.global.js"></script>
+	<script src="js/javascript.js"></script>
+
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="iconfont/icons.css">
-	<script src="./iconfont/fonts/home_icon/home_icon.js"></script>
+	
 	<script src="./iconfont/fonts/back_icon/back_icon.js"></script>
+	<script src="./iconfont/fonts/arrow/arrow.js"></script>
 	<link rel="shortcut Icon" href="./images/Icon.ico" type="image/x-icon">
-	<script src="js/javascript.js"></script>
+	
 	
 
 	<script type="text/javascript">
@@ -57,7 +59,7 @@
 				<div id="header_picture_decorate" class="flex"></div>
 				
 				<div id="profile" class="flex">
-					<div id="avatar" class="flex"><a href="https://osu.ppy.sh/users/8507595" target="_blank" alt="404 not found" title="kechuan's avatar"><img src="https://a.ppy.sh/8507595?1466940043.png"></a>
+					<div id="avatar" class="flex"><a href="https://osu.ppy.sh/users/8507595" target="_blank" alt="404 not found" title="kechuan's avatar"><img src="https://a.ppy.sh/8507595?1647091206.jpeg"></a>
 					</div>
 
 					<div id="greeting" class="flex">
@@ -87,29 +89,45 @@
 			</a>
 
 			<div class="nav_item db empty"></div>	
-			<!-- 没错,遇到想留空白 又不想直接套格式之类的 就利用填充 在两个项目之间填充一个grow属性撑满两项目之间剩余的空间 -->
+			<!-- 没错,遇到想留空白 又不想直接套格式之类的 就利用填充 在两个项目之间填充一个grow属性撑满两项目之间剩余的空间 这也是flex的好处-->
 			<div class="nav_item db">Time is ?
 				<div id="Time"></div>
 			</div>
 
 		</div>
 
-
 		<div id="middle_bar"></div>
 
-			<div class="text" align="center" valign="middle">
-		<!--除了水平align还有垂直valign-->
-					this tutoral.
+		<div class="text">
+			this tutoral.
 			<br>i will show you the html basic&nbsp;usage
+		</div>
+						
+			
+		<div id="media-container-box">
+			<!--除了水平align还有垂直valign-->
+				
+			<div id="arrow_prev">
+				<svg class="arrow" aria-hidden="true" cursor="pointer">
+			<use xlink:href="#left_arrow"></use>
+				</svg>
+			</div>
+			
+			<div id="picture_show">
+				<h3>
+					以及图片导入<br>
+					<img src="images\U&I (TV Size).png" title="我老婆(确信">
+				</h3>
+			</div>
+			
+
+			<div id="arrow_next">
+				<svg class="arrow" aria-hidden="true" cursor="pointer">
+				<use xlink:href="#right_arrow"></use>
+				</svg> 
 			</div>
 
-		<span style="color:white;">待做内容<要求:javascript>点击按钮切换图片显示</span>
-			<h3>
-				<div class="text">
-				以及图片导入<br>
-				<img src="images\U&I (TV Size).png" title="我老婆(确信">
-				</div>
-			</h3>
+		</div>
 
 			<div class="data">生成table表格
 		<table border="1px" width="400px" height="100px" cellpadding="文本与边框距离" cellspacing="边框线与边框线距离" align="center">
@@ -122,31 +140,19 @@
 		顺带 tr td子属性也是可以被css修饰的-->
 
 			<div class="text">
-				甚至去调用浏览器的播放器控件(等待放入实现网易云的页脚触碰功能)
-				<div class="line"></div>
-
-				<div id="video_control">
-					<video controls width="500px" height="50px" poster="."> 
-					<source src="E:\Games\osu!\Songs\2nd Dan\4K 2nd Dan.mp3">
-						菜 浏览器 菜
-					</video>
-				</div>
-
 				<h4>基础HTML就是这样了，<s>但是加入了CSS又如何呢</s>,我已经加了</h4>
 			</div>
 
 			<a href="#top">
 				<div id="tp">
-					<svg class="back_icon">
-						<use xlink:href="#back_icon"></use>
+					<svg class="back_icon" aria-hidden="true">					<!-- 样式调用 icon.css-->
+						<use xlink:href="#back_icon"></use> <!-- 项目如有多个icon 根据js文件预置的svg id名来调用相应svg-->
 					</svg>
 				</div>
 			</a>
 			
 	<!--想整页面TP，要注意还要带上#号表 切到代码内设计好的id名-->
 	</div>
-		
-	
 </body>
 </html>
 
