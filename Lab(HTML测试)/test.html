@@ -5,32 +5,25 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Document</title>
 </head>
-
-<script type="text/javascript">
-	class cal{
-		constructor(num1){
-			this.num1 = num1+3;
-			this.num2 = 5;
-			this.num3 = 0;
-		}
-
-		get result(){
-			return this.num1+this.num2;
-		}
-	}
+<script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
 
 
-	class num extends cal{
-		constructor(num1){
-			super(num1);	//绑定父类提供的属性
 
-		}
-		
-		
-	}
 
-</script>
-	
+<script type="module">
+    const carouselList = [  //列表
+    {num:"01"},
+    {num:"02"},
+    {num:"03"}
+]
+
+var i = 0;
+const standard = carouselList[0];
+let status = standard;
+
+    import {carousel} from  "../js/carousel.js"
+    console.log(carousel().prev())
+</script>	
 <body>
 
 

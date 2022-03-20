@@ -1,4 +1,5 @@
 const Json2css = function(){
+	return{
 		change:function(style){
     		var string = [];
 		    	for(let array in style){
@@ -8,8 +9,7 @@ const Json2css = function(){
 	        
 		    return string
 		}
-
 	}
- 
-
+}
+		
 export {json2css}

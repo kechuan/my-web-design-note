@@ -1,4 +1,4 @@
-let carouselList = [
+let carouselList = [                                               
   { serial: '01', title: '第二把赤霄', desc: '#决战#' },
   { serial: '02', title: '笔记', desc: '#企鹅物流的秘密#' },
   { serial: '03', title: '安洁莉娜', desc: '#信使#' },
@@ -25,7 +25,7 @@ for (let i = 0; i < carouselList.length; i++) {
 /**
  * 初始化輪播樣式
  */
-carouselList.forEach((item, index) => {
+carouselList.forEach((item, index) => {              //遍历
   document.querySelector('#media-list').innerHTML += `
   <div 
     class="media-list-item"
