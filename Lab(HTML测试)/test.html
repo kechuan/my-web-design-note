@@ -7,27 +7,22 @@
 </head>
 <script type="text/javascript" src="../js/jquery-3.6.0.js"></script>
 
-
-
-
-<script type="module">
-    const carouselList = [  //列表
-    {num:"01"},
-    {num:"02"},
-    {num:"03"}
-]
-
-var i = 0;
-const standard = carouselList[0];
-let status = standard;
-
-    import {carousel} from  "../js/carousel.js"
-    console.log(carousel().prev())
-</script>	
 <body>
 
-
-
 </body>
+
+<script type="module">
+    import {carousel} from  "../js/carousel.js"
+    $("body")[0].addEventListener("click",function(){
+    	$("body")[0].setAttribute("background",carousel().next())
+    });
+</script>
+
+<style>
+	body{
+		width: 100%;
+		height: 1200px;
+	}
+</style>
 </html>
 

@@ -35,9 +35,7 @@ body{
 		width: 1200px;
 	}
 
-	#framework{
-		display: none;
-	}		
+	
 }
 	
 @media(max-width: 820px) {
@@ -61,6 +59,14 @@ body{
 	}
 }
 
+
+@media(max-width: 1100px){
+	#picture_show img{
+		width: 40%;
+		height: 40%;
+	}
+
+}
 #header_split{
 			height:10px;
 			background-color: rgb(109,109,109,0.5);  /*上下头部分割线*/
@@ -183,14 +189,14 @@ h3{
 		height: 45px;
 		align-items: center;
 		justify-content: center;
-		border: solid black 1px;
 		color: white;
 	}
 
 
 	.nav_item.h:hover{
-		background-color: black;
-		transition: 0.5s;
+		border-bottom: 2px #3cf solid;
+		/*background-color: black;*/
+	
 	}
 
 	.nav_item.empty{
@@ -225,7 +231,6 @@ width:200px;
 height:500px;
 top:100px;
 right: 0px;
-z-index: 1;
 }
 
 	#sidebar{
@@ -301,9 +306,23 @@ z-index: 1;
 
 #media-container-box{
 	display: flex;
+	min-height: 900px;
 	gap: 2em;
 	align-items: center;
 	justify-content: center;
+}
+
+.arrows{
+	z-index: 1;
+}
+
+#picture_show img{
+	min-width: 600px;
+	max-height: 800px;
+}
+
+#vertical_padding{
+	flex: 1 0 auto;
 }
 
 #media-container-box, .text

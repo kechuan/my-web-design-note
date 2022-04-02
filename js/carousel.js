@@ -43,7 +43,7 @@ const carousel = function(){
                 
                 case "next":
                     if(carouselList.length==status.num){
-                        staus = standard;
+                        status = standard;
                         i = 0;
                     }
 
