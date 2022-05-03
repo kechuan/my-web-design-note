@@ -1,0 +1,359 @@
+ul li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+
+body{
+	background:url(../images/BG.jpg)fixed top center;
+	background-repeat: no-repeat;
+	background-size:cover;
+	margin: 0;
+	}
+
+::selection{
+	color: #FFA;
+	
+}
+
+@media (max-width: 1200px){
+
+	#header_picture_decorate{
+		display: none;
+	}
+
+	.nav_item.db{
+		display: none;
+	}
+	
+	#container{
+		overflow: hidden;
+		width: 1200px;
+	}
+
+	
+}
+	
+@media(max-width: 820px) {
+	#side_header{
+		width: 722px;	/*窗口宽度820时(body此时为803,默认滚动条占用17px的宽度) container占用margin宽度分为左右40 减去就近似得到722*/
+		
+	}
+
+	#header_split{
+		width: 820px;
+	}
+	
+}	
+
+@media (max-width: 495px){
+
+	.text{
+		overflow: hidden;
+		vertical-align: middle;
+		width: 400px;
+	}
+}
+
+
+@media(max-width: 1100px){
+	#picture_show img{
+		width: 40%;
+		height: 40%;
+	}
+
+}
+#header_split{
+			height:10px;
+			background-color: rgb(109,109,109,0.5);  /*上下头部分割线*/
+		}
+
+		.flex{
+			display: flex;
+			justify-content: space-between;
+			gap: 3px;
+
+		}
+
+		#side_header{
+			
+			height:55px;
+			border: 3px #345;
+			border-style: solid none;
+			background-image: 
+			linear-gradient(to right,
+				rgb(204,142,201,0.65), 
+				rgb(255,255,255,0.08));
+			overflow: hidden;
+			
+		}
+
+			#logo{
+				align-items: center;
+				text-align: center;
+				font-size:24px;
+				color: rgb(155,217,53,0.9); 
+				
+			  }
+
+				#logo a:hover{
+					transition:all 2s linear;
+					color:rgb(181,255,181,0.85);
+				}
+
+				#logo a:visited{
+					color: rgb(155,217,53,0.9);;
+				}
+
+			#profile{
+			    font-size: 18px;
+			    color:pink;
+
+			}
+
+				#avatar img{
+				width:55px;
+				height:55px;
+				background-size:cover;
+				border-radius:25px;
+
+			}
+
+				#greeting
+				{	
+					align-items: center;
+				}
+
+				#greeting a{
+					color:orange;
+				}
+
+			
+	#Time{
+		color: rgb(0,0,0,0);
+		position: relative;
+		height:20px;
+		width:60px;
+		/*left:88%;*/
+		top:38%;
+		transition: 1.5s;
+	}
+
+h3{
+	text-shadow: 2px 2px 5px #fff
+}
+
+#container{
+	margin:0 auto;
+	width:90%;
+	height:1850px;
+	background-color:rgb(180,213,248,0.18);
+	overflow: no-repeat;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+	
+
+#header_split{
+	height:10px;
+	background-color: rgb(109,109,109,0.5);  /*上下头部分割线*/
+}
+
+#nav_bar{
+		width: 90%;
+		height: 47px;
+		display: flex;
+		flex-direction: row;
+		
+	}
+
+	.nav_item{
+		display: flex;
+		width: 203px;
+		height: 45px;
+		align-items: center;
+		justify-content: center;
+		color: white;
+	}
+
+
+	.nav_item.h:hover{
+		border-bottom: 2px #3cf solid;
+		/*background-color: black;*/
+	
+	}
+
+	.nav_item.empty{
+		flex: 1 0 auto;
+	}
+
+	.nav_item.db{
+		border: none;
+	}
+
+
+ /*所以说,关于描述距离的问题不要用px啊*/
+
+/*
+div[属性名~="包含"]
+^=开头
+$=结尾
+*/
+
+p{
+	font-size: 18px;
+	color: red;
+	font-weight: bold;
+	text-decoration:line-through;
+	text-align: center;
+}
+
+
+#framework{
+position: fixed;
+width:200px;
+height:500px;
+top:100px;
+right: 0px;
+}
+
+	#sidebar{
+	position: absolute;
+	right: -300px; /*调试默认0px 结束后为-300px*/
+	height:500px;
+	width: 300px;
+	top:0px;
+	overflow: hidden;
+	transition: 0.5s;
+	background-color: rgb(255,255,255,0.3);
+	}
+
+	#sidebar a{
+		text-decoration: none;
+		color:black;
+	}
+
+		#options{
+		position: relative;
+		left:-20px;
+	    padding: 8px 8px 8px 8px;
+	    font-size: 18px;
+	    transition: 0.3s;
+		}
+
+		#sidebar_swt{
+		position: relative;
+		right:-168px;
+		width: 30px;
+		height: 80px;
+		top:0px;
+		border: solid 1px white;
+		border-top-left-radius: 8px;
+		border-bottom-left-radius: 8px;
+		background-color:rgb(255,255,255,0.3);
+		text-shadow:2px;
+		transition: 0.5s;
+		}
+
+			#openNotepad, #closeNotepad, #h1{
+				cursor: pointer;
+			}
+
+
+		#notepad{
+
+		}
+
+			#notepad_input{
+			position: relative;
+			top: 370px;
+			}
+
+		
+
+.href
+{
+	text-decoration: none;
+}
+
+	.href:hover , #options:hover
+	{
+		color:orange;
+		border-bottom: white;
+	}
+
+#middle_bar{
+	display: flex;
+	height: 100px;
+	width: 100%;
+}
+
+#media-container-box{
+	display: flex;
+	min-height: 900px;
+	gap: 2em;
+	align-items: center;
+	justify-content: center;
+}
+
+.arrows{
+	z-index: 1;
+}
+
+#picture_show img{
+	min-width: 600px;
+	max-height: 800px;
+}
+
+#vertical_padding{
+	flex: 1 0 auto;
+}
+
+#media-container-box, .text
+{
+	font-size: 20px;
+	text-align: center;	
+	text-decoration:underline;
+	line-height: 50px;
+	color:white;
+}
+
+.content
+{
+	font-size: 20px;
+	text-align: center;
+	color: #66ccff;
+	margin: 0 auto;
+}
+
+#tp{
+	text-decoration: none;
+	position: fixed;
+	right:0px;
+	bottom: 20px;
+}
+
+#ending{
+	position: relative;
+	bottom: -57px;
+	left: 12px;
+}
+
+.data
+{
+	text-align: center;
+	text-decoration: none;
+}
+
+.line
+{
+	border:1px solid orange;
+	height:1px;
+	width:1px;
+	border-top:1px;
+	background-repeat: repeat-x;
+	overflow: hidden;
+}

@@ -5,26 +5,27 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>this is my first webpage</title>
-	<script src="js/jquery-3.6.0.js"></script> 
-	<script src="js/vue.global.js"></script>
-	<script src="js/javascript.js"></script>
-
-	<link rel="stylesheet" type="text/css" href="style.css">
 	<link rel="stylesheet" href="iconfont/icons.css">
-	
+	<script></script>
+
+	<script src="js.js"></script>
+	<script src="css.js"></script>
+
+
 	<script src="./iconfont/fonts/back_icon/back_icon.js"></script>
 	<script src="./iconfont/fonts/arrow/arrow.js"></script>
 	<link rel="shortcut Icon" href="./images/Icon.ico" type="image/x-icon">
 
 	<script type="module">
+		// import $ from 'jquery'
 		import {carousel} from "../js/carousel.js"
-		$("#arrow_prev")[0].addEventListener("click",function(){
-    		$("#picture_show img")[0].setAttribute("src",carousel().prev())
-    	});
+		$("#arrow_prev").addEventListener("click",function(){
+			$("#picture_show img").setAttribute("src",carousel().prev())
+		});
 
-    	$("#arrow_next")[0].addEventListener("click",function(){
-    		$("#picture_show img")[0].setAttribute("src",carousel().next())
-    	});	
+		$("#arrow_next").addEventListener("click",function(){
+			$("#picture_show img").setAttribute("src",carousel().next())
+		});	
 	</script>
 
 <body>
