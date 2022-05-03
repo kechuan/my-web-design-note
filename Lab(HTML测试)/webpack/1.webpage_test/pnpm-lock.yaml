@@ -2,7 +2,6 @@ lockfileVersion: 5.4
 
 specifiers:
   css-loader: ^6.7.1
-  file-loader: ^6.2.0
   jquery: ^3.6.0
   style-loader: ^3.3.1
   thread-loader: ^3.0.4
@@ -15,7 +14,6 @@ dependencies:
 
 devDependencies:
   css-loader: 6.7.1_webpack@5.72.0
-  file-loader: 6.2.0_webpack@5.72.0
   style-loader: 3.3.1_webpack@5.72.0
   thread-loader: 3.0.4_webpack@5.72.0
   webpack: 5.72.0_webpack-cli@4.9.2
@@ -831,17 +829,6 @@ packages:
     engines: {node: '>=0.8.0'}
     dependencies:
       websocket-driver: 0.7.4
-    dev: true
-
-  /file-loader/6.2.0_webpack@5.72.0:
-    resolution: {integrity: sha512-qo3glqyTa61Ytg4u73GultjHGjdRyig3tG6lPtyX/jOEJvHif9uB0/OCI2Kif6ctF3caQTW2G5gym21oAsI4pw==}
-    engines: {node: '>= 10.13.0'}
-    peerDependencies:
-      webpack: ^4.0.0 || ^5.0.0
-    dependencies:
-      loader-utils: 2.0.2
-      schema-utils: 3.1.1
-      webpack: 5.72.0_webpack-cli@4.9.2
     dev: true
 
   /fill-range/7.0.1:

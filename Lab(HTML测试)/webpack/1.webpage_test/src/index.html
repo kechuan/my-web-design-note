@@ -8,25 +8,12 @@
 	<link rel="stylesheet" href="iconfont/icons.css">
 	<script></script>
 
-	<script src="js.js"></script>
-	<script src="css.js"></script>
-
+	<script src="bundle.js"></script>
 
 	<script src="./iconfont/fonts/back_icon/back_icon.js"></script>
 	<script src="./iconfont/fonts/arrow/arrow.js"></script>
 	<link rel="shortcut Icon" href="./images/Icon.ico" type="image/x-icon">
 
-	<script type="module">
-		// import $ from 'jquery'
-		import {carousel} from "../js/carousel.js"
-		$("#arrow_prev").addEventListener("click",function(){
-			$("#picture_show img").setAttribute("src",carousel().prev())
-		});
-
-		$("#arrow_next").addEventListener("click",function(){
-			$("#picture_show img").setAttribute("src",carousel().next())
-		});	
-	</script>
 
 <body>
 	<a id="top">
@@ -122,7 +109,7 @@
 			<div id="picture_show">
 				<h3>
 					以及图片导入<br>
-					<img src=".\images\mediabox\carousel_01.png" title="我老婆(确信">
+					<img src=".\images\mediabox\carousel_01.png" title="我老婆(确信">	<!-- html里的img标签不会去处理 -->
 				</h3>
 			</div>
 			

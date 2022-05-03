@@ -2,16 +2,10 @@ const path = require('path');
 
 module.exports = {
 	mode:'development',	//development or production
-	entry: {
-		js:path.join(__dirname,'/src/js/javascript.js'),
-		css:path.join(__dirname,'/src/css/style.css'),
-		carousel:path.join(__dirname,'/src/js/carousel.js')
-		
-	},
-
+	entry: path.join(__dirname,'/src/js/javascript.js'),
 	output: {
 		path: path.resolve(__dirname,'src'),
-		filename: '[name].js'
+		filename: 'bundle.js'
 	},
 
 	devServer:{
@@ -24,6 +18,8 @@ module.exports = {
 	module: {
 		rules:[
 			{test: /\.css$/, use:['style-loader','css-loader']}	//test匹配css后缀 对其使用两个loader
+			// {test: /(\.jpg|jpeg|png|bmp|ico|gif)$/}	//webpack5当中 已经可以默认处理一些常见的文件了(url/file/...)
+
 		]
 	}
 }

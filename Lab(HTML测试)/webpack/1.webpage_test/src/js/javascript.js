@@ -1,9 +1,10 @@
 import $ from 'jquery'
 import '../css/style.css'
+import {carousel} from '../js/carousel.js'
 
 
 //在JS修改CSS属性的时候，必须要去掉原本横线，改驼峰命名
-	$(function(){
+	$(function Notepad(){
 		$("#openNotepad").on("click",function(){
 			$('#sidebar').css("right","0")
 			$('#openNotepad').css("display","none")
@@ -30,6 +31,19 @@ import '../css/style.css'
 
 	})	
 
+	$(function arrow(){
+		$("#arrow_prev").on("click",function(){
+			$("#picture_show img")[0].setAttribute("src",carousel().prev())
+			console.log($("#arrow_prev"),$("#picture_show img"))
+		});
+
+		$("#arrow_next").on("click",function(){
+			$("#picture_show img")[0].setAttribute("src",carousel().next())
+			console.log($("#arrow_next")[0],$("#picture_show img")[0])
+		});	
+	})
+
+
 const clock = setInterval(function()
 {
 	/*创建Date的新对象*/
@@ -40,6 +54,8 @@ const clock = setInterval(function()
 	var Second = myDate.getSeconds().toString().padStart(2,"0");
 	document.getElementById("Time").innerHTML = `${Hour}:${Minute}:${Second}`;
 },1000);
+
+
 
 
 
