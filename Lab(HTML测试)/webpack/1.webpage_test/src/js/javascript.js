@@ -34,12 +34,12 @@ import {carousel} from '../js/carousel.js'
 	$(function arrow(){
 		$("#arrow_prev").on("click",function(){
 			$("#picture_show img")[0].setAttribute("src",carousel().prev())
-			console.log($("#arrow_prev"),$("#picture_show img"))
+			
 		});
 
 		$("#arrow_next").on("click",function(){
 			$("#picture_show img")[0].setAttribute("src",carousel().next())
-			console.log($("#arrow_next")[0],$("#picture_show img")[0])
+			
 		});	
 	})
 

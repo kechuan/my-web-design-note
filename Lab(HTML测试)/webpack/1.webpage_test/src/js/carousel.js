@@ -35,7 +35,7 @@ const carousel = function(){
 
                     status = carouselList[i];
                     console.log(status.num);
-                    var flag = `../\images/\mediabox/\carousel_${status.num}.png`;
+                    var flag = require(`../\images/\mediabox/\carousel_${status.num}.png`);
                     return flag;
 
                     break;
@@ -53,7 +53,7 @@ const carousel = function(){
                 
                     status = carouselList[i];
                     console.log(status.num)
-                    var flag = `../\images/\mediabox/\carousel_${status.num}.png`
+                    var flag = require(`../\images/\mediabox/\carousel_${status.num}.png`);
                     return flag;
 
                     break;
