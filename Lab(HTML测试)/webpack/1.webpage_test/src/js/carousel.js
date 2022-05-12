@@ -1,7 +1,7 @@
 const carouselList = [  //列表
-    {num:"01"},
-    {num:"02"},
-    {num:"03"}
+    {num:'01'},
+    {num:'02'},
+    {num:'03'}
 ]
 
 var i = 0;
@@ -18,6 +18,10 @@ const carousel = function(){
         next:function(){
             var flag = "next"
             return this.change(flag)
+        },
+
+        custom:function(num){
+            var flag = num;
         },
 
         change:function(flag){

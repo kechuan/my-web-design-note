@@ -1,6 +1,9 @@
 import $ from 'jquery'
-import '../css/style.css'
-import {carousel} from '../js/carousel.js'
+import '@/css/style.css'
+import '@/iconfont/fonts/back_icon/back_icon.js'
+import '@/iconfont/fonts/arrow/arrow.js'
+import '@/iconfont/icons.css'
+import {carousel} from '@/js/carousel.js'
 
 
 //在JS修改CSS属性的时候，必须要去掉原本横线，改驼峰命名
@@ -52,10 +55,10 @@ const clock = setInterval(function()
 	var Hour = myDate.getHours().toString().padStart(2,"0");	/*ES6特性 toString与padStart*/
 	var Minute = myDate.getMinutes().toString().padStart(2,"0");
 	var Second = myDate.getSeconds().toString().padStart(2,"0");
-	document.getElementById("Time").innerHTML = `${Hour}:${Minute}:${Second}`;
+	// $("#Time")[0].innerHTML = `${Hour}:${Minute}:${Second}`;
+	$("#Time").text(`${Hour}:${Minute}:${Second}`)
+
 },1000);
-
-
 
 
 

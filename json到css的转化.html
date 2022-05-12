@@ -39,10 +39,8 @@
       }
 
         var change2 = function(){
-            var ul_link_item = document.getElementById("paper");
-            /*setStyle('ul_link_item', this.Json())*/
             console.log(this.Json())
-            ul_link_item.setAttribute("style",this.Json())
+            $("#paper")[0].setAttribute("style",this.Json())
             // $("#paper").css("style",this.Json()) 这是不行的
         }
 
