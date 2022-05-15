@@ -1,7 +1,7 @@
 const path = require('path');											//路径变量
 const Htmlplugin = require('html-webpack-plugin');					 	//引入html打包环境
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');			//引入清理默认输出环境
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');	//lodash for webpack
+// const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');	//lodash for webpack
 const WebpackBar = require('webpackbar');
 
 const webpage = new Htmlplugin({	//因为其是一个实例函数 所以你需要new一个来调用 并指定其参数
@@ -38,7 +38,7 @@ const progressBar = new WebpackBar({
   profile:false  // 默认false，启用探查器。
 })
 
-const lodash = new LodashModuleReplacementPlugin()
+// const lodash = new LodashModuleReplacementPlugin()
 
 module.exports = {
 	mode:'development',	//development or production
@@ -53,7 +53,8 @@ module.exports = {
 	entry: {
 		javascript:{import:path.join(__dirname,'/src/js/javascript.js'),dependOn: 'shared'},
 		sidebar_css:{import:path.join(__dirname,'/src/sidebar/css.js'),dependOn: 'shared'},
-		shared: ['lodash','jquery']
+		// shared: ['main','sidebar']
+		
 	},
 	output: {
 		path: path.resolve(__dirname,'dist'),
@@ -70,12 +71,12 @@ module.exports = {
 
 	module: {
 	  	rules:[
-	  	{
-	  		test: /\.(js|jsx)$/,
-  			loader: 'babel-loader',
-  			exclude: /node_modules/,
-  			options: {plugins: ['lodash']}	//仅在此解析上使用插件
-	  	},
+	  	// {
+	  	// 	test: /\.(js|jsx)$/,
+  		// 	loader: 'babel-loader',
+  		// 	exclude: /node_modules/,
+  		// 	options: {plugins: ['lodash']}	//仅在此解析上使用插件
+	  	// },
 			{test: /\.css$/,use:['style-loader','css-loader']},	// "test" is commonly used to match the file extension
 			{test: /\.png$/,type:'asset/resource',generator: {filename: 'images/mediabox/[name][ext]'}}, 			
 			{test: /\.jpg$/,type:'asset/resource', generator: {filename: 'images/[name][ext]'}}

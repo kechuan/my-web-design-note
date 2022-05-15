@@ -1,7 +1,7 @@
 body{
 	text-decoration: none;
 	color:white;
-	background:require(../images/nanahira2021.jpg);
+	background:url(../images/nanahira2021.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	text-align: center;
