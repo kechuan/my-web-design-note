@@ -3,7 +3,7 @@ import '@/css/style.css'
 import '@/iconfont/fonts/back_icon/back_icon.js'
 import '@/iconfont/fonts/arrow/arrow.js'
 import '@/iconfont/icons.css'
-import {carousel} from '@/js/carousel.js'
+import {carousel} from '@/js/carousel.js'	//而js本体又是ES引入(编译引入) 减少http请求
 
 
 //在JS修改CSS属性的时候，必须要去掉原本横线，改驼峰命名
@@ -28,8 +28,8 @@ import {carousel} from '@/js/carousel.js'
 
 
 		$(".nav_item.db").hover(
-			() => $("#Time").css("color","white"),			//悬停中
-			() => $("#Time").css("color","rgb(0,0,0,0)")	//悬停离开
+			() => $("#Time").css("color","white"),			//悬停显示
+			() => $("#Time").css("color","rgb(0,0,0,0)")	//离开隐形
 		)
 
 	})	
@@ -59,8 +59,3 @@ const clock = setInterval(function()
 	$("#Time").text(`${Hour}:${Minute}:${Second}`)
 
 },1000);
-
-
-
-
-

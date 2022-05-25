@@ -522,7 +522,7 @@ step2:引用
 
 --css3规范
 内核支持前缀
-Chrome/Sarari -webkit-
+Chrome/Safari -webkit-
 Firefox 	  -moz-
 Opera		  -o-
 IE 			  -ms- 希望IE出事
@@ -634,7 +634,9 @@ overflow不为visible元素等
 可用于解决高度坍塌、margin垂直折叠、浮动重叠等问题
 当子容器生成BFC且float，而父容器没有BFC，且除开此子容器没有任何其他容器来撑开高度
 即会出现高度坍塌，而如果让父容器BFC
-(例如安排一个overflow:hidden/display:table)之类,大内容时最好使用伪元素.clearfix(使其不影响后续结构)
+(例如安排一个overflow:hidden/display:table)之类,大内容时最好使用在父容器里设置伪元素.clearfix(使其不影响后续结构)
+
+最好直接display:flex;一了百了
 
 根据BFC会计算浮动元素高度的特性，此时父容器也会受浮动元素影响而正常撑开高度
 也可利用BFC不会与float box重叠的特性，让浮动元素不会重叠文档流内容

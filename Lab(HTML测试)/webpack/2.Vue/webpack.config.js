@@ -2,33 +2,16 @@ const path = require('path');											//路径变量
 const Htmlplugin = require('html-webpack-plugin');					 	//引入html打包环境
 const {CleanWebpackPlugin} = require('clean-webpack-plugin');			//引入清理默认输出环境
 const WebpackBar = require('webpackbar');
+const Promise = require('promise')
 
 const webpage = new Htmlplugin({	//因为其是一个实例函数 所以你需要new一个来调用 并指定其参数
 	template: './src/index.html',
 	filename: './index.html',
-	title:'this is my first webpage',
+	title:'Vue测试',
 	favicon:'./src/images/Icon.ico',			//引入icon图像(因为屑html插件不能自行引入css)
 	inject:false
 })
 
-const notepad = new Htmlplugin({
-	template: './src/sidebar/notepad.html',
-	filename: './sidebar/notepad.html',
-	inject:false
-	
-})
-
-const search = new Htmlplugin({
-	template: './src/sidebar/search.html',
-	filename: './sidebar/search.html',
-	inject:false
-})
-
-const about = new Htmlplugin({
-	template: './src/sidebar/about.html',
-	filename: './sidebar/about.html',
-	inject:false
-})
 
 const cleanPlugin = new CleanWebpackPlugin()	//自动配置?
 const progressBar = new WebpackBar({
@@ -37,16 +20,21 @@ const progressBar = new WebpackBar({
   profile:false  // 默认false，启用探查器。
 })
 
+
+
+
 module.exports = {
 	mode:'development',	//development or production
-	// target:['web','es5'],
 	devtool:'eval',
 	resolve:{
 		alias:{
 			'@':path.resolve(__dirname,'./src')
 		}
 	},
-	plugins: [webpage,notepad,search,about,cleanPlugin,progressBar],	//最后通过打包的插件节点引入第三方插件
+	plugins: [webpage,cleanPlugin,progressBar],	//最后通过打包的插件节点引入第三方插件
+	externals: {
+	fs: require('fs')	//这里的外部扩展指的是node环境下的指令
+ 	},
 	optimization:{
 		// usedExports:true		//优化处理端口打开
 		splitChunks: {
@@ -54,8 +42,7 @@ module.exports = {
     	},
 	},
 	entry: {
-		javascript:{import:path.join(__dirname,'/src/js/javascript.js'),dependOn: 'shared'},
-		sidebar_css:{import:path.join(__dirname,'/src/sidebar/css.js')},
+		index:{import:path.join(__dirname,'/src/js/index.js'),dependOn: 'shared'},
 		shared: ['jquery']	//共享合集
 	},
 	output: {
@@ -68,7 +55,6 @@ module.exports = {
 		open: true,
 		host: 'localhost',
 		port: 8888,
-		// client: { progress: true }
 	},
 
 	module: {
@@ -76,6 +62,8 @@ module.exports = {
 			{test: /\.css$/,use:['style-loader','css-loader']},	// "test" is commonly used to match the file extension
 			{test: /\.png$/,type:'asset/resource',generator: {filename: 'images/mediabox/[name][ext]'}}, 			
 			{test: /\.jpg$/,type:'asset/resource', generator: {filename: 'images/[name][ext]'}},
+			{test: /\.txt$/,type:'asset/source', generator: {filename: 'text/[name][ext]'}},
+
 			{parser:{dataUrlCondition: {maxSize: 4 * 1024}}}	//当模块源码小于4kb时 换算成base64直接注入包内容等待解析
 	    ]    	
 	}
