@@ -1,0 +1,34 @@
+{
+  "name": "Vue_series",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "packages/*"
+  ],
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev:app1": "pnpm run -F @vue/shared",
+    "dev:app2": "pnpm run -F @vue/reactivity",
+    "test": "cls&&node scripts/build.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "@rollup/plugin-json": "^4.1.0",
+    "@rollup/plugin-node-resolve": "^13.3.0",
+    "@vue/cli": "^5.0.4",
+    "@vue/reactivity": "^1.0.0",
+    "@vue/shared": "^1.0.0",
+    "execa": "^6.1.0",
+    "jquery": "^3.6.0",
+    "rollup": "^2.75.6",
+    "rollup-plugin-typescript2": "^0.32.1",
+    "typescript": "^4.7.3",
+    "ultra-runner": "^3.10.5",
+    "vue-cli": "^2.9.6"
+  },
+  "devDependencies": {
+    "vue": "^3.2.33"
+  }
+}

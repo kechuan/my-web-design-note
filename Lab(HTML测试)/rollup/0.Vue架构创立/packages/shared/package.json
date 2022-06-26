@@ -1,0 +1,22 @@
+{
+  "name": "@vue/shared",
+  "version": "1.0.0",
+  "main": "index.js",
+  "module": "dist/reactivity.esm-bundler.js",
+  "scripts": {
+    "test": "echo \"simple test\" && exit 1"
+  },
+  "buildOptions": {
+    "name": "VueShared",
+    "formats": [
+      "cjs",
+      "esm"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "typescript": "^4.7.3"
+  }
+}
