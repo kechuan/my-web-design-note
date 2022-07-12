@@ -1,36 +1,25 @@
 import {isObject} from '@vue/shared/src'
 
-const mutableHandlers = {
-
-}
-
-const shallowReactiveHandlers = {
-
-}
-
-const readonlyHandler = {
-
-}
-
-const shallowReadonlyHandler = {
-
-}
+import {mutableHandlers,
+shallowReactiveHandlers,
+readonlyHandler,
+shallowReadonlyHandler} from './baseHandlers'
 
 //Vue的4个对象属性API
 
-export function reactive(target){
+export function reactive(target: any){
 	return createReactiveObject(target,false,mutableHandlers)
 }
 
-export function shallowReactive(target){
+export function shallowReactive(target: any){
 	return createReactiveObject(target,false,shallowReactiveHandlers)
 }
 
-export function readonly(target){
+export function readonly(target: any){
 	return createReactiveObject(target,true,readonlyHandler)
 }
 
-export function shallowReadonly(target){
+export function shallowReadonly(target: any){
 	return createReactiveObject(target,true,shallowReadonlyHandler)
 }
 
@@ -40,7 +29,7 @@ const reactiveMap = new WeakMap();	//代理映射Map建立 ——reactive表
 const readonlyMap = new WeakMap();	//代理映射Map建立 ——readonly表
 
 
-export function createReactiveObject(target,isReadonly,baseHandlers){
+export function createReactiveObject(target: any,isReadonly: boolean,baseHandlers:any){
 	if(!isObject(target)){		//如果目标不是对象 那只能直接放行掉
 		return target;
 	}

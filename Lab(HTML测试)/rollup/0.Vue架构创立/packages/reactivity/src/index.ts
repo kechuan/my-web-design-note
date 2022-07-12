@@ -1,7 +1,2 @@
-import {shared} from "@vue/shared"
-
-
-export {
-	reactive,
-	shallowReactive
-} from "./reactive"
+//仅将方法单独导出
+export {reactive,shallowReactive,readonly,shallowReadonly} from "./reactive"
