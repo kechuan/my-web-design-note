@@ -1,29 +1,73 @@
 <template>
 	<div class="gap"></div>
-<div id="B" style="color:green;">AP2:ref</div>
+	<div class="text" style="color: blue">AP2: watch&computed</div>
+	computed计算属性
+	<pre>怎么计算 计算能干什么?
+computed与ref一样 一旦代理就会包裹进对象(ComputedRefImpl)里
+一种用法是当正常的赋值使用
 
-<div id="data2">{{name}} {{age}}</div>
+而另一种用法是搭配上get,set等proxy语句使用 
+但是不管什么方式computed无法再去页面变动 所以你需要
+</pre>
+	<div class="gap"></div>
+	<div id="show2" @click='altar'>
+		{{msg2}} ==>?x {{msg2Change}}
+	</div>
+	
+	
 
-<div class="item">
-    <input type="text" v-model="toRefVal" @input="inputToRefHander">
-    {{ toRefVal }}
-</div>
+	<div class="gap"></div>
+	<div class="text">Watch 初始化监听</div>
 
+	<input type="text" v-model='model2'>
+
+	<br><div class="text">Watch 多目标监听</div>
+	<input type="text" v-model='watch1'>
+	<input type="text" v-model='watch2'>
+
+	<br><div class="text">Watch 深层对象监听</div>
+	<input type="text" v-model='watch3.arr'>
+	
 </template>
 
 <script setup lang='ts'>
-let obj = reactive({
-	name:'Sanbei',
-	age:24
-})	//无法解构
-let {name, age} = toRefs(obj) //搭配toRefs 可以解构
+let msg2 = 'why so serious?'
 
-const obj2 = { type: 'obj', target: '5' }
-const toRefVal = toRef(obj2, 'target'); //将obj2对象里的target属性与v-model关联
-const inputToRefHander = () => {
-  	console.log("原始数据:::", obj2);
+let altar = ()=>{
+	console.log(msg2Change) //触发get
 }
 
+let msg2Change = computed({
+	get(){
+		 msg2Change.value = 'it changed' //触发set 但是却不会改变页面内容
+	},
+	set(val){
+		console.log('changed')
+		// msg2.value = 'so it changed again'
+	}
+})
+
+
+// let msg2Change = computed(()=>{return msg2Change.value = '3'})
+	
+
+let model2 = ref('Data1')
+let watch1 = ref('')
+let watch2 = ref('')
+
+let watch3 = reactive({
+	a:1,
+	arr:['a','b','c']
+}) 
+
+
+watch(model2, (newVal,oldVal)=>{
+	console.log(oldVal+'=>'+newVal)
+})
+
+watch([watch1,watch2],(newVal,oldVal)=>{console.log(newVal,oldVal)})
+
+watch([()=>watch3.arr],(newVal,oldVal)=>{console.log(oldVal+'=>'+newVal)})
 </script>
 
 <style lang="css">

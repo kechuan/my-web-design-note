@@ -35,6 +35,19 @@
 
 	<pre>按下Pause后 因为用了toRefs 所以数据不再进行关联 但是后台还是的实际值value(Tick按钮)还是允许变动</pre>
 
+<div class="gap"></div>
+
+那Toref/Torefs呢？
+
+
+<div id="data2">多标签div解构(Torefs+Reactive):{{name}} {{age}}</div>
+
+<div class="item">
+    <input type="text" v-model="toRefVal" @input="inputToRefHander">
+    {{ toRefVal }}
+</div>
+
+
 </template>
 
 
@@ -58,7 +71,6 @@
 	}
 
 	var a = 0;
-	console.log(ref(a))
 	var tick = ref(0);
 	var test = ref(0); //所以说极其不建议将变动数值直接绑定上面 应该将动态数值给其他然后定时更新
 	const Timer = ()=>{setInterval(()=>{a++;test.value = a},1000)}
@@ -69,12 +81,25 @@
 	}
 
 	const Continue = ()=>{
-		test.value = toRef(a)	//继续关联
+		test = ref(a)	//重新关联
 	}
 
 	const Tick = ()=>{
-		tick.value = test
+		tick.value = test //视图更新
 	}
+
+	let obj = reactive({
+	name:'Sanbei',
+	age:24
+})	//无法解构
+let {name, age} = toRefs(obj) //搭配toRefs 可以解构
+
+const obj2 = { type: 'obj', target: '5' }
+const toRefVal = toRef(obj2, 'target'); //将obj2对象里的target属性与v-model关联
+const inputToRefHander = () => {
+  	console.log("原始数据:::", obj2);
+}
+
 </script>
 
 <style>
