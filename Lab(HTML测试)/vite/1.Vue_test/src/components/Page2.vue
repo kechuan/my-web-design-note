@@ -1,6 +1,5 @@
 <template>
-	<div class="gap"></div>
-	<div class="text" style="color: blue">AP2: watch&computed</div>
+	<router-link to='/Page2'>Page2:watch&computed</router-link>	
 	computed计算属性
 	<pre>怎么计算 计算能干什么?
 computed与ref一样 一旦代理就会包裹进对象(ComputedRefImpl)里

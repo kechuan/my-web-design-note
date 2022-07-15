@@ -1,5 +1,5 @@
 <template>
-  <div class="text">AP0 vite组件更新响应处理</div>
+  <router-link to='/Page0'>AP0 vite组件更新响应处理</router-link>
 
 <!--   <div @click="parent">me
     <div @click.stop="child">child</div>

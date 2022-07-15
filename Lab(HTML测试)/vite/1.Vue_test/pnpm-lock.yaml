@@ -14,7 +14,6 @@ specifiers:
 dependencies:
   '@vue/cli': 5.0.8
   vue: 3.2.37
-  vue-router: 4.1.2_vue@3.2.37
 
 devDependencies:
   '@vitejs/plugin-vue': 2.3.3_vite@2.9.14+vue@3.2.37
@@ -22,6 +21,7 @@ devDependencies:
   unplugin-auto-import: 0.9.2_vite@2.9.14
   vite: 2.9.14
   vite-plugin-progress: 0.0.3_vite@2.9.14
+  vue-router: 4.1.2_vue@3.2.37
   vue-tsc: 0.34.17_typescript@4.7.4
 
 packages:
@@ -1877,7 +1877,7 @@ packages:
 
   /@vue/devtools-api/6.2.1:
     resolution: {integrity: sha512-OEgAMeQXvCoJ+1x8WyQuVZzFo0wcyCmUR3baRVLmKBo1LmYZWMlRiXlux5jd0fqVJu6PfDbOrZItVqUEzLobeQ==}
-    dev: false
+    dev: true
 
   /@vue/reactivity-transform/3.2.37:
     resolution: {integrity: sha512-IWopkKEb+8qpu/1eMKVeXrK0NLw9HicGviJzhJDEyfxTR9e1WtpnnbYkJWurX6WwoFP0sz10xQg8yL8lgskAZg==}
@@ -6191,7 +6191,7 @@ packages:
     dependencies:
       '@vue/devtools-api': 6.2.1
       vue: 3.2.37
-    dev: false
+    dev: true
 
   /vue-tsc/0.34.17_typescript@4.7.4:
     resolution: {integrity: sha512-jzUXky44ZLHC4daaJag7FQr3idlPYN719/K1eObGljz5KaS2UnVGTU/XSYCd7d6ampYYg4OsyalbHyJIxV0aEQ==}
