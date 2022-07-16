@@ -1,5 +1,6 @@
 <template>
-	<router-link to='/Page1'>Page1:ref series</router-link>	
+	<div class="text" style="color:#257;">Page1:ref series</div>
+	<!-- <router-link to='/Page1'>Page1:ref series</router-link>	 -->
 	<div id="ref">ref有什么用? {{change}}
 <pre>当使用setup语法糖时就允许你直接默认导出接return
 那ref所谓的获取DOM又能作用在哪里呢？

@@ -1,19 +1,25 @@
 <template>
-	<router-link to='/Page2'>Page2:watch&computed</router-link>	
+	<div class="text" style="color:#846;">Page2:watch&computed</div>
+	<!-- <router-link to='/Page2'>Page2:watch&computed</router-link> -->
+
 	computed计算属性
 	<pre>怎么计算 计算能干什么?
 computed与ref一样 一旦代理就会包裹进对象(ComputedRefImpl)里
 一种用法是当正常的赋值使用
 
 而另一种用法是搭配上get,set等proxy语句使用 
-但是不管什么方式computed无法再去页面变动 所以你需要
+但是不管什么方式computed无法再去页面变动 即使是内置的get,set都无法进行页面变动
+可能是跟以前一样 需要一个代理数值来存放ref
+
+所以我还是不清楚 computed的具体用法
+
 </pre>
 	<div class="gap"></div>
 	<div id="show2" @click='altar'>
 		{{msg2}} ==>?x {{msg2Change}}
 	</div>
 	
-	
+<pre>听说下文的watch可以搭配computed</pre>	
 
 	<div class="gap"></div>
 	<div class="text">Watch 初始化监听</div>
