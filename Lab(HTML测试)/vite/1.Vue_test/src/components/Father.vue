@@ -1,8 +1,7 @@
 <template>
-<div>
-	组件信息 => {{msg}}
-</div>
-	
+	<div>
+		父类的组件信息 => 而这是子类自定义引入的信息:{{msg}}
+	</div>
 </template>
 
 <script setup lang='ts'>
