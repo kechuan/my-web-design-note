@@ -1,0 +1,379 @@
+**************** vue2 和 vue3 区别  ****************
+
+1. 	v-if 与 v-for 的优先级对比
+
+		2.x 版本中  v-for > v-if
+		3.x 版本中  v-if  > v-for
+
+2. 	v-for 中的 Ref 数组
+
+		vue2.x 会自动把ref填充内容
+		vue3.x 需要手动添加
+			<ul>
+		      <li v-for='item in 5' :key='item' :ref="setItemRef">
+		        {{ item }}
+		      </li>
+		    </ul>
+
+		    methods:{
+		    	setItemRef(el){
+		    		this.arr.push( el );
+		    	}
+			}
+
+3. 	$children 
+
+		vue2.x :  访问当前实例的子组件
+
+		vue3.x :  在 3.x 中，$children 已被移除，且不再支持。
+
+			设置：<HelloWorld msg="Welcome" ref='hw'/>
+
+			访问：this.$refs.hw 
+
+4. setup
+	
+	4.1 是什么 ： 组合式 API
+
+	4.2 来解决什么问题 :  使用 (data、computed、methods、watch) 组件选项来组织逻辑通常都很有效。然而，当我们的组件开始变得更大时，逻辑关注点的列表也会增长。尤其对于那些一开始没有编写这些组件的人来说，这会导致组件难以阅读和理解。
+
+
+	4.3 响应区别： 
+
+		vue2.x : Object.defineProperty()
+
+		vue3.x : Proxy 
+
+		1. Object.defineProperty()存在的问题
+
+			1. 不能监听数组的变化
+			2. 必须遍历对象的每一个属性
+
+		2. Proxy 不需要遍历
+
+	4.4 使用渲染函数:
+
+		ref  :  就是定义数据的    		简单类型
+
+		reactive  :  就是定义数据的  	复杂类型
+
+	4.5 setup语法糖插件 ： unplugin-auto-import
+
+		解决场景 ： 在组件中开发无需每次都引入 import { ref }..
+
+		1. 下载安装
+
+			npm i unplugin-auto-import -D
+
+		2. 配置：vite.config.js中
+
+			import AutoImport from 'unplugin-auto-import/vite'
+			export default defineConfig({
+			  plugins: [
+			  	AutoImport({
+			  		imports:['vue','vue-router']//自动导入vue和vue-router相关函数
+			  	})
+			  ],
+			})
+
+	4.6 toRefs
+
+		toRefs 函数 来完成数据的解构
+
+	4.7 computed
+
+		1》 let obj = reactive({
+			  name:'张三',
+			  age:18,
+			  str:computed(()=>{
+			    return obj.name.slice(1,2)
+			  })
+			})
+
+		2》	let msgChange = computed(()=>{
+			  return msg.value.slice(1,3);
+			})
+
+		3》	let msgChange = computed({
+			  get(){
+			    return msg.value.slice(1,3);
+			  },
+			  set(){
+			    console.log('设置了')
+			  }
+			})
+
+	
+	4.8 watch
+
+		vue2.x :
+
+			watch:{
+				obj:{
+					handler(newVal , oldVal){
+						console.log( newVal , oldVal  )
+					},
+					immediate:true,
+					deep:true
+				}
+			}
+
+		vue3.x :
+
+			1> 监听数据数据「初始化监听」
+
+				watch( msg , (newVal,oldVal)=>{
+					console.log(  newVal,oldVal )
+				},{
+					immediate:true
+				})
+
+			2> 监听多个数据「一起监听」
+
+				watch([msg,str],(newVal,oldVal)=>{
+					console.log(  newVal,oldVal )
+				},{
+					immediate:true
+				})
+
+			3> 监听“对象”中某个对象
+
+				watch( ()=>obj.arr , (newVal,oldVal)=>{
+					console.log( newVal,oldVal )
+				})
+
+			4> 立即执行监听函数
+
+				watchEffect(()=>{
+					console.log(  msg.value  )
+				})
+
+		参考链接：https://v3.cn.vuejs.org/api/computed-watch-api.html#watcheffect
+
+
+	4.9 组件 ： 父 传 子
+
+		1. 父
+
+			<template>
+				<div>
+					<List :msg='msg'></List>
+				</div>
+			</template>
+
+			<script setup>
+			import List from '../components/List.vue'
+			let msg = ref('这是父传过去的数据');
+			</script>
+
+		2. 子
+
+			<template>
+				<div> 
+					这是子组件 ==> {{ msg }}
+				</div>
+			</template>
+
+			<script setup>
+			defineProps({
+				msg:{
+					type:String,
+					default:'1111'
+				}
+			})
+			</script>
+
+	4.10 组件 ：子 传 父 
+
+		子：
+			<template>
+				<div> 
+					这是子组件 ==> {{ num }}
+					<button @click='changeNum'>按钮</button>
+				</div>
+			</template>
+
+			<script setup lang='ts'>
+			let num = ref(200);
+
+			const emit = defineEmits<{
+			  (e: 'fn', id: number): void
+			}>()
+
+			const changeNum = ()=>{
+				emit('fn',num)
+			}	
+			</script>
+
+		父：
+			<template>
+				<div>
+					<List @fn='changeHome'></List>
+				</div>
+			</template>
+
+			<script setup>
+			import List from '../components/List.vue'
+			const changeHome = (n)=>{
+				console.log( n.value );
+			}
+			</script>
+
+	4.11 v-model传值
+
+		父:
+			<List v-model:num='num'></List>
+			<script setup>
+			import List from '../components/List.vue'
+			let num = ref(1);
+			</script>
+		子:
+			const props = defineProps({
+				num:{
+					type:Number,
+					default:100
+				}
+			})
+			const emit = defineEmits(['update:num'])
+			const btn = ()=>{
+				emit('update:num',200);
+			}
+
+	4.12 兄弟组件之间的传值
+
+		1》下载安装
+
+			npm install mitt -S
+
+		2》plugins/Bus.js
+
+			import mitt from 'mitt';
+			const emitter = mitt()
+			export default emitter;
+
+		3》A组件
+
+			emitter.emit('fn',str);
+
+		4》B组件
+
+			emitter.on('fn',e=>{
+				s.value = e.value;
+			})
+
+5. 生命周期
+
+	5.1 选项式 API
+
+		beforeCreate ...
+
+	5.2 setup 组合式API
+
+		注意：没有beforeCreate和created
+		其他生命周期要使用前面加"on" 例如：onMounted
+
+	参考链接：https://v3.cn.vuejs.org/guide/composition-api-lifecycle-hooks.html
+
+
+6. 路由
+
+	useRoute  ==> this.$route
+
+	useRouter ==> this.$router
+
+7. 插槽
+
+	匿名插槽
+		父：
+			<A>
+				这是xxxxx数据
+				这是yyyyy数据
+			</A>
+
+		子：
+			<header>
+				<div>头部</div>
+				<slot></slot>
+			</header>
+
+			<footer>
+				<div>底部</div>
+				<slot></slot>
+			</footer>
+	具名插槽
+		父：
+			<A>
+				<template v-slot:xxx>
+					这是xxxxx数据
+				</template>
+
+				<template v-slot:yyy>
+					这是yyyyy数据
+				</template>
+			</A>
+
+			***简写：<template #xxx>
+		子：
+			<header>
+				<div>头部</div>
+				<slot name='xxx'></slot>
+				<slot name='yyy'></slot>
+			</header>
+
+			<footer>
+				<div>底部</div>
+				<slot name='xxx'></slot>
+			</footer>
+
+	作用域插槽
+
+		父：
+			<template v-slot='{data}'>
+				{{ data.name }} --> {{ data.age }}
+			</template>
+
+			简写：<template #default='{data}'>
+		子：
+			<div v-for='item in list' :key='item.id'>
+				<slot :data='item'></slot>
+			</div>
+
+	动态插槽：
+
+		说了就是通过数据进行切换
+
+		父：
+
+			<template #[xxx]>
+				这是xxxxx数据
+			</template>
+
+			<script setup>
+			let xxx = ref('xxx');
+			</script>
+
+
+8. Teleport : 传送 
+	
+	<teleport to='#container'></teleport>
+	<teleport to='.main'></teleport>
+	<teleport to='body'></teleport>
+
+	***必须传送到有这个dom的内容【顺序】
+
+9. 动态组件
+
+	<component :is="动态去切换组件"></component>
+
+
+
+
+
+
+
+
+
+
+
+
+

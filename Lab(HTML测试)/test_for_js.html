@@ -6,48 +6,61 @@
 	<title>Document</title>
 </head>
 <body>
-
+IIFE无法返回true
 	<script type="text/javascript">
-function float_cal(a,b){
-var str_a = a.toString();
-var str_b = b.toString();
-var c;
-    if(str_a.indexOf(".")==-1||str_b.indexOf(".")==-1){
-        
-        if(str_a.indexOf(".")==-1){
-            var l2 = str_b.split(".")[1].length;
-            var a1 =  a*Math.pow(10,l2);
-            var b1 = parseInt(str_b.replace(".",""));
-            return (a1+b1)/Math.pow(10,l2);
-        }
-        if(str_b.indexOf(".")==-1){
-           	var l1 = str_a.split(".")[1].length;
-            var b1 =  b*Math.pow(10,l1);
-            var a1 = parseInt(str_a.replace(".",""));
-            return (a1+b1)/Math.pow(10,l1);
-        }    
-    } 
+// Promise.resolve('foo').then(() => {
+//     console.log('A1');
+//     console.log('A1.1')
+// })
+// .then((x)=>{return x})
+// .then((res) => {
+//     console.log(res)
+// })
+
+// Promise.resolve('?').then(() => {
+//     console.log('B1');
+// }).then(() => {
+//     console.log('B2');
+// }).then(() => {
+//     console.log('B3');
+// }).then(() => {
+//     console.log(5);
+// }).then(() =>{
+//     console.log(6);
+// })
+
+// Promise.resolve('result').then((x) => {
+//     console.log(x)
+//     console.log(0);
+//     return Promise.resolve(4);
+// }).then((res) => {
+//     console.log(res)
+// })
+
+// Promise.resolve().then(() => {
+//     console.log(1);
+// }).then(() => {
+//     console.log(2);
+// }).then(() => {
+//     console.log(3);
+// }).then(() => {
+//     console.log(5);
+// }).then(() =>{
+//     console.log(6);
+// })
 
 
-    else{
-        var l1 = str_a.split(".")[1].length;
-        var l2 = str_b.split(".")[1].length;
-        var a1 = parseInt(str_a.replace(".",""));
-        var b1 = parseInt(str_b.replace(".",""));
-
-        if(l1>l2){
-        	var a1 =  a*Math.pow(10,l1);
-        	var b1 =  b*Math.pow(10,l1);
-        	return (a1+b1)/Math.pow(10,l1)
-        }
-
-        else{
-        	var a1 =  a*Math.pow(10,l2);
-        	var b1 =  b*Math.pow(10,l2);
-        	return (a1+b1)/Math.pow(10,l2);
-        }
-	}
+(function me(){
+try{
+    console.log(3)
+    return true;
 }
+
+finally{
+    console.log(4)
+}
+
+})()
 
 
 

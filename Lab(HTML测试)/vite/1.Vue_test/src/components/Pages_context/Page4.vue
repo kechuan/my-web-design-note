@@ -19,6 +19,8 @@
 
 	<teleport to='.absolute_view'>
 		<div>比如 此段的框框后的TP进绝对内容:load 是在声明渲染之后</div>
+		其遵守父类的relative 但也遇到了它的问题
+		<br>
 	</teleport>
 
 	那怎么办？
@@ -48,10 +50,8 @@
 
 </template>
 
-
-
 <script setup lang="ts">
-	import gapc from '../gap.vue'
+	import gapc from '../HTML/css/gap.vue'
 	let view = ref('这事相对内容下的绝对内容 但是是渲染进去的')
 	let open = ref(false)
 </script>

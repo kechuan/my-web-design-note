@@ -261,7 +261,6 @@
 				s.value = e.value;
 			})
 
-
 5. 生命周期
 
 	5.1 选项式 API
@@ -277,7 +276,6 @@
 
 
 6. 路由
-
 
 	useRoute  ==> this.$route
 
@@ -355,9 +353,194 @@
 			</script>
 
 
+8. Teleport : 传送 
+	
+	<teleport to='#container'></teleport>
+	<teleport to='.main'></teleport>
+	<teleport to='body'></teleport>
+
+	***必须传送到有这个dom的内容【顺序】
+
+9. 动态组件
+
+	<component :is="动态去切换组件"></component>
+
+10. 异步组件
+	
+	***提升性能
+
+	vueuse ： https://vueuse.org/core/useintersectionobserver/
+
+	10.1 使用场景1
+
+		组件按需引入：当用户访问到了组件再去加载该组件
+
+			<template>
+				<div ref='target'>
+					<C v-if='targetIsVisible'></C>
+				</div>
+			</template>
+
+			<script setup>
+			import { useIntersectionObserver } from '@vueuse/core'
+
+			const C = defineAsyncComponent(() =>
+			  import('../components/C.vue')
+			)
+
+			const target = ref(null);
+			const targetIsVisible = ref(false);
+
+			const { stop } = useIntersectionObserver(
+			  target,
+			  ([{ isIntersecting }]) => {
+			  	if( isIntersecting ) {
+			  		targetIsVisible.value = isIntersecting
+			  	}
+			  },
+			)
+			</script>
+
+	10.2 使用场景2 
+
+		<Suspense>
+			<template #default>
+				<A></A>
+			</template>
+			<template #fallback>
+				加载中...
+			</template>
+		</Suspense>
+
+		<script setup>
+		const A = defineAsyncComponent(() =>
+		  import('../components/A.vue')
+		)
+		</script>
+
+
+	10.3 打包分包处理
+
+		npm run build打包完成后，异步组件有单独的js文件，是从主体js分包出来的
+
+		A.c7d21c1a.js
+		C.91709cb2.js
+
+11. Mixin : 混入
+
+	是什么：来分发 Vue 组件中的可复用功能
+
+	11.1 setup写法
+		mixin.js
+			import { ref } from 'vue'
+			export default function(){
+
+				let num = ref(1);
+				let fav = ref(false);
+
+				let favBtn = ()=>{
+					num.value += 1;
+					fav.value = true;
+					setTimeout(()=>{
+						fav.value = false;
+					},2000)
+				}
+
+				return {
+					num,
+					fav,
+					favBtn
+				}
+
+			}
+
+		组件：
+			<template>
+				<div>
+					<h1>A组件</h1>
+					{{ num }}
+					<button @click='favBtn'>
+						{{ fav ? '收藏中...' : '收藏' }}
+					</button>
+				</div>
+			</template>
+
+			<script setup>
+			import mixin from '../mixins/mixin.js'
+			let { num , fav , favBtn } = mixin();
+			</script>
+
+
+	11.2 选项式api写法
+
+		mixin：
+			export const fav = {
+				data () {
+					return {
+						num:10
+					}
+				},
+				methods:{
+					favBtn( params ){
+						this.num += params;
+					}
+				}
+			}
+
+		组件：
+			<template>
+				<div>
+					<h1>A组件</h1>
+					{{ num }}
+					<button @click='favBtn(1)'>按钮</button>
+				</div>
+			</template>
+
+			<script type="text/javascript">
+			import { fav } from '../mixins/mixin.js'
+			export default{
+				data () {
+					return {
+						str:'你好'
+					}
+				},
+				mixins:[fav]
+			}
+			</script>
+
+
+12. Provide / Inject  ==> 依赖注入
+	
+	提供：
+		<script setup>
+		provide('changeNum', num );
+		</script>
+
+	注入：
+		<template>
+			<div>
+				<h1>B组件</h1>
+				{{ bNum }}
+			</div>
+		</template>
+
+		<script setup>
+		const bNum = inject('changeNum');
+		</script>
+
+
+
 
 
 	
+
+
+
+
+	
+	
+
+
 
 
 

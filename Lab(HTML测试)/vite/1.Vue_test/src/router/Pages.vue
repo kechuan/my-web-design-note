@@ -8,7 +8,13 @@
 	<div id="slogan" style="color: #f4a;">Vue Lab, learn for myself</div>
 
 	<br>
-	<router-view></router-view>
+
+	<router-view v-slot="{ Component }">
+		<keep-alive>
+			<component :is='Component'></component>
+		</keep-alive>
+	</router-view>
+
 </template>
 
 <script setup lang='ts'>
@@ -21,7 +27,6 @@
 	let prev_page = ()=>{
 		Pages.value = --flag
 		uses.push(`/Page${flag}`)
-		
 	}
 
 	let next_page = ()=>{
