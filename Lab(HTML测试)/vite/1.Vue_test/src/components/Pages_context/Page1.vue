@@ -1,7 +1,7 @@
 <template>
 	<div class="text" style="color:#257;">Page1:ref series</div>
 	<!-- <router-link to='/Page1'>Page1:ref series</router-link>	 -->
-	<div id="ref">ref有什么用? {{change}}
+	<div id="ref">ref有什么用?
 <pre>当使用setup语法糖时就允许你直接默认导出接return
 那ref所谓的获取DOM又能作用在哪里呢？
 		</pre>
@@ -52,6 +52,7 @@
 
 
 <script setup lang="ts">
+	import { ref, Ref, toRef, toRefs, reactive } from 'vue' //ref auto自动引入
 	let msg1 = ref('这是一个普通数据')
 	let num1 = Date.now() 
 	let num2 = ref(Date.now())
@@ -61,7 +62,7 @@
 		
 
 		try{
-			this.num1 = Date.now()
+			num1 = Date.now()
 		}
 
 		catch{
@@ -70,9 +71,10 @@
 
 	}
 
-	var a = 0;
-	var tick = ref(0);
-	var test = ref(0); //所以说极其不建议将变动数值直接绑定上面 应该将动态数值给其他然后定时更新
+	var a:number = 0
+	var tick = ref<number>(0)
+	var test = ref<any>(0)
+	//所以说极其不建议将变动数值直接绑定上面 应该将动态数值给其他然后定时更新
 	const Timer = ()=>{setInterval(()=>{a++;test.value = a},1000)}
 	
 

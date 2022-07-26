@@ -9,9 +9,10 @@
 	</div>
 </template>
 
-<script setup>
+<script setup lang="ts">
+import {inject} from 'vue'
 import B from './B1.vue'
-const aNum = inject('changeNum');
+const aNum:any = inject('changeNum');
 const btn = ()=>{
 	aNum.value += 1;
 }

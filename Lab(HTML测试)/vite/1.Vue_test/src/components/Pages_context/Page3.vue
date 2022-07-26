@@ -1,6 +1,4 @@
 <template>
-
-
 	<div class="text" style="color:#986;">Page3:组件与插件</div>
 prop:
 	<div>
@@ -14,10 +12,8 @@ is:
 	
 		引入is选择渲染组件 - 动态组件
 		<!-- v-for='(x,index) in comp' -->
-	<div v-for='x in comp' @click='changecomp(x)' :key='comp.id'>
+	<div v-for='x in comp' @click='changecomp(x)' :key='x.id'>
 		{{x.name}} -> 
-		
-
 	</div>	
 	<keep-alive>
 		<component :is="refcomp.com"></component>
@@ -101,12 +97,13 @@ Part:插槽 - slot
 </template>
 
 <script setup lang='ts'>
+	import { ref, defineAsyncComponent, reactive, markRaw } from 'vue' //ref auto自动引入
 	import {useIntersectionObserver} from '@vueuse/core'
 	//引入组件
-	import gapc from '../HTML/gap.vue'
-	import Father from '../HTML/Father.vue'
-	import SL from '../../slots/Slot-name.vue'
-	import SLfor from '../../slots/Slot-for.vue'
+	import gapc from '#/css/gap.vue'
+	import Father from '#/Father.vue'
+	import SL from '@/slots/Slot-name.vue'
+	import SLfor from '@/slots/Slot-for.vue'
 
 	
 	const dynamicA = defineAsyncComponent(() => 
@@ -126,10 +123,10 @@ Part:插槽 - slot
 	let Young = ref('是学生')
 	let Old = ref('是主播')
 
-	let comp = reactive([
-		{id:1,name:'a',ex:dynamicA},
-		{id:2,name:'b',ex:dynamicImg}
-		
+	const comp = reactive([
+		{id:1,name:'a',ex:markRaw(dynamicA)},
+		{id:2,name:'b',ex:markRaw(dynamicImg)}
+
 	])
 
 	let refcomp = reactive({
@@ -141,7 +138,7 @@ Part:插槽 - slot
 
 	})
 
-	let changecomp = (cur)=>{
+	let changecomp = (cur:any)=>{
 		refcomp.com = cur.ex
 		console.log(refcomp.com)
 	}

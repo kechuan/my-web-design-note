@@ -36,13 +36,14 @@ computed与ref一样 一旦代理就会包裹进对象(ComputedRefImpl)里
 </template>
 
 <script setup lang='ts'>
-let msg2 = 'why so serious?'
+import { ref, watch, computed, reactive } from 'vue' //ref auto自动引入
+let msg2:string = 'why so serious?'
 
 let altar = ()=>{
 	console.log(msg2Change) //触发get
 }
 
-let msg2Change = computed({
+let msg2Change:any = computed({
 	get(){
 		 msg2Change.value = 'it changed' //触发set 但是却不会改变页面内容
 	},
@@ -52,11 +53,10 @@ let msg2Change = computed({
 	}
 })
 
-
 // let msg2Change = computed(()=>{return msg2Change.value = '3'})
 	
 
-let model2 = ref('Data1')
+let model2 = ref<string>('Data1')
 let watch1 = ref('')
 let watch2 = ref('')
 

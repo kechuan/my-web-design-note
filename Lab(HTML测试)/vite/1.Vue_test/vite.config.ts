@@ -15,7 +15,8 @@ export default defineConfig({
 
   resolve:{
     alias:{
-      '@':path.resolve(__dirname,'./src')
+      '@':path.resolve(__dirname,'./src'),
+      '#':path.resolve(__dirname,'./src/components/HTML')
     }
   },
   server:{
@@ -28,6 +29,16 @@ export default defineConfig({
     //strictPort: false,
   },
   build:{
+  target: "modules",
+  outDir: "dist",
+  assetsDir: "assets",
+  assetsInlineLimit: 4096,
+  cssCodeSplit: true,
+  sourcemap: false,
+  rollupOptions: {
+  },
+
+
     reportCompressedSize: false
   }
 })

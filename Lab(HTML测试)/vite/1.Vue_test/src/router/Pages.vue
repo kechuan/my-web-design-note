@@ -18,11 +18,14 @@
 </template>
 
 <script setup lang='ts'>
-	var flag: number = 0;
+	import { useRouter } from 'vue-router'
+	import {ref} from 'vue'
+
+	var flag: any = 0;
 	let Pages = ref(flag)
 	let page_sync = ref('') //v-model值 可响应许可
 
-	let uses = new useRouter;
+	let uses = new (useRouter as any);
 
 	let prev_page = ()=>{
 		Pages.value = --flag

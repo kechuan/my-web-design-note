@@ -1,6 +1,5 @@
 <template>
 	<br>
-
 		<div id="Slot_Data">
 			<div v-for='item in list' :key='item.id'>
 				<slot :data='item'></slot>
@@ -10,6 +9,7 @@
 </template>
 
 <script setup lang="ts">
+import {ref} from 'vue'
 let list = ref([
 	{id:1,name:'Tf',age:16},
 	{id:2,name:'kac',age:18},
