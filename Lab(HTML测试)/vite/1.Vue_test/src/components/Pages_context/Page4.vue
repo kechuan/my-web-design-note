@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-	import { ref } from 'vue' //ref auto自动引入
+	// import { ref } from 'vue' //ref auto自动引入
 	import gapc from '#/css/gap.vue'
 	let view = ref('这事相对内容下的绝对内容 但是是渲染进去的')
 	let open = ref(false)

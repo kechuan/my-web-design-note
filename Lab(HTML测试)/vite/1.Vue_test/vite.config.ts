@@ -8,7 +8,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 export default defineConfig({
   plugins: [vue(),progress(),
   AutoImport({
-    imports:['vue','vue-router'] //自动导入vue与vue-router相关函数 跟你直接引入vue.js的开发体验差不多
+    imports:['vue','vue-router','pinia'] //自动导入vue与vue-router相关函数 跟你直接引入vue.js的开发体验差不多
   }),
 
   ],

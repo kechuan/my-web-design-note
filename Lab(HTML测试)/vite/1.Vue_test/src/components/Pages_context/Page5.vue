@@ -17,8 +17,8 @@ Inject it:
 </template>
 
 <script setup lang="ts">
-import { ref,provide } from 'vue' //ref auto自动引入
-import A from '#/injectPages/A1.vue'
+// import { ref,provide } from 'vue' //ref auto自动引入
+import A from '../injectPages/A1.vue'
 
 let num = ref(0)
 provide('changeNum', num );

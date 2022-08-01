@@ -36,7 +36,7 @@ computed与ref一样 一旦代理就会包裹进对象(ComputedRefImpl)里
 </template>
 
 <script setup lang='ts'>
-import { ref, watch, computed, reactive } from 'vue' //ref auto自动引入
+// import { ref, watch, computed, reactive } from 'vue' //ref auto自动引入
 let msg2:string = 'why so serious?'
 
 let altar = ()=>{

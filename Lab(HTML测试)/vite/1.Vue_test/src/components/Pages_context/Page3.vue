@@ -97,7 +97,7 @@ Part:插槽 - slot
 </template>
 
 <script setup lang='ts'>
-	import { ref, defineAsyncComponent, reactive, markRaw } from 'vue' //ref auto自动引入
+	// import { ref, defineAsyncComponent, reactive, markRaw } from 'vue' //ref auto自动引入
 	import {useIntersectionObserver} from '@vueuse/core'
 	//引入组件
 	import gapc from '#/css/gap.vue'

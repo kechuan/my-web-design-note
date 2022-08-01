@@ -52,7 +52,7 @@
 
 
 <script setup lang="ts">
-	import { ref, Ref, toRef, toRefs, reactive } from 'vue' //ref auto自动引入
+	// import { ref, Ref, toRef, toRefs, reactive } from 'vue' //ref auto自动引入
 	let msg1 = ref('这是一个普通数据')
 	let num1 = Date.now() 
 	let num2 = ref(Date.now())
