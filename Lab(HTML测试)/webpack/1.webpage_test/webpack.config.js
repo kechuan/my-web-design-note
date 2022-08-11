@@ -59,7 +59,7 @@ module.exports = {
 		shared: ['jquery']	//共享合集
 	},
 	output: {
-		path: path.resolve(__dirname,'dist'),
+		path: path.resolve(__dirname,'./dist'),
 		filename: 'js/[name].js'
 	},
 

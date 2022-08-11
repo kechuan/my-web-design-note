@@ -1,0 +1,29 @@
+{
+  "0": {
+    "dependencyNames": [
+      "*"
+    ],
+    "manifest": {
+      "name": "0.node-ws建立",
+      "version": "1.0.0",
+      "description": "",
+      "main": "index.ts",
+      "scripts": {
+        "ws": "node ws.js",
+        "http": "node http.js"
+      },
+      "keywords": [],
+      "author": "",
+      "license": "ISC",
+      "dependencies": {
+        "open": "^8.4.0"
+      }
+    },
+    "mutation": "unlinkSome",
+    "rootDir": "C:\\Users\\lenovo\\Desktop\\website\\Lab(HTML测试)\\websocket\\0.node-ws建立"
+  },
+  "dependencies": {
+    "express": "^4.18.1",
+    "open": "^8.4.0"
+  }
+}
