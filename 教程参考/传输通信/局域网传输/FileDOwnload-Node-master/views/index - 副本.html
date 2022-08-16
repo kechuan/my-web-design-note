@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= dataip %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+
+
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+ }
+
+ .alldom {
+     width: 100%;
+     height: 100%;
+ }
+
+ ul {
+     padding: 0;
+     list-style: none;
+ }
+
+ ul li.folder {
+     overflow: hidden;
+     width: 100px;
+     height: 115px;
+     float: left;
+     margin-left: 55px;
+     background: url(/images/folder.png) center top no-repeat;
+     border: 1px solid #fff;
+     position: relative;
+     transition: all 0.2s ease-in 0.1s;
+ }
+
+ ul li.file {
+     overflow: hidden;
+     width: 100px;
+     height: 115px;
+     float: left;
+     margin-left: 55px;
+     background: url(/images/file.png) center top no-repeat;
+     border: 1px solid #fff;
+     position: relative;
+     transition: all 0.2s ease-in 0.1s;
+ }
+
+ a {
+     overflow: hidden;
+     width: 100px;
+     height: 115px;
+     float: left;
+     margin-left: 55px;
+     border: 1px solid #fff;
+     position: relative;
+     transition: all 0.2s ease-in 0.1s;
+ }
+
+ a.folder {
+     position: absolute;
+     border-radius: 0px;
+     left: -25px;
+     bottom: 10px;
+     overflow: hidden;
+     width: 98px;
+     height: 20px;
+     color: #595c5f;
+     line-height: 20px;
+     text-align: center;
+     font-size: 12px;
+     z-index: 0;
+     border: none;
+ }
+
+ a {
+     width: 100px;
+     height: 24px;
+     line-height: 20px;
+     text-align: center;
+     background: none;
+     border: 1px solid #CCC;
+     border-radius: 8px;
+     transition: all 0.2s ease-in 0.1s;
+     margin-left: 25px;
+ }
+
+ #path{
+    display: flex;
+    flex-wrap: nowrap;
+ }
+</style>
+
+<body>
+
+<!--文件夹显示效果-->
+<!-- test:D:\All Local Downloads\MobileFile -->
+
+<!-- <%
+    var path = dirlist[0].split('\\').length-2
+%> -->
+
+<div id="path">当前路径:<%= filepath %>
+<ul>
+
+<!-- <% for(let i=0; i<=path; i++){ %>
+    <li class="path_cidr">
+<%= dirlist[0].split('\\')[dirlist[0].split('\\').length-2] %> 
+
+    <a href="http://<%= dataip %>/filelist?path=<%=dirlist[0].split('\\')[i]%>">
+        <%= dirlist[0].split('\\')[i] %>   
+    </a>
+
+    </li>
+    >
+<%}%> -->
+
+</ul>
+</div>
+
+<div class="alldom">
+    <ul>
+        <% for(var i=0; i<= dirlist.length-1; i++){ %>
+
+        <li class="folder">
+            <a href="http://<%= dataip %>/filelist?path=<%= dirlist[i] %>" class="folder">
+                <%= dirnamelist[i] %></a>
+                <!-- 根据index.js获取的数组长度返回文件列表 -->
+        </li>
+        
+        <%}%>
+    </ul>
+</div>
+
+
+<!--文件显示效果-->
+<div  class="alldom">
+    <ul>
+        <% for(var i=0; i<= filelist.length-1; i++){ %>
+        
+        <li class="file"><a href="http://<%= dataip %>/filedownload?path=<%= filelist[i] %>" class="folder"><%= filenamelist[i] %></a></li>
+        
+        <%}%>
+    </ul>
+</div>
+</body>
+</html>

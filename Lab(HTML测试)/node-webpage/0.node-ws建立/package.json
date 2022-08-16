@@ -9,8 +9,8 @@
       "description": "",
       "main": "index.ts",
       "scripts": {
-        "ws": "node ws.js",
-        "http": "node http.js"
+        "ws": "cls && node ws.js",
+        "http": "cls && node http.js"
       },
       "keywords": [],
       "author": "",
