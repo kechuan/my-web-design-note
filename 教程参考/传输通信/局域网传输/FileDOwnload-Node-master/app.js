@@ -18,6 +18,8 @@ var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 //将views值设置为:./views 意为模板目录=> ./views
+//使得后续
+
 
 app.set('view engine', 'html');
 //注册视图引擎为html
@@ -29,15 +31,18 @@ app.engine('.html', ejs.__express);
 //=>将html类型文件以ejs模板引擎进行渲染
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images', 'Icon.ico')));
 
 
-app.use(logger('dev'));
+app.use(logger('dev')); //显示用户访问行为 访问资源目录 状态码 以及延迟 是很好用的监控
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(cookieParser());
+app.use('/',express.static(path.join(__dirname, 'public'))); 
+//设定资源文件载入目录 且预先载入 如果不这样操作的话 express的首页会一直卡请求css 这也是耦合问题之一
+
+
 
 app.use('/', routes.router); //接管routes内的路由
 // app.use('/users', users);

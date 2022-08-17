@@ -3,11 +3,10 @@ var fs = require("fs");
 var router = express.Router();
 
 //TODO html页面优化
-/* GET home page. */
+/* GET home page.  => 默认情况下跳转至view下的test页面 */ 
 router.get('/', function (req, res, next) {
     res.render('test', {title: 'Express'});
 });
-
 
 
 //file页面下 渲染indexdir
