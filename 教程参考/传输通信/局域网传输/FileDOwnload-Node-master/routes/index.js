@@ -11,12 +11,13 @@ router.get('/', function (req, res, next) {
 
 //file页面下 渲染indexdir
 router.get('/file', function (req, res, next) {
-    reqIp = getIPAdress() + ":3000";
+    reqIp = getIPAdress() + ":8888";
     res.render('indexdir', {dataip: reqIp});
+
 });
 
 //下载文件 当访问到/filedownload的时候express直接跳出下载
-//比如:"http://192.168.1.144:3000/filedownload?path=E:\"
+//比如:"http://192.168.1.144:8888/filedownload?path=E:\"
 //顺带一提 如果直接filedownload访问文件夹/硬盘 是直接会没有响应的
 //因此对于文件夹来说 才会接入filelist
 
@@ -26,15 +27,16 @@ router.get('/filedownload', function (req, res, next) {
 });
 
 
-//文件列表 
+//文件列表 需求通过上层携带 ?path='' 以访问 直接访问无效 由file跳转以携带字样
 router.get('/filelist', function (req, res, next) {
-    let filepath = req.query.path.slice(2) || "D\:\\All Local Downloads";
+    let filepath = req.query.path.slice(2); //截取盘符之后的目录信息
+    // console.log(filepath)
     let path = req.query["path"];
     console.log(path)
     if (path != null) {
-        filepath = path + "\\";
+        filepath = path + "\\"; //访问盘符后的目录有效时添加\ D:xxx => D:\xxx
     }
-    reqIp = getIPAdress() + ":3000";
+    reqIp = getIPAdress() + ":8888";
     dirlist = getDirList(filepath);
     filelist = getFileList(filepath);
     // console.log(filelist);

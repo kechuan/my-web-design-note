@@ -33,7 +33,6 @@ app.engine('.html', ejs.__express);
 // uncomment after placing your favicon in /public
 app.use(favicon(path.join(__dirname, 'public/images', 'Icon.ico')));
 
-
 app.use(logger('dev')); //显示用户访问行为 访问资源目录 状态码 以及延迟 是很好用的监控
 
 // app.use(bodyParser.json());
