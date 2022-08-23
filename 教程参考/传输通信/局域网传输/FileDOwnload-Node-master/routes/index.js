@@ -31,16 +31,16 @@ router.get('/filedownload', function (req, res, next) {
 router.get('/filelist', function (req, res, next) {
     let filepath = req.query.path.slice(2); //截取盘符之后的目录信息
     // console.log(filepath)
+    // console.log(req.query)
     let path = req.query["path"];
-    console.log(path)
+    // console.log(path)
     if (path != null) {
         filepath = path + "\\"; //访问盘符后的目录有效时添加\ D:xxx => D:\xxx
     }
     reqIp = getIPAdress() + ":8888";
     dirlist = getDirList(filepath);
     filelist = getFileList(filepath);
-    // console.log(filelist);
-    // console.log(dirlist);
+    sizelist = getSizeList(filepath)
 
     //处理文件名显示问题
     filenamelist = new Array();
@@ -56,13 +56,16 @@ router.get('/filelist', function (req, res, next) {
     }
     // console.log(filenamelist);
     // console.log(dirnamelist);
+    console.log(sizelist);
+
     res.render('index', {
         dataip: reqIp,
         filelist: filelist,
         dirlist: dirlist,
         dirnamelist: dirnamelist,
         filenamelist: filenamelist,
-        filepath: filepath
+        filepath: filepath,
+        // filesize: filesize
     });
     //将res的变量映射到ejs模板 以供调用
 })
@@ -75,7 +78,6 @@ router.get('/filelist', function (req, res, next) {
 function getFileList(filepath, res) {
     var i = 0;
     var filelist = new Array();
-    // console.log(filepath);
     var files = fs.readdirSync(filepath);
     files.forEach(function (file) {
         if (fs.existsSync(filepath + file)) {
@@ -95,7 +97,7 @@ function getFileList(filepath, res) {
  * @param filepath
  * @param res
  */
-function getDirList(filepath, res) {
+function getDirList(filepath) {
     var i = 0;
     var dirlist = new Array();
     var files = fs.readdirSync(filepath);
@@ -112,6 +114,58 @@ function getDirList(filepath, res) {
 
     return dirlist;
 }
+
+function getSizeList(filepath) {
+    var i = 0;
+    var sizelist = new Array();
+    var files = fs.readdirSync(filepath);
+    files.forEach(function (file) {
+        if (fs.existsSync(filepath + file)) {
+            if (fs.lstatSync(filepath + file).isDirectory()) {
+                sizelist.push('-');
+                i++;
+                // console.log("我是目录", filepath + file);
+            }  
+
+            else {
+                sizelist.push(`${fs.statSync(filepath + file).size}`);
+                // sizelist[i] = fs.statSync(i).size;
+                i++;
+                // console.log("我是文件", filepath + file);
+            }
+        }
+    });
+
+    return sizelist;
+}
+
+// function getSizeList(path){
+//     fs.exists(path, (exists)=>{
+//         if(exists){
+//             var sizelist = []
+//             var dirlist = fs.readdirSync(path) //文件列表信息
+//                 for(let x of dirlist){
+//                     var fullname = path+'\\'+x;
+//                     fs.stat(fullname, (err, status)=>{
+//                         if(status.isDirectory()){
+//                            sizelist.push('-') 
+//                         }
+
+//                         else{
+//                             sizelist.push((fs.statSync(path+'\\'+x).size))
+//                         }
+
+//                         if(x==dirlist.pop()){
+//                             console.log(sizelist)
+//                             return sizelist
+//                         }
+//                             //非常奇怪 stat内包含的信息 只能在stat作用域下提取 甚至无法return抛出
+//                     })         
+//                 }
+//         }
+//     })
+// }
+
 
 /**
  * 文件下载
@@ -151,3 +205,4 @@ function getIPAdress(){
 
 exports.router = router
 exports.getIPAdress = getIPAdress
+

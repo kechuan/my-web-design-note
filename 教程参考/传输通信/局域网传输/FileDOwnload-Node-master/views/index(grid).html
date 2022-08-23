@@ -32,33 +32,28 @@
 
 <div id="files">
 <!-- 文件夹显示 -->
-    <ul id='information'>
-        <li id='name'></li>
-        <li id='size'></li>
-    </ul>
-
     <ul id='dirlist'>
-        <!-- 根据index.js获取的数组长度返回文件列表 -->
         <% for(var i=0; i<= dirlist.length-1; i++){ %>
+
+        
             <a href="http://<%= dataip %>/filelist?path=<%= dirlist[i] %>" class="folder" >
-                <li class="folder">  
-                    <div class="dirname"><%= dirnamelist[i] %></div>
-                    <div class="filesize">占坑位</div>   
-                </li>
+              <li class="folder">  <div class="dirname"><%= dirnamelist[i] %></div>   </li>
+                    
             </a>
-                
+                <!-- 根据index.js获取的数组长度返回文件列表 -->
+        
+        
         <%}%>
     </ul>
 
 <!--文件显示-->
     <ul id='filelist'>
         <% for(var i=0; i<= filelist.length-1; i++){ %>
+        
+        
             <a href="http://<%= dataip %>/filedownload?path=<%= filelist[i] %>"
                 class="folder" alt='<%= filenamelist[i] %>'>
-                <li class="file"> 
-                    <div class="filename"><%= filenamelist[i] %></div>
-                    <div class="filesize">占坑位</div>
-                </li>
+        <li class="file"> <div class="filename"><%= filenamelist[i] %></div></li>
             </a>
        
         

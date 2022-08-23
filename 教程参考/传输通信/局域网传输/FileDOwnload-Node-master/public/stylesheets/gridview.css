@@ -24,6 +24,9 @@
      
  }
 
+#information{
+    display: none;
+}
 
 #files{
     display: flex;
@@ -47,28 +50,17 @@
    height: 36px;
 }
 
+.filesize{
+    display: none;
+}
+
+
  #text{
     display: flex;
     align-content: center;
     font-size: 1.3em;
  }
 
-#setting{
-    display: flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-}
-
-#view_change{
-    display: flex;
-    width: 60px;
-    height: 60px;
-    background-color: rgb(44,154,165);
-    justify-content: center;
-    align-items: center;
-    border-radius: 30px;
-    cursor: pointer;
-}
 
 #grid_view{
     display: block;

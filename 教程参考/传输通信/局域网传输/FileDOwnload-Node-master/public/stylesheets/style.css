@@ -8,16 +8,12 @@
      list-style: none;
  }
 
-
- ul li:hover{
-    
- }
-
-
 a {
     height: 24px;
     line-height: 20px;
-    text-align: center; 
+    text-align: center;
+    text-decoration: none;
+    color: orange;
 }
 
 #nav{
@@ -33,7 +29,6 @@ a {
  }
 
 #path #menu{
-    color: orange;
     text-decoration: none;
     font: 1.2em sans-serif;
 }
@@ -41,7 +36,6 @@ a {
 #path li a{
      overflow: hidden;
      width: 150px;
-     position: relative;
      transition: all 0.2s linear 0.1s;
      border: 1px solid #CCC;
      border-radius: 8px;
@@ -56,3 +50,22 @@ a {
     display: inline-flex;
 }
 
+#setting{
+    position: fixed;
+    right: 1%;
+    bottom: 5%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+#view_change{
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: rgb(44,154,165);
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    cursor: pointer;
+}
