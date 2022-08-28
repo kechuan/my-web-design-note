@@ -6,36 +6,35 @@ var pathname = 'D:\\All Local Downloads'
 var filePath = pathname.replace(/\\/g,'/')
 
 
-filePath = decodeURI(filePath); //将url的ascii码信息转译回正常的编码
+// filePath = decodeURI(filePath); //将url的ascii码信息转译回正常的编码
 
 
-fs.exists(filePath, (exists)=>{
-    if(exists){
-    var sizelist = []
-    var dirlist = fs.readdirSync(filePath) //文件列表信息
-        for(let x of dirlist){
-        var fullname = pathname+'\\'+x;
-            fs.stat(fullname, (err, status)=>{
-                if(status.isDirectory()){
-                    console.log(`Dir:${pathname+'\\'+x}`)
+
+
+
+function getSizelist(filePath){
+    var checkDir =  fs.existsSync(filePath)
+    if(checkDir){
+        var sizelist = []
+        var dirlist = fs.readdirSync(filePath) //文件列表信息
+            for(let x of dirlist){
+                var fullname = pathname+'\\'+x;
+                var checkFile = fs.lstatSync(fullname)
+
+                if(checkFile){
+                    if(checkFile.isDirectory()){}
+                    else{sizelist.push((fs.statSync(fullname).size))}
+                  
+                    if(x==dirlist.pop()){return sizelist}
+
                 }
-
-                else{
-                    sizelist.push((fs.statSync(pathname+'\\'+x).size))
-                    console.log(`File:${pathname+'\\'+x}`)
-                }
-
-                if(x==dirlist[dirlist.length-1]){
-                    return sizelist
-                }
-                    //非常奇怪 stat内包含的信息 只能在stat作用域下提取
-            })         
-        }
+            }
     }
-})
-getDirList(pathname)
+    
+} 
 
-//这样就能实现单个文件夹下的文件与文件夹列表获取
+
+console.log(getSizelist(filePath))
 
 function getDirList(filePath) {
     var i = 0;
@@ -54,4 +53,13 @@ function getDirList(filePath) {
 
     return dirlist
 }
+
+
+
+
+
+// getDirList(pathname)
+
+//这样就能实现单个文件夹下的文件与文件夹列表获取
+
 

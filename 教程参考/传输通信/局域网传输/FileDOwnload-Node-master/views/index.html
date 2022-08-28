@@ -43,7 +43,7 @@
             <a href="http://<%= dataip %>/filelist?path=<%= dirlist[i] %>" class="folder" >
                 <li class="folder">  
                     <div class="dirname"><%= dirnamelist[i] %></div>
-                    <div class="filesize">占坑位</div>   
+                    <div class="filesize">—</div>   
                 </li>
             </a>
                 
@@ -56,8 +56,29 @@
             <a href="http://<%= dataip %>/filedownload?path=<%= filelist[i] %>"
                 class="folder" alt='<%= filenamelist[i] %>'>
                 <li class="file"> 
-                    <div class="filename"><%= filenamelist[i] %></div>
-                    <div class="filesize">占坑位</div>
+                    <div class="filename">
+                        <%if(filenamelist[i].length>100){%>
+                        <% var overflow=filenamelist[i].slice(0,100) %>
+                        <%= `${overflow}...` %>
+                        
+
+                        <%}else{%>
+                        <%= filenamelist[i] %>
+                        <%}%>
+                    </div>
+
+                    <div class="filesize">
+                        <% if(sizelist[i]<1024){ %>
+                        <%= `${sizelist[i]}B` %>
+                        <%}else if(sizelist[i]<Math.pow(1024, 2)){%>
+                        <%= `${(sizelist[i]/1024).toFixed(2)}KB`%>
+                        <%}else if(sizelist[i]<Math.pow(1024, 3)){%>
+                        <%= `${(sizelist[i]/Math.pow(1024, 2)).toFixed(2)}MB`%>
+                        <%}else{%>
+                        <%= `${(sizelist[i]/Math.pow(1024, 3)).toFixed(2)}GB`%>
+                        <%}%>
+
+                    </div>
                 </li>
             </a>
        

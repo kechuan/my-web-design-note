@@ -3,7 +3,7 @@
 
 ul li.folder, ul li.file {
      display: flex;
-     height: 35px;
+     
      flex-direction: row;
      justify-content: space-around;
      align-items: center;
@@ -50,8 +50,10 @@ ul li.folder, ul li.file {
 }
 
 .filename{
+
     position: absolute;
     left: 10%;
+    overflow: hidden;
 }
 
 .filesize{
@@ -93,9 +95,9 @@ ul li.folder, ul li.file {
 
 /*最小xxx px才不会触发 或者直接让css完全固定 @media screen*/
 
-@media screen {
+@media (max-width: 842px) {
         body{
-            width: 830px;
+            width: 730px;
         }
 }
 

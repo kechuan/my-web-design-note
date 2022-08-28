@@ -1,10 +1,8 @@
-var express = require('express');
+﻿var express = require('express');
 var fs = require("fs");
 var router = express.Router();
 
-
 var port = 8888;
-
 //TODO html页面优化
 /* GET home page.  => 默认情况下跳转至view下的test页面 */ 
 router.get('/', function (req, res, next) {
@@ -37,18 +35,23 @@ router.get('/filedownload', function (req, res, next) {
 //文件列表 需求通过上层携带 ?path='' 以访问 直接访问无效 由file跳转以携带字样
 router.get('/filelist', function (req, res, next) {
     let filepath = req.query.path.slice(2); //截取盘符之后的目录信息
-    let path = req.query["path"];
-    // console.log(filepath)
-    // console.log(req.query) 
-    // console.log(path)
-    if (path != null) {
-        filepath = path + "\\"; //访问盘符后的目录有效时添加\ D:xxx => D:\xxx
-    }
-    reqIp = getIPAdress() +':'+port;
+    let path = req.query["path"]; //以及完整的绝对路径目录
 
+    // console.log(req.query)
+    
+    
+    // console.log('path:',path)
+    // console.log('filepath:',filepath)
+    if (path != null) {
+        filepath = path + "\\"; //访问盘符后的目录有效时添加\ \xxx => \xxx\
+    }
+    // console.log('newfilepath:',filepath)
+
+
+    reqIp = getIPAdress() +':'+port;
     dirlist = getDirList(filepath);
     filelist = getFileList(filepath);
-    sizelist = getSizeList(filepath)
+    sizelist = getSizeList(path)
 
     //处理文件名显示问题
     filenamelist = new Array();
@@ -64,7 +67,7 @@ router.get('/filelist', function (req, res, next) {
     }
     // console.log(filenamelist);
     // console.log(dirnamelist);
-    // console.log(sizelist);
+    console.log(sizelist);
 
     res.render('index', {
         dataip: reqIp,
@@ -74,7 +77,6 @@ router.get('/filelist', function (req, res, next) {
         filenamelist: filenamelist,
         filepath: filepath,
         sizelist: sizelist
-        //好像。。如果对于与变量同名 不需要通过这样传递
     });
     //将res的变量映射到ejs模板 以供调用
 })
@@ -91,7 +93,7 @@ function getFileList(filepath, res) {
     files.forEach(function (file) {
         if (fs.existsSync(filepath + file)) {
             if (fs.lstatSync(filepath + file).isDirectory()) {
-
+                console.log("FileDir:", filepath + file);
             } 
 
             else {
@@ -116,7 +118,8 @@ function getDirList(filepath) {
         if (fs.existsSync(filepath + file)) {
             if (fs.lstatSync(filepath + file).isDirectory()) {
                 dirlist[i++] = filepath + file;
-            }
+            } 
+            
         }
     });
 
@@ -127,18 +130,16 @@ function getSizeList(filepath) {
     var i = 0;
     var sizelist = new Array();
     var files = fs.readdirSync(filepath);
-    files.forEach(function (file) {
-        if (fs.existsSync(filepath + file)) {
-            if (fs.lstatSync(filepath + file).isFile()) {
-                sizelist.push(`${fs.statSync(filepath + file).size}`);
+    files.forEach(function (file) { //对files 即filepath下每个文件/文件夹执行funciton
+        if (fs.existsSync(filepath + file)) {   //如果filepath+file的目录是存在的话
+            if (fs.lstatSync(filepath + file).isFile()) {   //以链接形式访问是否file
+                sizelist.push(`${fs.lstatSync(filepath + file).size}`);
                 i++;
             }  
         }
     });
-
     return sizelist;
 }
-
 
 
 
@@ -180,3 +181,4 @@ function getIPAdress(){
 
 exports.router = router
 exports.getIPAdress = getIPAdress
+
