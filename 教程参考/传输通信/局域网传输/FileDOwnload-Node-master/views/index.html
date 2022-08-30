@@ -5,10 +5,12 @@
     <link rel='stylesheet' href='/stylesheets/font.css'/>
     <link rel="stylesheet" href="/stylesheets/style.css">
     <link rel="stylesheet" id='view' href="/stylesheets/gridview.css">
+    <link rel="stylesheet" href="/stylesheets/iconfont/icons.css">
 </head>
 
 <body>
     <script src='/js/view.js'></script>
+    <script src='/js/iconfont.js'></script>
 <!--文件夹显示效果-->
 <!-- test:D:\\All Local Downloads\\MobileFile -->
  <div id="nav">kechuan的文件分享页面</div>
@@ -41,6 +43,10 @@
         <!-- 根据index.js获取的数组长度返回文件列表 -->
         <% for(var i=0; i<= dirlist.length-1; i++){ %>
             <a href="http://<%= dataip %>/filelist?path=<%= dirlist[i] %>" class="folder" >
+                
+<svg class="directory_md" aria-hidden="true">
+  <use xlink:href="#directory_md"></use>
+</svg>
                 <li class="folder">  
                     <div class="dirname"><%= dirnamelist[i] %></div>
                     <div class="filesize">—</div>   
@@ -55,6 +61,12 @@
         <% for(var i=0; i<= filelist.length-1; i++){ %>
             <a href="http://<%= dataip %>/filedownload?path=<%= filelist[i] %>"
                 class="folder" alt='<%= filenamelist[i] %>'>
+                
+                <svg class="video_ext" aria-hidden="true">
+                    <use xlink:href="#video_ext"></use>
+                </svg>
+
+
                 <li class="file"> 
                     <div class="filename">
                         <%if(filenamelist[i].length>100){%>
@@ -103,6 +115,25 @@
         </div>
     </div>
 </div>
+
+
+图标展示框
+<svg class="show" aria-hidden="true">
+  <use xlink:href="#video_ext"></use>
+</svg>
+
+<svg class="show" aria-hidden="true">
+  <use xlink:href="#directory"></use>
+</svg>
+
+<svg class="show" aria-hidden="true">
+  <use xlink:href="#directory_md"></use>
+</svg>
+
+计划:
+图标自定义
+深浅背景间隔
+
 
 </body>
 </html>

@@ -1,33 +1,18 @@
- 
-
-
-ul li.folder, ul li.file {
+ ul li.folder, ul li.file {
      display: flex;
-     
      flex-direction: row;
      justify-content: space-around;
      align-items: center;
 }
 
- a.folder {
+a.folder {
     display: flex;
-    border-radius: 0px;
-    /* overflow: hidden; */
     color: #595c5f;
-    background: url(/images/folder.png) center top no-repeat;
-    background-size: 45%;
-    line-height: 20px;
     font-size: 12px;
     width: 77.5px;
     height: 35px;
     flex-direction: row;
 }
-
-#filelist a.folder {
-     background: url(/images/file.png) center top no-repeat;
-     background-size: 40%;
-}
-
 
 #files{
     display: flex;

@@ -1,28 +1,22 @@
  ul li.folder, ul li.file {
      display: flex;
      width: 100px;
-     height: 115px;
-     background: url(/images/folder.png) center top no-repeat;
      justify-content: flex-end;
      flex-direction: column;
  }
 
- ul li.file {
-     background: url(/images/file.png) center top no-repeat;
- }
-
  a.folder {
     display: flex;
+    flex-direction: column;
     border-radius: 0px;
     overflow: hidden;
     color: #595c5f;
-    line-height: 20px;
     font-size: 12px;
     justify-content: center;
     width: 100px;
     height: 115px;
      
- }
+}
 
 #information{
     display: none;
