@@ -23,7 +23,10 @@ function getSizelist(filePath){
 
                 if(checkFile){
                     if(checkFile.isDirectory()){}
-                    else{sizelist.push((fs.statSync(fullname).size))}
+                    else{
+                        sizelist.push((fs.statSync(fullname).size))
+                        //console.log(path.extname(fullname))
+                    }
                   
                     if(x==dirlist.pop()){return sizelist}
 

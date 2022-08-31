@@ -24,10 +24,11 @@
             
             <li>
                 <%var array = []; var string = []%>
+
                 <a href="http://<%= dataip %>/filelist?path=<% for(var j=0; j<=i; j++){%><%array.push(filepath.split('\\')[j])%><%string.push(array);string.join('\\')%><%}%><%=string[i].toString().replace(/\,/g,'\\')%>"><%= array[i] %>                  
                 </a>
             </li>
-            <div id="text">/</div> 
+                    <div id="text">/</div> 
         <%}%>
     </ul>
  </div> 
@@ -44,13 +45,15 @@
         <% for(var i=0; i<= dirlist.length-1; i++){ %>
             <a href="http://<%= dataip %>/filelist?path=<%= dirlist[i] %>" class="folder" >
                 
-<svg class="directory_md" aria-hidden="true">
-  <use xlink:href="#directory_md"></use>
-</svg>
-                <li class="folder">  
-                    <div class="dirname"><%= dirnamelist[i] %></div>
-                    <div class="filesize">—</div>   
-                </li>
+            <svg class="icons" aria-hidden="true">
+              <use xlink:href="#directory_md"></use>
+            </svg>
+
+            <li class="folder">  
+                <div class="dirname"><%= dirnamelist[i] %></div>
+                <div class="filesize">—</div>   
+            </li>
+
             </a>
                 
         <%}%>
@@ -62,10 +65,32 @@
             <a href="http://<%= dataip %>/filedownload?path=<%= filelist[i] %>"
                 class="folder" alt='<%= filenamelist[i] %>'>
                 
-                <svg class="video_ext" aria-hidden="true">
-                    <use xlink:href="#video_ext"></use>
-                </svg>
+                <svg class="icons" aria-hidden="true">
+                    <%var video_fliter = /\.mkv|mp4|flv|webv|m2ts|rmvb$/%>
+                    <%var audio_fliter = /\.mp3|aac|flac|ogg|opus|aiff|alac$/%>
+                    <%var picture_fliter = /\.jpe?g|png|bmp|webp$/%>
+                    <%var compress_fliter = /\.zip|rar|7z|\d{2}$/%>
+                    <%var text_fliter = /\.txt|md|lrc|ini|json|cfg$/%>
 
+                    <use xlink:href="
+                        <%if(video_fliter.test(extlist[i])){%>
+                        <%="#ext-video"%>
+                        <%}else if(audio_fliter.test(extlist[i])){%>
+                        <%="#ext-audio"%>
+                        <%}else if(picture_fliter.test(extlist[i])){%>
+                        <%="#ext-picture"%>
+                        <%}else if(text_fliter.test(extlist[i])){%>
+                        <%="#ext-txt"%>
+                        <%}else if(compress_fliter.test(extlist[i])){%>
+                        <%="#ext-compress"%>
+                        <%}else{%>
+                        <%="#ext-unknown"%>
+                        <%}%>">  
+                    </use>
+                    
+                        
+                    
+                </svg>
 
                 <li class="file"> 
                     <div class="filename">
@@ -99,6 +124,10 @@
     </ul>
 </div>
 
+<!-- #ext-video -->
+
+
+
 <div id="setting">
     <div id="view_change" onclick="change()">
         <div id="grid_view">
@@ -119,7 +148,7 @@
 
 图标展示框
 <svg class="show" aria-hidden="true">
-  <use xlink:href="#video_ext"></use>
+  <use xlink:href="#ext-video"></use>
 </svg>
 
 <svg class="show" aria-hidden="true">

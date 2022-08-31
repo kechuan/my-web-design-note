@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var fs = require("fs");
 var router = express.Router();
 
@@ -46,9 +47,11 @@ router.get('/filelist', function (req, res, next) {
     }
     reqIp = getIPAdress() +':'+port;
 
-    dirlist = getDirList(filepath);
-    filelist = getFileList(filepath);
-    sizelist = getSizeList(filepath)
+    var filedetail = informationList(filepath);
+    dirlist = filedetail[0];
+    filelist = filedetail[1];
+    sizelist = filedetail[2];
+    extlist = filedetail[3];
 
     //处理文件名显示问题
     filenamelist = new Array();
@@ -65,6 +68,7 @@ router.get('/filelist', function (req, res, next) {
     // console.log(filenamelist);
     // console.log(dirnamelist);
     // console.log(sizelist);
+    console.log(informationList(filepath)[3])
 
     res.render('index', {
         dataip: reqIp,
@@ -73,74 +77,44 @@ router.get('/filelist', function (req, res, next) {
         dirnamelist: dirnamelist,
         filenamelist: filenamelist,
         filepath: filepath,
-        sizelist: sizelist
+        sizelist: sizelist,
+        extlist: extlist
         //好像。。如果对于与变量同名 不需要通过这样传递
     });
     //将res的变量映射到ejs模板 以供调用
 })
 
-/**
- * 文件列表获取
- * @param filepath
- * @param res
- */
-function getFileList(filepath, res) {
-    var i = 0;
-    var filelist = new Array();
-    var files = fs.readdirSync(filepath);
-    files.forEach(function (file) {
-        if (fs.existsSync(filepath + file)) {
-            if (fs.lstatSync(filepath + file).isDirectory()) {
-
-            } 
-
-            else {
-                filelist[i++] = filepath + file;
-                console.log("File:", filelist[i - 1]);
-            }
-        }
-    });
-    return filelist;
-}
-
-/**
- * 文件目录获取
- * @param filepath
- * @param res
- */
-function getDirList(filepath) {
-    var i = 0;
+function informationList(filepath){
+    
+    var informationlist = new Array();
     var dirlist = new Array();
+    var filelist = new Array();
+    var sizelist = new Array();
+    var extlist = new Array();
+
+    // var i = 0;
+
     var files = fs.readdirSync(filepath);
     files.forEach(function (file) {
         if (fs.existsSync(filepath + file)) {
-            if (fs.lstatSync(filepath + file).isDirectory()) {
-                dirlist[i++] = filepath + file;
+            var fullname = filepath + file;
+            if (fs.lstatSync(fullname).isDirectory()) {
+                dirlist.push(fullname)
+            }
+
+            else{
+                filelist.push(file);
+                sizelist.push(`${fs.statSync(fullname).size}`);
+                extlist.push(path.extname(fullname).toLowerCase())
+                
             }
         }
+
+        
     });
-
-    return dirlist;
+    informationlist.push(dirlist, filelist, sizelist, extlist)
+    return informationlist
 }
-
-function getSizeList(filepath) {
-    var i = 0;
-    var sizelist = new Array();
-    var files = fs.readdirSync(filepath);
-    files.forEach(function (file) {
-        if (fs.existsSync(filepath + file)) {
-            if (fs.lstatSync(filepath + file).isFile()) {
-                sizelist.push(`${fs.statSync(filepath + file).size}`);
-                i++;
-            }  
-        }
-    });
-
-    return sizelist;
-}
-
-
-
 
 /**
  * 文件下载
