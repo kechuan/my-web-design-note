@@ -82,6 +82,7 @@ a.folder {
 
 @media (max-width: 842px) {
         body{
+            /*width: 730px;*/
             width: 730px;
         }
 }

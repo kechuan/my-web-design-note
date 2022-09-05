@@ -31,17 +31,16 @@ router.get('/file', function (req, res, next) {
 
 router.get('/filedownload', function (req, res, next) {
     let filepath = req.query.path;
+
     downloadFile(filepath, res, req);
 });
 
 
 //文件列表 需求通过上层携带 ?path='' 以访问 直接访问无效 由file跳转以携带字样
 router.get('/filelist', function (req, res, next) {
+    console.log(req)
     let filepath = req.query.path.slice(2); //截取盘符之后的目录信息
     let path = req.query["path"];
-    // console.log(filepath)
-    // console.log(req.query) 
-    // console.log(path)
     if (path != null) {
         filepath = path + "\\"; //访问盘符后的目录有效时添加\ D:xxx => D:\xxx
     }
@@ -78,8 +77,8 @@ router.get('/filelist', function (req, res, next) {
         filenamelist: filenamelist,
         filepath: filepath,
         sizelist: sizelist,
-        extlist: extlist
-        //好像。。如果对于与变量同名 不需要通过这样传递
+        // extlist: extlist
+        // 为什么 extlist即使不主动去传递 ejs也能接收到变量？
     });
     //将res的变量映射到ejs模板 以供调用
 })
@@ -124,7 +123,6 @@ function informationList(filepath){
 function downloadFile(filepath, res, req) {
     var filepathTemp = filepath.split("\\");
     var filename = filepathTemp[filepathTemp.length - 1];
-    // console.log(filepathTemp);
     res.download(filepath, filename, function (err) {
         if (err) {
             console.log(err);
