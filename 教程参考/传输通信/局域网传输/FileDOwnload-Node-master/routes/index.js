@@ -1,7 +1,9 @@
 var express = require('express');
 var path = require('path');
 var fs = require("fs");
+
 var router = express.Router();
+
 
 
 var port = 8888;
@@ -30,19 +32,21 @@ router.get('/file', function (req, res, next) {
 //因此对于文件夹来说 才会接入filelist
 
 router.get('/filedownload', function (req, res, next) {
-    let filepath = req.query.path;
-
+    let filepath = req.url.slice(19); //这是最蠢 最不语义化的做法
+    //但是query本身的&%等特殊字符又会被解析 怎么办。。
+    // filepath = filepath.replace(/\//g, "\\");
+    filepath = decodeURI(filepath); //将url的ascii码信息转译回正常的编码
+    console.log('this is log:', filepath);
     downloadFile(filepath, res, req);
 });
 
 
 //文件列表 需求通过上层携带 ?path='' 以访问 直接访问无效 由file跳转以携带字样
 router.get('/filelist', function (req, res, next) {
-    console.log(req)
     let filepath = req.query.path.slice(2); //截取盘符之后的目录信息
     let path = req.query["path"];
     if (path != null) {
-        filepath = path + "\\"; //访问盘符后的目录有效时添加\ D:xxx => D:\xxx
+        filepath = path + "\\"; //访问盘符后的目录有效时添加\ D: => D:\
     }
     reqIp = getIPAdress() +':'+port;
 
@@ -51,6 +55,10 @@ router.get('/filelist', function (req, res, next) {
     filelist = filedetail[1];
     sizelist = filedetail[2];
     extlist = filedetail[3];
+
+
+    // console.log(filedetail)
+    
 
     //处理文件名显示问题
     filenamelist = new Array();
@@ -67,22 +75,28 @@ router.get('/filelist', function (req, res, next) {
     // console.log(filenamelist);
     // console.log(dirnamelist);
     // console.log(sizelist);
-    console.log(informationList(filepath)[3])
+    // console.log(extlist)
 
     res.render('index', {
         dataip: reqIp,
-        filelist: filelist,
-        dirlist: dirlist,
-        dirnamelist: dirnamelist,
-        filenamelist: filenamelist,
         filepath: filepath,
-        sizelist: sizelist,
+
+        // filelist: filelist,
+        // dirlist: dirlist,
+        // dirnamelist: dirnamelist,
+        // filenamelist: filenamelist,
+        // sizelist: sizelist,
         // extlist: extlist
-        // 为什么 extlist即使不主动去传递 ejs也能接收到变量？
+        // 为什么 即使它们不主动去传递 ejs也能接收到变量？
     });
     //将res的变量映射到ejs模板 以供调用
 })
 
+
+/**
+ * 文件列表详细信息获取
+ * @param filepath
+ */
 function informationList(filepath){
     
     var informationlist = new Array();
@@ -91,21 +105,19 @@ function informationList(filepath){
     var sizelist = new Array();
     var extlist = new Array();
 
-    // var i = 0;
-
     var files = fs.readdirSync(filepath);
     files.forEach(function (file) {
         if (fs.existsSync(filepath + file)) {
             var fullname = filepath + file;
+
             if (fs.lstatSync(fullname).isDirectory()) {
-                dirlist.push(fullname)
+                dirlist.push(fullname);
             }
 
             else{
-                filelist.push(file);
+                filelist.push(fullname);
                 sizelist.push(`${fs.statSync(fullname).size}`);
-                extlist.push(path.extname(fullname).toLowerCase())
-                
+                extlist.push(path.extname(fullname).toLowerCase());
             }
         }
 
@@ -121,8 +133,11 @@ function informationList(filepath){
  * @param res
  */
 function downloadFile(filepath, res, req) {
+    // console.log(filepath)
     var filepathTemp = filepath.split("\\");
-    var filename = filepathTemp[filepathTemp.length - 1];
+    
+    // var filename = filepathTemp[filepathTemp.length - 1];
+    var filename = filepathTemp[-1];
     res.download(filepath, filename, function (err) {
         if (err) {
             console.log(err);
@@ -144,6 +159,10 @@ function getIPAdress(){
             var alias = iface[i];
             if(alias.family === 'IPv4' && alias.address !== '127.0.0.1' && !alias.internal){
                 return alias.address;
+            }
+
+            else{
+                return 'localhost'
             }
         }
     }

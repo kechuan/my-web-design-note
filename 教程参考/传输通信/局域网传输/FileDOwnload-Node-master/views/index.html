@@ -28,7 +28,9 @@
                 <a href="http://<%= dataip %>/filelist?path=<% for(var j=0; j<=i; j++){%><%array.push(filepath.split('\\')[j])%><%string.push(array);string.join('\\')%><%}%><%=string[i].toString().replace(/\,/g,'\\')%>"><%= array[i] %>                  
                 </a>
             </li>
-                    <div id="text">/</div> 
+            
+            <div id="text">/</div> 
+
         <%}%>
     </ul>
  </div> 

@@ -1,24 +1,22 @@
 lockfileVersion: 5.4
 
 specifiers:
-  body-parser: ~1.15.1
-  cookie-parser: ~1.4.3
   debug: ~2.2.0
   ejs: ~2.4.1
   express: ~4.13.4
   morgan: ~1.7.0
   open: ^8.4.0
   serve-favicon: ~2.3.0
+  url: ^0.11.0
 
 dependencies:
-  body-parser: 1.15.2
-  cookie-parser: 1.4.6
   debug: 2.2.0
   ejs: 2.4.2
   express: 4.13.4
   morgan: 1.7.0
   open: 8.4.0
   serve-favicon: 2.3.2
+  url: 0.11.0
 
 packages:
 
@@ -39,28 +37,6 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /body-parser/1.15.2:
-    resolution: {integrity: sha512-w+PHzLDPwR2csqaHDt/oKTD5XVieOWaa1OV0VcX+agasefEZI3jK6iBabpOcM3ovd3YvIg+sK9sX437wvYjUSw==}
-    engines: {node: '>= 0.8'}
-    dependencies:
-      bytes: 2.4.0
-      content-type: 1.0.4
-      debug: 2.2.0
-      depd: 1.1.2
-      http-errors: 1.5.1
-      iconv-lite: 0.4.13
-      on-finished: 2.3.0
-      qs: 6.2.0
-      raw-body: 2.1.7
-      type-is: 1.6.18
-    transitivePeerDependencies:
-      - supports-color
-    dev: false
-
-  /bytes/2.4.0:
-    resolution: {integrity: sha512-SvUX8+c/Ga454a4fprIdIUzUN9xfd1YTvYh7ub5ZPJ+ZJ/+K2Bp6IpWGmnw8r3caLTsmhvJAKZz3qjIo9+XuCQ==}
-    dev: false
-
   /content-disposition/0.5.1:
     resolution: {integrity: sha512-LXP3Ekizrynh01Muic+1XMkR46z/d2wAO/TBnwCgdTmpFJrtwkzrCxQCsC7QnNqlShJgrQyygcX2I8oJ0wnzkw==}
     engines: {node: '>= 0.6'}
@@ -71,25 +47,12 @@ packages:
     engines: {node: '>= 0.6'}
     dev: false
 
-  /cookie-parser/1.4.6:
-    resolution: {integrity: sha512-z3IzaNjdwUC2olLIB5/ITd0/setiaFMLYiZJle7xg5Fe9KWAceil7xszYfHHBtDFYLSgJduS2Ty0P1uJdPDJeA==}
-    engines: {node: '>= 0.8.0'}
-    dependencies:
-      cookie: 0.4.1
-      cookie-signature: 1.0.6
-    dev: false
-
   /cookie-signature/1.0.6:
     resolution: {integrity: sha512-QADzlaHc8icV8I7vbaJXJwod9HWYp8uCqf1xa4OfNu1T7JVxQIrUgOWtHdNDtPiywmFbiS12VjotIXLrKM3orQ==}
     dev: false
 
   /cookie/0.1.5:
     resolution: {integrity: sha512-/lhu+NGBI5pOLXILS07DrPXYX0QDD/ejVhbwoCUcLPBqMEK9b++f9rUhAlhLkcTz9mV6QSeD+w3cHJ96rMZaFQ==}
-    engines: {node: '>= 0.6'}
-    dev: false
-
-  /cookie/0.4.1:
-    resolution: {integrity: sha512-ZwrFkGJxUR3EIoXtO+yVE69Eb7KlixbaeAWfBQB9vVsNn/o+Yw69gBWSSDK825hQNdN+wF8zELf3dFNl/kxkUA==}
     engines: {node: '>= 0.6'}
     dev: false
 
@@ -198,24 +161,6 @@ packages:
     dependencies:
       inherits: 2.0.4
       statuses: 1.2.1
-    dev: false
-
-  /http-errors/1.5.1:
-    resolution: {integrity: sha512-ftkc2U5ADKHv8Ny1QJaDn8xnE18G+fP5QYupx9c3Xk6L5Vgo3qK8Bgbpb4a+jRtaF/YQKjIuXA5J0tde4Tojng==}
-    engines: {node: '>= 0.6'}
-    dependencies:
-      inherits: 2.0.3
-      setprototypeof: 1.0.2
-      statuses: 1.5.0
-    dev: false
-
-  /iconv-lite/0.4.13:
-    resolution: {integrity: sha512-QwVuTNQv7tXC5mMWFX5N5wGjmybjNBBD8P3BReTkPmipoxTUFgWM2gXNvldHQr6T14DH0Dh6qBVg98iJt7u4mQ==}
-    engines: {node: '>=0.8.0'}
-    dev: false
-
-  /inherits/2.0.3:
-    resolution: {integrity: sha512-x00IRNXNy63jwGkJmzPigoySHbaqpNuzKbBOmzK+g2OdZpQ9w+sxCN+VSB3ja7IAge2OP2qpfxTjeNcyjmW1uw==}
     dev: false
 
   /inherits/2.0.4:
@@ -335,27 +280,23 @@ packages:
       ipaddr.js: 1.0.5
     dev: false
 
+  /punycode/1.3.2:
+    resolution: {integrity: sha512-RofWgt/7fL5wP1Y7fxE7/EmTLzQVnB0ycyibJ0OOHIlJqTNzglYFxVwETOcIoJqJmpDXJ9xImDv+Fq34F/d4Dw==}
+    dev: false
+
   /qs/4.0.0:
     resolution: {integrity: sha512-8MPmJ83uBOPsQj5tQCv4g04/nTiY+d17yl9o3Bw73vC6XlEm2POIRRlOgWJ8i74bkGLII670cDJJZkgiZ2sIkg==}
     dev: false
 
-  /qs/6.2.0:
-    resolution: {integrity: sha512-xJlDcRyZKEdvI99YhwNqGKmeiOCcfxk5E09Gof/E8xSpiMcqJ+BCwPZ3ykEYQdwDlmTpK6YlPB/kd8zfy9e7wg==}
-    engines: {node: '>=0.6'}
+  /querystring/0.2.0:
+    resolution: {integrity: sha512-X/xY82scca2tau62i9mDyU9K+I+djTMUsvwf7xnUX5GLvVzgJybOJf4Y6o9Zx3oJK/LSXg5tTZBjwzqVPaPO2g==}
+    engines: {node: '>=0.4.x'}
+    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
     dev: false
 
   /range-parser/1.0.3:
     resolution: {integrity: sha512-nDsRrtIxVUO5opg/A8T2S3ebULVIfuh8ECbh4w3N4mWxIiT3QILDJDUQayPqm2e8Q8NUa0RSUkGCfe33AfjR3Q==}
     engines: {node: '>= 0.6'}
-    dev: false
-
-  /raw-body/2.1.7:
-    resolution: {integrity: sha512-x4d27vsIG04gZ1imkuDXB9Rd/EkAx5kYzeMijIYw1PAor0Ld3nTlkQQwDjKu42GdRUFCX1AfGnTSQB4O57eWVg==}
-    engines: {node: '>= 0.8'}
-    dependencies:
-      bytes: 2.4.0
-      iconv-lite: 0.4.13
-      unpipe: 1.0.0
     dev: false
 
   /send/0.13.1:
@@ -419,17 +360,8 @@ packages:
       - supports-color
     dev: false
 
-  /setprototypeof/1.0.2:
-    resolution: {integrity: sha512-mNRSo7UFE4c4tjxlZ3KxO5r+3oQUD1M/KXbp/XTwTwybL4VR9T8Ltmv5DvZX8iRz6C3hQmQftXEV0EmTKRV6mg==}
-    dev: false
-
   /statuses/1.2.1:
     resolution: {integrity: sha512-pVEuxHdSGrt8QmQ3LOZXLhSA6MP/iPqKzZeO6Squ7PNGkA/9MBsSfV0/L+bIxkoDmjF4tZcLpcVq/fkqoHvuKg==}
-    dev: false
-
-  /statuses/1.5.0:
-    resolution: {integrity: sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==}
-    engines: {node: '>= 0.6'}
     dev: false
 
   /type-is/1.6.18:
@@ -443,6 +375,13 @@ packages:
   /unpipe/1.0.0:
     resolution: {integrity: sha512-pjy2bYhSsufwWlKwPc+l3cN7+wuJlK6uz0YdJEOlQDbl6jo/YlPi4mb8agUkVC8BF7V8NuzeyPNqRksA3hztKQ==}
     engines: {node: '>= 0.8'}
+    dev: false
+
+  /url/0.11.0:
+    resolution: {integrity: sha512-kbailJa29QrtXnxgq+DdCEGlbTeYM2eJUxsz6vjZavrCYPMIFHMKQmSKYAIuUK2i7hgPm28a8piX5NTUtM/LKQ==}
+    dependencies:
+      punycode: 1.3.2
+      querystring: 0.2.0
     dev: false
 
   /utils-merge/1.0.0:
