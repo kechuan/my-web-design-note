@@ -46,16 +46,14 @@
         <!-- 根据index.js获取的数组长度返回文件列表 -->
         <% for(var i=0; i<= dirlist.length-1; i++){ %>
             <a href="http://<%= dataip %>/filelist?path=<%= dirlist[i] %>" class="folder" >
-                
-            <svg class="icons" aria-hidden="true">
-              <use xlink:href="#directory_md"></use>
-            </svg>
+                <svg class="icons" aria-hidden="true">
+                  <use xlink:href="#directory_md"></use>
+                </svg>
 
-            <li class="folder">  
-                <div class="dirname"><%= dirnamelist[i] %></div>
-                <div class="filesize">—</div>   
-            </li>
-
+                <li class="folder">  
+                    <div class="dirname"><%= dirnamelist[i] %></div>
+                    <div class="filesize">—</div>   
+                </li>
             </a>
                 
         <%}%>
@@ -64,10 +62,9 @@
 <!--文件显示-->
     <ul id='filelist'>
         <% for(var i=0; i<= filelist.length-1; i++){ %>
-            <a href="http://<%= dataip %>/filedownload?path=<%= filelist[i] %>"
-                class="folder" alt='<%= filenamelist[i] %>'>
-                
+            <a href="http://<%= dataip %>/filedownload?path=<%= filelist[i] %>" class="folder"> 
                 <svg class="icons" aria-hidden="true">
+                    <%#var filename = decodeURIComponent(filelist[i])%>
                     <%var video_fliter = /\.mkv|mp4|flv|webv|m2ts|rmvb$/%>
                     <%var audio_fliter = /\.mp3|aac|flac|ogg|opus|aiff|alac$/%>
                     <%var picture_fliter = /\.jpe?g|png|bmp|webp$/%>
@@ -96,13 +93,14 @@
 
                 <li class="file"> 
                     <div class="filename">
-                        <%if(filenamelist[i].length>100){%>
-                        <% var overflow=filenamelist[i].slice(0,100) %>
+                        <%if(filenamelist[i].toString().length>100){%>
+                        <% var overflow = (filenamelist[i]).toString().slice(0,100) %>
                         <%= `${overflow}...` %>
                         
 
                         <%}else{%>
                         <%= filenamelist[i] %>
+
                         <%}%>
                     </div>
 

@@ -4,8 +4,6 @@ var fs = require("fs");
 
 var router = express.Router();
 
-
-
 var port = 8888;
 
 //TODO html页面优化
@@ -32,11 +30,17 @@ router.get('/file', function (req, res, next) {
 //因此对于文件夹来说 才会接入filelist
 
 router.get('/filedownload', function (req, res, next) {
-    let filepath = req.url.slice(19); //这是最蠢 最不语义化的做法
+    //EXP:/filedownload?path=D:\All%20Local%20Downloads\
+    //[Airota&LoliHouse]%20Deaimon%20-%2008%20[WebRip%201080p%20HEVC-10bit%20AAC%20ASSx2].mkv
     //但是query本身的&%等特殊字符又会被解析 怎么办。。
-    // filepath = filepath.replace(/\//g, "\\");
-    filepath = decodeURI(filepath); //将url的ascii码信息转译回正常的编码
-    console.log('this is log:', filepath);
+
+    // let filepath = req.url.replace('/filedownload?path=','')
+    // let filepath = req.url.slice(req.url.search(/(?=(\w)+:)/g))
+    let path = req.query.path
+    let filepath = decodeURIComponent(path); //将url的ascii码信息转译回正常的编码
+    console.log('this is fullname:', filepath)
+    // console.log('this is query:', req.query)
+    // console.log('this is req:', req)
     downloadFile(filepath, res, req);
 });
 
@@ -56,16 +60,16 @@ router.get('/filelist', function (req, res, next) {
     sizelist = filedetail[2];
     extlist = filedetail[3];
 
-
-    // console.log(filedetail)
     
 
     //处理文件名显示问题
     filenamelist = new Array();
     dirnamelist = new Array();
     for (var i=0;i<filelist.length;i++){
-        var temp = filelist[i].split("\\");
-        filenamelist[i] = temp[temp.length - 1];
+        // var temp = decodeURIComponent(filelist[i].split("\\"));
+        var temp = decodeURIComponent(filelist[i])
+        console.log(temp.split('\\').slice(-1)) 
+        filenamelist[i] = temp.split('\\').slice(-1);   //浅复制slice
     }
 
     for (var i=0;i<dirlist.length;i++){
@@ -80,7 +84,6 @@ router.get('/filelist', function (req, res, next) {
     res.render('index', {
         dataip: reqIp,
         filepath: filepath,
-
         // filelist: filelist,
         // dirlist: dirlist,
         // dirnamelist: dirnamelist,
@@ -115,7 +118,7 @@ function informationList(filepath){
             }
 
             else{
-                filelist.push(fullname);
+                filelist.push(encodeURIComponent(fullname));
                 sizelist.push(`${fs.statSync(fullname).size}`);
                 extlist.push(path.extname(fullname).toLowerCase());
             }
@@ -123,6 +126,7 @@ function informationList(filepath){
 
         
     });
+    
     informationlist.push(dirlist, filelist, sizelist, extlist)
     return informationlist
 }

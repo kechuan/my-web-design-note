@@ -80,10 +80,10 @@ a.folder {
 
 /*最小xxx px才不会触发 或者直接让css完全固定 @media screen*/
 
-@media (max-width: 842px) {
+@media (max-width: 872px) {
         body{
             /*width: 730px;*/
-            width: 730px;
+            width: 756px;
         }
 }
 
