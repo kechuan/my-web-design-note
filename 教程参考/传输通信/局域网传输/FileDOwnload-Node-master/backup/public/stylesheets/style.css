@@ -39,8 +39,7 @@ a {
 
 #path li a{
      overflow: hidden;
-     min-width: 50px;
-     max-width: 300px;
+     width: 150px;
      transition: all 0.2s linear 0.1s;
      border: 1px solid #CCC;
      border-radius: 8px;
@@ -74,4 +73,3 @@ a {
     border-radius: 30px;
     cursor: pointer;
 }
-

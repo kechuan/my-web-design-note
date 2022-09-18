@@ -1,24 +1,15 @@
-import express from 'express'
-import path from 'path'
-import favicon from 'serve-favicon'
-import logger from 'morgan'
-import ejs from 'ejs'
-// import cookieParser from 'cookie-parser'
-import session from 'express-session'
+var express = require('express'),
+    path = require('path'),
+    favicon = require('serve-favicon'),
+    logger = require('morgan'),
+    ejs = require('ejs'),
+    cookieParser = require('cookie-parser'),
+    session = require('express-session'),
 
-import { join, dirname } from 'node:path'
-import { fileURLToPath } from 'node:url'
-import { Low, JSONFile } from 'lowdb'
-
-
-const __dirname = dirname(fileURLToPath(import.meta.url)); //node-esm环境转换
-const file = join(__dirname, '/database/db.json')   //db.json位置
-const adapter = new JSONFile(file)//读写适配器 对接口来说实例了一个json对象 以json方式对待
-const db = new Low(adapter)//对db接口来说 则是根据json方式来写入database
-
-import {router as routes} from './routes/index.js'
+const FileSync = require('lowdb/adapter/FileSync')
 
 var app = express();
+var routes = require('./routes/index');
 
 // var test = require('./routes/test');
 
@@ -44,7 +35,7 @@ app.engine('.html', ejs.__express);
 
 app.use(logger('dev')); //显示用户访问行为 访问资源目录 状态码 以及拖取资源的时长 是很好用的debug监控
 
-// app.use(cookieParser()) //解析cookie 将cookies信息写入req.cookies内
+app.use(cookieParser()) //解析cookie 将cookies信息写入req.cookies内
 
 // app.use((req,res,next)=>{
 //   res.cookie('userName', 'guest1',{})
@@ -60,15 +51,8 @@ app.use(session({
     name: 'kechuan',
 }))
 
-// Set default data
-db.data ||= { posts: [] } // x||=y => x || x=y(即如果初始有值采用自身 否则采用y)
+db.get('posts').push({id: 1, name: 'kechuan'}).write()
 
-await db.read() //读取了之后 db目标才会得知现在的json配置信息
-// Create and query items using plain JS
-db.data.posts.push({id:db.data.posts.length+1, title:'powered by lowdb'})
-await db.write()
-
- console.log(await db.data.posts)
 
 app.use('/',express.static(path.join(__dirname, 'public'))); 
 /*设定资源文件载入目录 且预先载入 
@@ -83,7 +67,7 @@ app.use(favicon(path.join(__dirname, 'public/images', 'Icon.ico')));
 
 
 //routes:
-app.use('/', routes); //接管routes内的路由
+app.use('/', routes.router); //接管routes内的路由
 
 
 // exports.app = app

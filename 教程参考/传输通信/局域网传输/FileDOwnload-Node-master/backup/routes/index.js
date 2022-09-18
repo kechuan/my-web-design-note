@@ -1,7 +1,6 @@
-import express from 'express'
-import path from 'node:path'
-import fs from "node:fs"
-import os from "node:os"
+var express = require('express');
+var path = require('path');
+var fs = require("fs");
 
 
 // var cookieParser = require('cookie-parser')
@@ -25,7 +24,7 @@ router.get('/setcookies', (req, res) => {
     const session = req.session  // 获得session
     session['key'] = 'value'  // 设置session
 
-    // console.log(session)
+    console.log(session)
     res.setHeader('set-cookies', session['key']) // 保存cookie在headers中(这里修改了session，服务器会自动生成set-cookie字段)
 
     // req.session.view = view
@@ -37,7 +36,8 @@ router.get('/setcookies', (req, res) => {
 // })
 
 router.get('/', function (req, res, next) {
-    var reqIp = getIPAdress() +':'+port;
+   
+    reqIp = getIPAdress() +':'+port;
     res.render('test', 
     {
         title: 'Express',
@@ -48,7 +48,7 @@ router.get('/', function (req, res, next) {
 
 //file页面下 渲染indexdir
 router.get('/file', function (req, res, next) {
-    var reqIp = getIPAdress() +':'+port;
+    reqIp = getIPAdress() +':'+port;
     res.render('indexdir', {dataip: reqIp});
 
 });
@@ -81,17 +81,17 @@ router.get('/filelist', function (req, res, next) {
     if (path != null) {
         filepath = path + "\\"; //访问盘符后的目录有效时添加\ D: => D:\
     }
-    var reqIp = getIPAdress() +':'+port;
+    reqIp = getIPAdress() +':'+port;
 
     var filedetail = informationList(filepath);
-    var dirlist = filedetail[0];
-    var filelist = filedetail[1];
-    var sizelist = filedetail[2];
-    var extlist = filedetail[3];
+    dirlist = filedetail[0];
+    filelist = filedetail[1];
+    sizelist = filedetail[2];
+    extlist = filedetail[3];
 
     //处理文件名显示问题
-    var filenamelist = new Array();
-    var dirnamelist = new Array();
+    filenamelist = new Array();
+    dirnamelist = new Array();
     for (var i=0;i<filelist.length;i++){
         // var temp = decodeURIComponent(filelist[i].split("\\"));
         var temp = decodeURIComponent(filelist[i])
@@ -113,13 +113,13 @@ router.get('/filelist', function (req, res, next) {
     res.render('index', {
         dataip: reqIp,
         filepath: filepath,
-        view: view,
-        filelist: filelist,
-        dirlist: dirlist,
-        dirnamelist: dirnamelist,
-        filenamelist: filenamelist,
-        sizelist: sizelist,
-        extlist: extlist
+        view: view
+        // filelist: filelist,
+        // dirlist: dirlist,
+        // dirnamelist: dirnamelist,
+        // filenamelist: filenamelist,
+        // sizelist: sizelist,
+        // extlist: extlist
         // 为什么 即使它们不主动去传递 ejs也能接收到变量？
     });
     //将res的变量映射到ejs模板 以供调用
@@ -145,7 +145,7 @@ router.get('/view/:view', (req,res)=>{
 //路径找到末尾了 那 就返回404罢
 router.get('/*',(req, res)=>{
     console.log('404 Error and handler it');
-    var reqIp = getIPAdress() +':'+port;
+    reqIp = getIPAdress() +':'+port;
     res.render('error',{
         dataip: reqIp
     })
@@ -211,7 +211,7 @@ function downloadFile(filepath, res, req) {
  * @returns {*}
  */
 function getIPAdress(){
-    var interfaces = os.networkInterfaces();
+    var interfaces = require('os').networkInterfaces();
     for(var devName in interfaces){
         var iface = interfaces[devName];
         for(var i=0;i<iface.length;i++){
@@ -224,7 +224,7 @@ function getIPAdress(){
 }
 
 
-// exports.router = router
-// exports.getIPAdress = getIPAdress cjs
-export {getIPAdress, router}
+exports.router = router
+exports.getIPAdress = getIPAdress
 
+// export {router, getIPAdress}
