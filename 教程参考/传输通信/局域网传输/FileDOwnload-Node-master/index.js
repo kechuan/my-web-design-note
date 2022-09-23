@@ -1,8 +1,3 @@
-// var app = require('./app'); //注意 node环境的require并不和CJS的模块引入一致
-// var routes = require('./routes') //因依赖获取IP地址引入
-// var http = require('http');
-// var open = require('open')
-
 import app from './app.js' //注意 node环境的require并不和CJS的模块引入一致
 import {getIPAdress, router as routes} from './routes/index.js' //因依赖获取IP地址引入
 import http from 'http'

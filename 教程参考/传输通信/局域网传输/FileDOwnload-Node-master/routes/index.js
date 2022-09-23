@@ -2,7 +2,9 @@ import express from 'express'
 import path from 'node:path'
 import fs from "node:fs"
 import os from "node:os"
+// import async from 'async' //async await无法在router配置上使用？？？
 
+import {trigger} from '../public/js/data.js'
 
 // var cookieParser = require('cookie-parser')
 
@@ -10,28 +12,26 @@ var router = express.Router();  //路由设置 开始
 
 var port = 8888;
 
-//TODO html页面优化
-/* GET home page.  => 默认情况下跳转至view下的test页面 */ 
+//TODO html页面优化 login
 
-// router.get('/setcookies', (req, res)=>{
-//     res.cookie('userName', 'guest1',{})
-//     res.cookie('view', 'listview',{})
-//     res.send('cookie setted')
-// })
-var now = ''
+var surfing_path = ''
 var view = 'gridview'
 
 router.get('/setcookies', (req, res) => {
-    const session = req.session  // 获得session
-    session['key'] = 'value'  // 设置session
+    // const session = req.session  // 获得session
+    // session['key'] = 'value'  // 设置session
 
-    // console.log(session)
-    res.setHeader('set-cookies', session['key']) // 保存cookie在headers中(这里修改了session，服务器会自动生成set-cookie字段)
+    // // console.log(session)
+    // res.setHeader('set-cookies', session['key']) // 保存cookie在headers中(这里修改了session，服务器会自动生成set-cookie字段)
 
-    // req.session.view = view
+    // // req.session.view = view
     res.send('cookies setted!')
 })
 
+router.get('/register',(req,res)=>{
+    trigger()
+    res.send('register end')
+})
 // router.get('/getcookies', (req, res)=>{
 //     res.send(`Hello ${JSON.stringify(req.cookies.userName)}, your cookie information:${JSON.stringify(req.cookies)}`)
 // })
@@ -61,21 +61,17 @@ router.get('/file', function (req, res, next) {
 router.get('/filedownload', function (req, res, next) {
     //EXP:/filedownload?path=D:\All%20Local%20Downloads\
     //[Airota&LoliHouse]%20Deaimon%20-%2008%20[WebRip%201080p%20HEVC-10bit%20AAC%20ASSx2].mkv
-    //但是query本身的&%等特殊字符又会被解析 怎么办。。
+    //但是query本身的&%等特殊字符又会被解析 怎么办。。 那就先编码url再传输然后解压就完事
 
-    // let filepath = req.url.replace('/filedownload?path=','')
-    // let filepath = req.url.slice(req.url.search(/(?=(\w)+:)/g))
     let path = req.query.path
     let filepath = decodeURIComponent(path); //将url的ascii码信息转译回正常的编码
-    //console.log('this is fullname:', filepath)
-    // console.log('this is query:', req.query)
-    // console.log('this is req:', req)
     downloadFile(filepath, res, req);
 });
 
 
 //文件列表 需求通过上层携带 ?path='' 以访问 直接访问无效 由file跳转以携带字样
 router.get('/filelist', function (req, res, next) {
+    surfing_path = req.url
     let filepath = req.query.path.slice(2); //截取盘符之后的目录信息
     let path = req.query["path"];
     if (path != null) {
@@ -84,19 +80,17 @@ router.get('/filelist', function (req, res, next) {
     var reqIp = getIPAdress() +':'+port;
 
     var filedetail = informationList(filepath);
-    var dirlist = filedetail[0];
-    var filelist = filedetail[1];
-    var sizelist = filedetail[2];
-    var extlist = filedetail[3];
-
+    //数据解构法赋值
+    var [dirlist,filelist,sizelist,extlist] = filedetail
+    
     //处理文件名显示问题
     var filenamelist = new Array();
     var dirnamelist = new Array();
+
     for (var i=0;i<filelist.length;i++){
-        // var temp = decodeURIComponent(filelist[i].split("\\"));
         var temp = decodeURIComponent(filelist[i])
-        
-        filenamelist[i] = temp.split('\\').slice(-1).toString();   //浅复制slice 但是会变成数组的形式 需要手动转换一次
+        filenamelist[i] = temp.split('\\').slice(-1).toString();   
+        //浅复制最后一位的slice 但是会变成数组的形式 需要手动转换一次变成字符串
     }
 
     for (var i=0;i<dirlist.length;i++){
@@ -121,30 +115,25 @@ router.get('/filelist', function (req, res, next) {
         sizelist: sizelist,
         extlist: extlist
         // 为什么 即使它们不主动去传递 ejs也能接收到变量？
+        //最搞笑的是转成ES导入之后就需要强制声明这些变量了
     });
     //将res的变量映射到ejs模板 以供调用
-    now = req.url
+    
     
 })
 
 
 router.get('/view/:view', (req,res)=>{
-    var surfing_path = now
-    console.log(surfing_path)
+    let redirect_path = surfing_path
     view = req.params.view; //全局属性 不能用var 获取伪类选择的属性
     req.session.view = view
-    
-    res.redirect(surfing_path)
-    console.log('succ')
-
-    // var view = req.params.view
-    // req.session.view = view;
-    
+    res.redirect(redirect_path)
+    // console.log('succ')
 })
 
 //路径找到末尾了 那 就返回404罢
 router.get('/*',(req, res)=>{
-    console.log('404 Error and handler it');
+    console.log('404 Error and handle it');
     var reqIp = getIPAdress() +':'+port;
     res.render('error',{
         dataip: reqIp
@@ -156,15 +145,18 @@ router.get('/*',(req, res)=>{
  * @param filepath
  */
 function informationList(filepath){
-    
-    var informationlist = new Array();
-    var dirlist = new Array();
-    var filelist = new Array();
-    var sizelist = new Array();
-    var extlist = new Array();
+    // var informationlist = []
+    //     ,dirlist = []
+    //     ,filelist = []
+    //     ,sizelist = []
+    //     ,extlist = []
+
+var [informationlist,dirlist,filelist,sizelist,extlist] = [[],[],[],[],[]];
+
+//不过神奇的是 无法使用这种解构的方法来快速定义多个空变量,只能用这种方法来快速定义多个空数组
 
     var files = fs.readdirSync(filepath);
-    files.forEach(function (file) {
+    files.forEach((file)=>{
         if (fs.existsSync(filepath + file)) {
             var fullname = filepath + file;
 
@@ -197,7 +189,7 @@ function downloadFile(filepath, res, req) {
     
     // var filename = filepathTemp[filepathTemp.length - 1];
     var filename = filepathTemp[-1];
-    res.download(filepath, filename, function (err) {
+    res.download(filepath, filename, (err)=>{
         if (err) {
             console.log(err);
         } else {
@@ -223,8 +215,5 @@ function getIPAdress(){
     }
 }
 
-
-// exports.router = router
-// exports.getIPAdress = getIPAdress cjs
 export {getIPAdress, router}
 
