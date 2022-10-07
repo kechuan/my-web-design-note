@@ -4,7 +4,7 @@ import fs from "node:fs"
 import os from "node:os"
 // import async from 'async' //async await无法在router配置上使用？？？
 
-import {trigger} from '../public/js/data.js'
+import {datawrite} from '../public/js/data.js'
 
 // var cookieParser = require('cookie-parser')
 
@@ -28,13 +28,19 @@ router.get('/setcookies', (req, res) => {
     res.send('cookies setted!')
 })
 
-router.get('/register',(req,res)=>{
-    trigger()
-    res.send('register end')
+
+router.get('/login',(req,res)=>{
+    surfing_path = req.url //tp监视器
+    res.render('login',{
+        title: 'Login'
+    })
 })
-// router.get('/getcookies', (req, res)=>{
-//     res.send(`Hello ${JSON.stringify(req.cookies.userName)}, your cookie information:${JSON.stringify(req.cookies)}`)
-// })
+
+router.get('/register',(req,res)=>{
+    let redirect_path = surfing_path
+    datawrite()
+    res.redirect(redirect_path)
+})
 
 router.get('/', function (req, res, next) {
     var reqIp = getIPAdress() +':'+port;
@@ -145,11 +151,6 @@ router.get('/*',(req, res)=>{
  * @param filepath
  */
 function informationList(filepath){
-    // var informationlist = []
-    //     ,dirlist = []
-    //     ,filelist = []
-    //     ,sizelist = []
-    //     ,extlist = []
 
 var [informationlist,dirlist,filelist,sizelist,extlist] = [[],[],[],[],[]];
 
