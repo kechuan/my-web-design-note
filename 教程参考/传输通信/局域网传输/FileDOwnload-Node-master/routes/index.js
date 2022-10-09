@@ -4,7 +4,7 @@ import fs from "node:fs"
 import os from "node:os"
 // import async from 'async' //async await无法在router配置上使用？？？
 
-import {datawrite} from '../public/js/data.js'
+import {datawrite,datascan,login} from '../public/js/data.js'
 
 // var cookieParser = require('cookie-parser')
 
@@ -16,30 +16,91 @@ var port = 8888;
 
 var surfing_path = ''
 var view = 'gridview'
+var status = ''
+var description = ''
 
 router.get('/setcookies', (req, res) => {
-    // const session = req.session  // 获得session
-    // session['key'] = 'value'  // 设置session
-
-    // // console.log(session)
-    // res.setHeader('set-cookies', session['key']) // 保存cookie在headers中(这里修改了session，服务器会自动生成set-cookie字段)
-
-    // // req.session.view = view
     res.send('cookies setted!')
 })
 
 
 router.get('/login',(req,res)=>{
-    surfing_path = req.url //tp监视器
+var username = req.query.username
+var password = req.query.password
+var password_confirm = req.query.password_confirm
+
+
+    if(username&&password&&password_confirm!=undefined){
+        res.redirect(`/register?username=${username}&password=${password}`)
+    }
+
+    if(username&&password!=undefined){
+        console.log('try login');
+        switch(login(username,password)){
+            case 'not exist': {
+                description = `Account ${req.query.username} not exist!`
+                res.redirect('/login/failed') 
+                break;
+            }
+
+            case 'wrong': {
+                description = `The password of account is not correct!`
+                res.redirect('/login/failed')
+                break;
+            }; 
+
+            case 'succ': 
+            {
+                console.log(`welcome ${req.query.username}!`)
+                res.redirect('/')
+                break;
+            };
+
+            default: console.log(login(username,password)); break;
+        }
+
+        // if(!datascan(req.query.username,req.query.password)){
+        //     console.log(`welcome ${req.query.username}!`)
+        //     res.redirect('/')
+        // }
+
+        // else if(!datascan(req.query.username,req.query.password)){
+        //     description = `The password of account is not correct!`
+        //     res.redirect('/login/failed')
+        // }
+
+        // else{
+        //     description = `Account ${req.query.username} not exist!`
+        //     res.redirect('/login/failed')
+        // }
+    }
+
+    
+
     res.render('login',{
-        title: 'Login'
+        title: 'Login',
+        status: status,
+        description: description
     })
+})
+
+router.get('/login/:status',(req,res)=>{
+    status = req.params.status
+    res.redirect('/login')
 })
 
 router.get('/register',(req,res)=>{
     let redirect_path = surfing_path
-    datawrite()
-    res.redirect(redirect_path)
+    if(datascan(req.query.username,req.query.password)){
+        console.log('reg failed!')
+        res.redirect('/login/failed')
+    }
+
+    else{
+        res.redirect('/')
+        datawrite(req.query.username,req.query.password)
+        
+    }
 })
 
 router.get('/', function (req, res, next) {
@@ -134,8 +195,9 @@ router.get('/view/:view', (req,res)=>{
     view = req.params.view; //全局属性 不能用var 获取伪类选择的属性
     req.session.view = view
     res.redirect(redirect_path)
-    // console.log('succ')
 })
+
+
 
 //路径找到末尾了 那 就返回404罢
 router.get('/*',(req, res)=>{

@@ -11,5 +11,5 @@ var server = http.createServer(app);
 server.listen(port, ()=>{
   console.log(`请输入连接地址:${getIPAdress()}:${port}/file`);
   console.log(world.world(), 'cjs & ejs import test')
-  // open(`http://${routes.getIPAdress()}:${port}/file`)
+  // open(`http://${getIPAdress()}:${port}/login`)
 });

@@ -2,15 +2,13 @@
   "posts": [
     {
       "id": 1,
-      "passport": "kechuan"
+      "passport": "kechuan233",
+      "password": "asd12088"
     },
     {
       "id": 2,
-      "passport": "TVkechuan"
-    },
-    {
-      "id": 3,
-      "passport": "LTV"
+      "passport": "test1",
+      "password": "asd"
     }
   ]
 }

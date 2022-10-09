@@ -10,10 +10,9 @@ const db = new Low(adapter)//对db接口来说 则是根据json方式来写入da
 
 // // Set default data
 // db.data ||= { posts: [] } // x||=y => x || y(即如果初始有值采用自身 否则采用y)
-db.read()
 
-function datascan(name,password){
-	db.read() //读取了之后 db目标才会得知现在的json配置信息
+async function datascan(name,password){
+	await db.read() //读取了之后 db目标才会得知现在的json配置信息
 
 	var existList = db.data.posts
 	// console.log('this is old one passport data',db.data.posts)
@@ -25,11 +24,39 @@ function datascan(name,password){
 	}
 
 	
-	const new_judge = (string) => string != name //当全部不等于name时返回true
-	var new_result = profile_array.every(new_judge)
-	var exists_result = !profile_array.every(new_judge) //那么存在则应为false
-	console.log('exist?:',exists_result)
-	return exists_result
+	const passport_dulipcate_judge = (string) => string != name //不等于name时返回true
+
+
+	
+	var exists_result = !profile_array.every(passport_dulipcate_judge) //那么存在则和上文反向非
+	
+	//账号存在 密码开始确认
+	if(exists_result){
+		// var password_result = false
+		console.log(exists_result)
+		var login_passport = db.data.posts[db.data.posts.findIndex(x => x.passport === `${name}`)]
+		
+		if(login_passport.password === password){
+			// password_result = true
+			
+			console.log('auth_pass')
+			return 'succ'
+		
+		}
+
+		else{
+			console.log('wrong')
+			return 'wrong'
+			//密码错误
+		}
+	}
+		
+	else{
+		console.log('not exist')
+		return 'not exist'
+	}
+
+	// return exists_result
 }
 
 async function datawrite(new_name,new_password){
@@ -47,21 +74,4 @@ async function datawrite(new_name,new_password){
 	
 }
 
-
-function login(name,password){
-	if(datascan(name,password)){	//账号存在 密码开始确认
-		var login_passport = db.data.posts[db.data.posts.findIndex(x => x.passport === `${name}`)]
-		console.log(`login_passport:${login_passport}`)
-		if(login_passport.password === password){
-			console.log('trig it:suc');return 'succ'
-		}
-		else{
-			console.log('trig it:wrong');return 'wrong'
-		}
-	}
-		
-	else{console.log('trig it:not exist');return 'not exist'}
-
-}
-
-export {datawrite,datascan,login}
+export {datawrite,datascan}
