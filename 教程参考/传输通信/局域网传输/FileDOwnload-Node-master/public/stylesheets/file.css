@@ -55,16 +55,29 @@ a {
     display: inline-flex;
 }
 
-#setting{
+#arrow{
+    /*坑: 找一个箭头svg 拖着这两个容器展开-关闭*/
+}
+
+#viewSetting{
     position: fixed;
     right: 1%;
-    bottom: 5%;
+    bottom: 15%;
     display: flex;
     justify-content: flex-end;
     align-items: flex-start;
 }
 
-#view_change{
+#uploadSetting{
+    position: fixed;
+    right: 1%;
+    bottom: 6%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.button_BG{
     display: flex;
     width: 60px;
     height: 60px;
@@ -75,3 +88,6 @@ a {
     cursor: pointer;
 }
 
+#upload{
+    background-color: rgba(114,17,140,0.3);
+}

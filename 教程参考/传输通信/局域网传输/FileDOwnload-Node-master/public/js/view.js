@@ -1,4 +1,6 @@
-var list = document.getElementById('view')
+const $ = document.querySelector.bind(document)
+
+var list = $('#view')
 
 function change(){
 	var css = list.href.split('/')

@@ -46,7 +46,6 @@ const register_switch = function(){
 		login.appendChild(footer.replaceChild(rg_channel,now_channel))
 		//login标签接管替换回来的lg_channel
 		
-		
 		flag = 'login'
 	}
 

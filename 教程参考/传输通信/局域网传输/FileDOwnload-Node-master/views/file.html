@@ -3,7 +3,7 @@
 <head>
     <title>局域网传输</title>
     <link rel='stylesheet' href='/stylesheets/font.css'/>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/file.css">
     <link rel="stylesheet" id='view' href="/stylesheets/<%= view %>.css">
     <link rel="stylesheet" href="/stylesheets/iconfont/icons.css">
 </head>
@@ -13,15 +13,13 @@
     <script src='/js/iconfont.js'></script>
 <!--文件夹显示效果-->
 <!-- test:D:\\All Local Downloads\\MobileFile -->
- <div id="nav">kechuan的文件分享页面</div>
+ <div id="nav">kechuan的文件分享页面 TODO:上传功能/Admin下的删除功能/通过::before ::after实现图片未加载的处理
+ /继承切换视图后的scrollview位置</div>
  <div id="path">
     <!-- (当前分割符:<%=filepath.split('\\').length-2%> <%=filepath.split('\\')%>) -->
     <a href="/file" id='menu'>Index🏠</a>
     <ul>
-        <% for(var i=0; i<= filepath.split('\\').length-2; i++){ %>
-
-        <%# for(let i in (filepath.split('\\')) ){ %>
-            
+        <% for(var i=0; i<= filepath.split('\\').length-2; i++){ %> 
             <li>
                 <%var array = []; var string = []%>
 
@@ -30,7 +28,6 @@
             </li>
             
             <div id="text">/</div> 
-
         <%}%>
     </ul>
  </div> 
@@ -117,31 +114,34 @@
                 </li>
             </a>
        
-        
         <%}%>
     </ul>
 </div>
 
 <!-- #ext-video -->
 
-
-
-<div id="setting">
+<div id="viewSetting">
     <a href="/view/<% if(view=="gridview"){%><%="listview"%><%}else{%><%="gridview"%><%}%>">
-        <div id="view_change">
+        <div class='button_BG'>
             <div id="grid_view">
-                
-                <svg t="1660929692348" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1078" width="20" height="20"><path d="M0 768 1024 768 1024 1024 0 1024 0 768ZM0 384 1024 384 1024 640 0 640 0 384ZM0 0 1024 0 1024 256 0 256 0 0Z" p-id="1079" fill="#fff" aria-hidden='true'></path></svg>
-                
+                <img src="/images/svg/gridview.svg"></img>
             </div>
             
-
             <div id="list_view">
-                <svg t="1660933116420" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1391" width="27" height="27"><path d="M454.70528001 483.267968H156.3776a28.78848 28.78848 0 0 1-28.78848-28.844928V156.3776a28.78848 28.78848 0 0 1 28.78848-28.78848h298.32768001A28.78848 28.78848 0 0 1 483.776 156.3776v298.04544a28.84492799 28.84492799 0 0 1-29.07071999 28.844928zM867.6224 896.41088h-298.04544a28.78848 28.78848 0 0 1-28.78848-28.78848v-298.04544a28.78848 28.78848 0 0 1 28.78848-28.844928H867.6224a28.78848 28.78848 0 0 1 28.78848 28.844928V867.6224a28.78848 28.78848 0 0 1-28.78848 28.78848zM867.6224 483.267968h-298.04544a28.78848 28.78848 0 0 1-28.78848-28.844928V156.3776a28.78848 28.78848 0 0 1 28.78848-28.78848H867.6224a28.78848 28.78848 0 0 1 28.78848 28.78848v298.04544a28.78848 28.78848 0 0 1-28.78848 28.844928zM454.70528001 896.41088H156.3776a28.78848 28.78848 0 0 1-28.78848-28.78848v-298.04544a28.78848 28.78848 0 0 1 28.78848-28.844928h298.32768001A28.84492799 28.84492799 0 0 1 483.776 569.57696V867.6224a28.78848 28.78848 0 0 1-29.07071999 28.78848z" fill="#fff" p-id="1392" aria-hidden='true'></path></svg>
+                <img src="/images/svg/listview.svg"></img>
             </div>
         </div>
     </a>
 </div>
+
+<div id="uploadSetting">
+    <a href="/upload">
+        <div class='button_BG' id='upload'>
+            <img src="/images/svg/upload.svg">
+        </div>
+    </a>
+</div>
+
 
 <div id="gap"></div>
 
@@ -161,7 +161,6 @@
 计划:
 图标自定义
 深浅背景间隔
-
 
 </body>
 </html>
