@@ -1,1 +1,0 @@
-pnpm nodemon index.js
